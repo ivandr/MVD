@@ -42,7 +42,7 @@ public void initBean() {
    System.out.println("@PersonBean.femployee = "+femployee);
    System.out.println("@PersonBean.fvip = "+fvip);
    System.out.println("@PersonBean.fname = "+fname);
-   
+   //TODO
 }
 
 @PreDestroy
