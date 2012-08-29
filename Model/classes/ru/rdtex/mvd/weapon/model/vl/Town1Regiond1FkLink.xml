@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Town1Regiond1FkLink"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  EntityAssociation="ru.rdtex.mvd.weapon.model.asoc.Town1Regiond1FkAssoc">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewLinkDefEnd
+    Name="RegionDeptView"
+    Cardinality="1"
+    Owner="ru.rdtex.mvd.weapon.model.vo.RegionDeptView"
+    Source="true">
+    <DesignTime>
+      <Attr Name="_finderName" Value="RegionDeptView"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.vo.RegionDeptView.Code"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="TownVillageView"
+    Cardinality="-1"
+    Owner="ru.rdtex.mvd.weapon.model.vo.TownVillageView">
+    <DesignTime>
+      <Attr Name="_finderName" Value="TownVillageView"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.vo.TownVillageView.RegiondCode"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

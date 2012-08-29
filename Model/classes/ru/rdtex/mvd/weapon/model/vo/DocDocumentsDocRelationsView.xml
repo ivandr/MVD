@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DocDocumentsDocRelationsView"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  SelectList="DocDocumentsDocRelations.DDC_ID, 
+       DocDocumentsDocRelations.DRL_ID, 
+       DocDocumentsDocRelations.OBJ_ID"
+  FromList="DOC_DOCUMENTS_DOC_RELATIONS DocDocumentsDocRelations"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="DocDocumentsDocRelations"
+    Entity="ru.rdtex.mvd.weapon.model.en.DocDocumentsDocRelations"/>
+  <ViewAttribute
+    Name="DdcId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DdcId"
+    EntityUsage="DocDocumentsDocRelations"
+    AliasName="DDC_ID"/>
+  <ViewAttribute
+    Name="DrlId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DrlId"
+    EntityUsage="DocDocumentsDocRelations"
+    AliasName="DRL_ID"/>
+  <ViewAttribute
+    Name="ObjId"
+    PrecisionRule="true"
+    EntityAttrName="ObjId"
+    EntityUsage="DocDocumentsDocRelations"
+    AliasName="OBJ_ID"/>
+</ViewObject>

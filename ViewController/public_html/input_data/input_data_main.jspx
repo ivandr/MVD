@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1"
+                 binding="#{backingBeanScope.backing_input_data_main.d1}">
+      <af:form id="f1" binding="#{backingBeanScope.backing_input_data_main.f1}">
+        <af:pageTemplate viewId="/templates/mvd_temp.jspx" id="pt1">
+          <f:facet name="body">
+            <af:panelStretchLayout binding="#{backingBeanScope.backing_input_data_main.psl1}"
+                                   id="psl1">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelGroupLayout binding="#{backingBeanScope.backing_input_data_main.pgl1}"
+                                     id="pgl1"
+                                     styleClass="AFStretchWidth mainContent">
+                  <f:verbatim>
+                    Ввод данных
+                  </f:verbatim>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top"/>
+            </af:panelStretchLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_input_data_main-->
+</jsp:root>

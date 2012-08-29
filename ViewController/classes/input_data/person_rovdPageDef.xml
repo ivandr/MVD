@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="person_rovdPageDef"
+                Package="input_data">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="EntPersonsRovdView2" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="EntPersonsRovdView2Iterator"/>
+    <searchRegion Binds="EntPersonsRovdView2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="EntPersonsRovdView2Query"/>
+    <iterator Binds="RovdStatusView1" RangeSize="10"
+              DataControl="AppModuleDataControl" id="RovdStatusView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="EntPersonsRovdView2Iterator" id="EntPersonsRovdView2">
+      <nodeDefinition DefName="ru.rdtex.mvd.weapon.model.vo.EntPersonsRovdView"
+                      Name="EntPersonsRovdView20">
+        <AttrNames>
+          <Item Value="DeptCode"/>
+          <Item Value="RovdStatus"/>
+          <Item Value="RovdPersonalCase"/>
+          <Item Value="DeleteRow"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="deleteSelectedRows" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="deleteSelectedRows"
+                  IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="AppModuleDataControl.dataProvider">
+      <NamedData NDName="ViewObjectName" NDValue="EntPersonsRovdView2"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="AppModuleDataControl"/>
+    <action IterBinding="EntPersonsRovdView2Iterator"
+            id="setCurrentRowWithKeyValue"
+            InstanceName="AppModuleDataControl.EntPersonsRovdView2"
+            DataControl="AppModuleDataControl" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKeyValue">
+      <NamedData NDName="rowKey" NDValue="#{row.Id}" NDType="java.lang.String"/>
+    </action>
+    <tree IterBinding="RovdStatusView1Iterator" id="RovdStatusView1">
+      <nodeDefinition DefName="ru.rdtex.mvd.weapon.model.vo.lov.RovdStatusView"
+                      Name="RovdStatusView10">
+        <AttrNames>
+          <Item Value="NAME"/>
+          <Item Value="ID"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

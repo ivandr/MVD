@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="person_addresses_editPageDef"
+                Package="ru.rdtex.mvd.weapon.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="EntAddressesView2" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="EntAddressesView2Iterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="deleteSelectedRows" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="deleteSelectedRows"
+                  IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="AppModuleDataControl.dataProvider">
+      <NamedData NDName="ViewObjectName" NDValue="" NDType="java.lang.String"/>
+    </methodAction>
+    <list IterBinding="EntAddressesView2Iterator" StaticList="false"
+          Uses="LOV_TypeAddr" id="TypeAddr" DTSupportsMRU="true"/>
+    <listOfValues StaticList="false" IterBinding="EntAddressesView2Iterator"
+                  Uses="LOV_Street" id="Street"/>
+    <listOfValues StaticList="false" IterBinding="EntAddressesView2Iterator"
+                  Uses="LOV_Town" id="Town"/>
+    <attributeValues IterBinding="EntAddressesView2Iterator" id="House">
+      <AttrNames>
+        <Item Value="House"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EntAddressesView2Iterator" id="Corpus">
+      <AttrNames>
+        <Item Value="Corpus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EntAddressesView2Iterator" id="Room">
+      <AttrNames>
+        <Item Value="Room"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EntAddressesView2Iterator" id="Phone">
+      <AttrNames>
+        <Item Value="Phone"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues StaticList="false" IterBinding="EntAddressesView2Iterator"
+                  Uses="LOV_AdmDistrict" id="AdmDistrict"/>
+    <listOfValues StaticList="false" IterBinding="EntAddressesView2Iterator"
+                  Uses="LOV_MunDistrict" id="MunDistrict"/>
+    <listOfValues StaticList="false" IterBinding="EntAddressesView2Iterator"
+                  Uses="LOV_Police" id="Police"/>
+    <attributeValues IterBinding="EntAddressesView2Iterator" id="Propiska">
+      <AttrNames>
+        <Item Value="Propiska"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="EntAddressesView2Iterator" StaticList="false"
+          Uses="LOV_CountryCode" id="CountryCode" DTSupportsMRU="true"/>
+    <list IterBinding="EntAddressesView2Iterator" StaticList="false"
+          Uses="LOV_RegionCode" id="RegionCode" DTSupportsMRU="true"/>
+    <listOfValues StaticList="false" IterBinding="EntAddressesView2Iterator"
+                  Uses="LOV_RegionDept" id="RegionDept1"/>
+  </bindings>
+</pageDefinition>

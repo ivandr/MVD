@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu">
+  <itemNode id="itemNode_persons" label="label_persons" action="persons"
+            focusViewId="/persons"/>
+  <itemNode id="itemNode_edit_person" label="label_edit_person"
+            action="adfMenu_edit_person" focusViewId="/edit_person"/>
+  <itemNode id="itemNode_help" label="label_help" action="adfMenu_help"
+            focusViewId="/help"/>
+  <itemNode id="itemNode_home" label="label_home" action="adfMenu_home"
+            focusViewId="/home"/>
+</menu>

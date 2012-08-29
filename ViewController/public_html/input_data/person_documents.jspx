@@ -1,0 +1,933 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1"
+                 binding="#{backingBeanScope.backing_input_data_person_documents.d1}">
+      <af:messages binding="#{backingBeanScope.backing_input_data_person_documents.m1}"
+                   id="m1"/>
+      <af:form id="f1"
+               binding="#{backingBeanScope.backing_input_data_person_documents.f1}">
+        <af:pageTemplate viewId="/templates/mvd_temp.jspx" id="pt1">
+          <f:facet name="body">
+              <af:panelSplitter binding="#{backingBeanScope.backing_input_data_person_documents.ps1}"
+                                id="ps1" orientation="vertical"
+                                splitterPosition="600" positionedFromEnd="true">
+                <f:facet name="first">
+                  <af:panelCollection binding="#{backingBeanScope.backing_input_data_person_documents.pc1}"
+                                      id="pc1">
+                    <f:facet name="menus"/>
+                    <f:facet name="toolbar">
+                    <af:toolbar binding="#{backingBeanScope.backing_input_data_person_documents.t2}"
+                                id="t2">
+                      <af:commandButton text="Создать"
+                                        binding="#{backingBeanScope.backing_input_data_person_documents.cb8}"
+                                        id="cb8" icon="/images/create.png"
+                                        actionListener="#{backingBeanScope.backing_input_data_person_documents.createRequest}"/>
+                      <af:commandButton
+                                        text="Удалить"
+                                        binding="#{backingBeanScope.backing_input_data_person_documents.cb4}"
+                                        id="cb4" icon="/images/remove.png"
+                                        actionListener="#{backingBeanScope.backing_input_data_person_documents.deleteSelectedRows}"/>
+                      <af:commandButton
+                                        text="Подтвердить удаление"
+                                        disabled="true"
+                                        binding="#{backingBeanScope.backing_input_data_person_documents.cbCommit}"
+                                        id="cbCommit" icon="/images/commit.png"
+                                        action="#{backingBeanScope.backing_input_data_person_documents.save_action}"/>
+                      <af:commandButton
+                                        text="Отменить удаления"
+                                        disabled="true"
+                                        immediate="true"
+                                        binding="#{backingBeanScope.backing_input_data_person_documents.cbRollback}"
+                                        id="cbRollback" icon="/images/cancel.png"
+                                        action="#{backingBeanScope.backing_input_data_person_documents.rollback_action}">
+                        <af:resetActionListener/>
+                      </af:commandButton>
+                      <af:commandButton text="Назад"
+                                        binding="#{backingBeanScope.backing_input_data_person_documents.cb2}"
+                                        id="cb2" icon="/images/back.png"
+                                        action="back"/>
+                    </af:toolbar>
+                  </f:facet>
+                    <f:facet name="statusbar">
+                    <af:toolbar binding="#{backingBeanScope.backing_input_data_person_documents.t3}"
+                                id="t3">
+                      <af:selectOneRadio value="#{backingBeanScope.backing_input_data_person_documents.fdoc}"
+                                         clientComponent="true"
+                                         styleClass="headerFilter"
+                                         shortDesc="#{bindings.fdoc.hints.tooltip}"
+                                         binding="#{backingBeanScope.backing_input_data_person_documents.sor1}"
+                                         id="sor1" layout="horizontal">
+                        <af:selectItem label="Все документы"
+                                       binding="#{backingBeanScope.backing_input_data_person_documents.si12}"
+                                       id="si12" value="0"/>
+                        <af:selectItem label="Действующие документы"
+                                       binding="#{backingBeanScope.backing_input_data_person_documents.si13}"
+                                       id="si13" value="1"/>
+                        <af:clientListener method="changeRadiogroup"
+                                           type="valueChange"/>
+                      </af:selectOneRadio>
+                      <af:inputText clientComponent="true" id="radioText"
+                                    label="radio" inlineStyle="display: none;"
+                                    binding="#{backingBeanScope.backing_input_data_person_documents.radioText}">
+                        <af:serverListener type="myCustomEventRadio"
+                                           method="#{backingBeanScope.backing_input_data_person_documents.myCustomChangeRadioListener}"/>
+                      </af:inputText>
+                    </af:toolbar>
+                  </f:facet>
+                    <af:table value="#{bindings.VSuperDocView2.collectionModel}"
+                              var="row"
+                              rows="#{bindings.VSuperDocView2.rangeSize}"
+                              emptyText="#{bindings.VSuperDocView2.viewable ? 'Документов не найдено.' : 'Доступ запрещен.'}"
+                              fetchSize="#{bindings.VSuperDocView2.rangeSize}"
+                              rowBandingInterval="0"
+                              selectedRowKeys="#{bindings.VSuperDocView2.collectionModel.selectedRow}"
+                              selectionListener="#{backingBeanScope.backing_input_data_person_documents.selectVSuperDocRow}"
+                              rowSelection="single"
+                              binding="#{backingBeanScope.backing_input_data_person_documents.t1}"
+                              id="t1" partialTriggers="::sor1 ::radioText">
+                    <af:column headerText="#{bindings.VSuperDocView2.hints.DeleteRow.label}"
+                               id="c11" align="center" width="20">
+                      <af:selectBooleanCheckbox value="#{row.bindings.DeleteRow.inputValue}"
+                                                label="#{row.bindings.DeleteRow.label}"
+                                                shortDesc="#{bindings.VSuperDocView2.hints.DeleteRow.tooltip}"
+                                                id="sbc2"
+                                                styleClass="SELECT_CHECKBOX"/>
+                      <f:facet name="filter"/>
+                      <f:facet name="header">
+                        <af:selectBooleanCheckbox id="HEADER_CHECKBOX"
+                                                  label="#{''}" simple="true"
+                                                  binding="#{backingBeanScope.backing_input_data_person_documents.HEADER_CHECKBOX}">
+                          <af:clientListener type="valueChange"
+                                             method="toggleDelCheckbox"/>
+                        </af:selectBooleanCheckbox>
+                      </f:facet>
+                    </af:column>
+                    <af:column sortProperty="DrDocNumb" sortable="true"
+                                 headerText="#{bindings.VSuperDocView2.hints.DrDocNumb.label}"
+                                 id="c2">
+                        <af:outputText value="#{row.DrDocNumb}" id="ot9"/>
+                      </af:column>
+                      <af:column sortProperty="DrDocDate" sortable="true"
+                                 headerText="#{bindings.VSuperDocView2.hints.DrDocDate.label}"
+                                 id="c9">
+                        <af:outputText value="#{row.DrDocDate}" id="ot6">
+                          <af:convertDateTime pattern="#{bindings.VSuperDocView2.hints.DrDocDate.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column sortProperty="LSeries" sortable="true"
+                                 headerText="#{bindings.VSuperDocView2.hints.LSeries.label}"
+                                 id="c4"
+                                 inlineStyle="border-left: 1px dotted Black;">
+                      <af:outputText value="#{row.LSeries}" id="ot11"/>
+                    </af:column>
+                      <af:column sortProperty="DlDocNumb" sortable="true"
+                                 headerText="#{bindings.VSuperDocView2.hints.DlDocNumb.label}"
+                                 id="c7">
+                      <af:outputText value="#{row.DlDocNumb}" id="ot2"/>
+                    </af:column>
+                      <af:column sortProperty="DlDocDate" sortable="true"
+                                 headerText="#{bindings.VSuperDocView2.hints.DlDocDate.label}"
+                                 id="c5" rendered="true">
+                      <af:outputText value="#{row.DlDocDate}" id="ot7">
+                        <af:convertDateTime pattern="#{bindings.VSuperDocView2.hints.DlDocDate.format}"/>
+                      </af:outputText>
+                    </af:column>
+                      <af:column sortProperty="LEndDate" sortable="true"
+                                 headerText="#{bindings.VSuperDocView2.hints.LEndDate.label}"
+                                 id="c8">
+                      <af:outputText value="#{row.LEndDate}" id="ot10">
+                        <af:convertDateTime pattern="#{bindings.VSuperDocView2.hints.LEndDate.format}"/>
+                      </af:outputText>
+                    </af:column>
+                      <af:column sortProperty="PSeries" sortable="true"
+                                 headerText="#{bindings.VSuperDocView2.hints.PSeries.label}"
+                                 id="c1"
+                                 inlineStyle="border-left: 1px dotted Black;">
+                        <af:outputText value="#{row.PSeries}" id="ot5"/>
+                      </af:column>
+                      <af:column sortProperty="DpDocNumb" sortable="true"
+                                 headerText="#{bindings.VSuperDocView2.hints.DpDocNumb.label}"
+                                 id="c10">
+                        <af:outputText value="#{row.DpDocNumb}" id="ot4"/>
+                      </af:column>
+                      <af:column sortProperty="DpDocDate" sortable="true"
+                                 headerText="#{bindings.VSuperDocView2.hints.DpDocDate.label}"
+                                 id="c3">
+                        <af:outputText value="#{row.DpDocDate}" id="ot3">
+                          <af:convertDateTime pattern="#{bindings.VSuperDocView2.hints.DpDocDate.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column sortProperty="PEndDate" sortable="true"
+                                 headerText="#{bindings.VSuperDocView2.hints.PEndDate.label}"
+                                 id="c6">
+                        <af:outputText value="#{row.PEndDate}" id="ot8">
+                          <af:convertDateTime pattern="#{bindings.VSuperDocView2.hints.PEndDate.format}"/>
+                        </af:outputText>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                </f:facet>
+                <f:facet name="second">
+                <af:panelAccordion binding="#{backingBeanScope.backing_input_data_person_documents.pa1}"
+                                   id="pa1"
+                                   partialTriggers="pc1 pc1:t1">
+                  <af:showDetailItem text="Заявление"
+                                     binding="#{backingBeanScope.backing_input_data_person_documents.sdiRequest}"
+                                     id="sdiRequest">
+                    <af:panelGroupLayout binding="#{backingBeanScope.backing_input_data_person_documents.pgl3}"
+                                         id="pgl3"
+                                         rendered="#{bindings.Id.inputValue != null}">
+                      <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_documents.pfl4}"
+                                          id="pfl4" labelAlignment="top"
+                                          styleClass="mvd_form">
+                        <af:selectOneChoice value="#{bindings.TypePermission.inputValue}"
+                                            label="#{bindings.TypePermission.label}"
+                                            required="#{bindings.TypePermission.hints.mandatory}"
+                                            shortDesc="#{bindings.TypePermission.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_input_data_person_documents.soc5}"
+                                            id="soc5" autoSubmit="true"
+                                            immediate="true">
+                          <f:selectItems value="#{bindings.TypePermission.items}"
+                                         binding="#{backingBeanScope.backing_input_data_person_documents.si5}"
+                                         id="si5"/>
+                        </af:selectOneChoice>
+                      </af:panelFormLayout>
+                      <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_documents.pfl2}"
+                                          id="pfl2" labelAlignment="top"
+                                          rows="1" styleClass="mvd_form">
+                        <af:inputText value="#{bindings.DocNumb1.inputValue}"
+                                      label="№ документа"
+                                      required="#{bindings.DocNumb1.hints.mandatory}"
+                                      columns="#{bindings.DocNumb1.hints.displayWidth}"
+                                      maximumLength="#{bindings.DocNumb1.hints.precision}"
+                                      shortDesc="#{bindings.DocNumb1.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_input_data_person_documents.it1}"
+                                      id="it1">
+                          <f:validator binding="#{bindings.DocNumb1.validator}"/>
+                        </af:inputText>
+                        <af:inputDate value="#{bindings.DocDate.inputValue}"
+                                      label="Дата обращения"
+                                      required="#{bindings.DocDate.hints.mandatory}"
+                                      shortDesc="#{bindings.DocDate.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_input_data_person_documents.id1}"
+                                      id="id1">
+                          <f:validator binding="#{bindings.DocDate.validator}"/>
+                          <af:convertDateTime pattern="#{bindings.DocDate.format}"/>
+                        </af:inputDate>
+                        <af:selectOneChoice value="#{bindings.Action.inputValue}"
+                                            label="#{bindings.Action.label}"
+                                            required="#{bindings.Action.hints.mandatory}"
+                                            shortDesc="#{bindings.Action.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_input_data_person_documents.soc1}"
+                                            id="soc1">
+                          <f:selectItems value="#{bindings.Action.items}"
+                                         binding="#{backingBeanScope.backing_input_data_person_documents.si1}"
+                                         id="si1"/>
+                        </af:selectOneChoice>
+                      </af:panelFormLayout>
+                      <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_documents.pfl3}"
+                                          id="pfl3" labelAlignment="top"
+                                          styleClass="mvd_form">
+                        <af:selectOneChoice value="#{bindings.TypelicId.inputValue}"
+                                            label="#{bindings.TypelicId.label}"
+                                            required="#{bindings.TypelicId.hints.mandatory}"
+                                            shortDesc="#{bindings.TypelicId.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_input_data_person_documents.soc2}"
+                                            id="soc2"
+                                            partialTriggers="soc5 soc2"
+                                            autoSubmit="true">
+                          <f:selectItems value="#{bindings.TypelicId.items}"
+                                         id="si2"/>
+                        </af:selectOneChoice>
+                      </af:panelFormLayout>
+                      <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_documents.pfl1}"
+                                          id="pfl1" rows="4"
+                                          styleClass="mvd_form">
+                        <f:facet name="footer">
+                          <af:panelGroupLayout binding="#{backingBeanScope.backing_input_data_person_documents.pgl1}"
+                                               id="pgl1" halign="end"
+                                               layout="horizontal">
+                            <af:commandButton text="Сохранить"
+                                              binding="#{backingBeanScope.backing_input_data_person_documents.cb1}"
+                                              id="cb1" icon="/images/save.png"
+                                              action="#{backingBeanScope.backing_input_data_person_documents.save_action}"
+                                              inlineStyle="margin:10.0px;"/>
+                            <af:commandButton
+                                              text="Отмена" immediate="true"
+                                              binding="#{backingBeanScope.backing_input_data_person_documents.cb3}"
+                                              id="cb3"
+                                              icon="/images/cancel.png"
+                                              action="#{backingBeanScope.backing_input_data_person_documents.rollback_action}">
+                              <af:resetActionListener/>
+                            </af:commandButton>
+                            <af:commandButton text="Удалить"
+                                              binding="#{backingBeanScope.backing_input_data_person_documents.cb9}"
+                                              id="cb9"
+                                              icon="/images/remove.png"
+                                              actionListener="#{backingBeanScope.backing_input_data_person_documents.deleteRequest}"
+                                              inlineStyle="margin:10.0px;"/>
+                          </af:panelGroupLayout>
+                        </f:facet>
+                        <af:selectOneChoice value="#{bindings.Result.inputValue}"
+                                            label="#{bindings.Result.label}"
+                                            required="#{bindings.Result.hints.mandatory}"
+                                            shortDesc="#{bindings.Result.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_input_data_person_documents.soc3}"
+                                            id="soc3">
+                          <f:selectItems value="#{bindings.Result.items}"
+                                         binding="#{backingBeanScope.backing_input_data_person_documents.si3}"
+                                         id="si3"/>
+                        </af:selectOneChoice>
+                        <af:inputText value="#{bindings.Department1.inputValue}"
+                                      label="#{bindings.Department1.hints.label}"
+                                      required="#{bindings.Department1.hints.mandatory}"
+                                      columns="#{bindings.Department1.hints.displayWidth}"
+                                      maximumLength="#{bindings.Department1.hints.precision}"
+                                      shortDesc="#{bindings.Department1.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_input_data_person_documents.it2}"
+                                      id="it2">
+                          <f:validator binding="#{bindings.Department1.validator}"/>
+                        </af:inputText>
+                        <af:selectBooleanCheckbox value="#{bindings.Coupon2.inputValue}"
+                                                  label="#{bindings.Coupon2.label}"
+                                                  shortDesc="#{bindings.Coupon.hints.tooltip}"
+                                                  binding="#{backingBeanScope.backing_input_data_person_documents.sbc1}"
+                                                  id="sbc1"/>
+                        <af:selectOneChoice value="#{bindings.EmpSign1.inputValue}"
+                                            label="#{bindings.EmpSign1.label}"
+                                            required="#{bindings.EmpSign1.hints.mandatory}"
+                                            shortDesc="#{bindings.EmpSign1.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_input_data_person_documents.soc4}"
+                                            id="soc4">
+                          <f:selectItems value="#{bindings.EmpSign1.items}"
+                                         binding="#{backingBeanScope.backing_input_data_person_documents.si4}"
+                                         id="si4"/>
+                        </af:selectOneChoice>
+                        <af:inputDate value="#{bindings.ResultDate.inputValue}"
+                                      label="#{bindings.ResultDate.hints.label}"
+                                      required="#{bindings.ResultDate.hints.mandatory}"
+                                      shortDesc="#{bindings.ResultDate.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_input_data_person_documents.id2}"
+                                      id="id2">
+                          <f:validator binding="#{bindings.ResultDate.validator}"/>
+                          <af:convertDateTime pattern="#{bindings.ResultDate.format}"/>
+                        </af:inputDate>
+                      </af:panelFormLayout>
+                    </af:panelGroupLayout>
+                  </af:showDetailItem>
+                  <af:showDetailItem text="Лицензия"
+                                     binding="#{backingBeanScope.backing_input_data_person_documents.sdiLicense}"
+                                     id="sdiLicense"
+                                     disclosureListener="#{backingBeanScope.backing_input_data_person_documents.changeTypeBlank}">
+                      <af:panelGroupLayout binding="#{backingBeanScope.backing_input_data_person_documents.licenseEditPanel}"
+                                           id="licenseEditPanel"
+                                           rendered="#{bindings.DdcId1.inputValue != null}">
+                      <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_documents.pfl5}"
+                                          id="pfl5" rows="1"
+                                          labelAlignment="top"
+                                          styleClass="mvd_form">
+                        <af:selectOneChoice value="#{bindings.DdcId1.inputValue}"
+                                            label="#{bindings.DdcId1.label}"
+                                            required="#{bindings.DdcId1.hints.mandatory}"
+                                            shortDesc="#{bindings.DdcId1.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_input_data_person_documents.soc6}"
+                                            id="soc6" disabled="true">
+                          <f:selectItems value="#{bindings.DdcId1.items}"
+                                         binding="#{backingBeanScope.backing_input_data_person_documents.si6}"
+                                         id="si6"/>
+                        </af:selectOneChoice>
+                      </af:panelFormLayout>
+                      <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_documents.pfl6}"
+                                          id="pfl6" rows="1" maxColumns="10"
+                                          labelAlignment="top"
+                                          styleClass="mvd_form">
+                        <af:selectOneChoice value="#{bindings.DocType1.inputValue}"
+                                            label="#{bindings.DocType1.label}"
+                                            required="#{bindings.DocType1.hints.mandatory}"
+                                            shortDesc="#{bindings.DocType1.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_input_data_person_documents.soc7}"
+                                            id="soc7" disabled="true">
+                          <f:selectItems value="#{bindings.DocType1.items}"
+                                         binding="#{backingBeanScope.backing_input_data_person_documents.si7}"
+                                         id="si7"/>
+                        </af:selectOneChoice>
+                        <af:inputText value="#{bindings.DocSeries1.inputValue}"
+                                      label="#{bindings.DocSeries1.hints.label}"
+                                      required="#{bindings.DocSeries1.hints.mandatory}"
+                                      columns="#{bindings.DocSeries1.hints.displayWidth}"
+                                      maximumLength="#{bindings.DocSeries1.hints.precision}"
+                                      shortDesc="#{bindings.DocSeries1.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_input_data_person_documents.it3}"
+                                      id="it3">
+                          <f:validator binding="#{bindings.DocSeries1.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.DocNumb2.inputValue}"
+                                      label="#{bindings.DocNumb2.hints.label}"
+                                      required="#{bindings.DocNumb2.hints.mandatory}"
+                                      columns="#{bindings.DocNumb2.hints.displayWidth}"
+                                      maximumLength="#{bindings.DocNumb2.hints.precision}"
+                                      shortDesc="#{bindings.DocNumb2.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_input_data_person_documents.it4}"
+                                      id="it4">
+                          <f:validator binding="#{bindings.DocNumb2.validator}"/>
+                        </af:inputText>
+                        <af:inputDate value="#{bindings.DocDate1.inputValue}"
+                                      label="#{bindings.DocDate1.hints.label}"
+                                      required="#{bindings.DocDate1.hints.mandatory}"
+                                      shortDesc="#{bindings.DocDate1.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_input_data_person_documents.id3}"
+                                      id="id3">
+                          <f:validator binding="#{bindings.DocDate1.validator}"/>
+                          <af:convertDateTime pattern="#{bindings.DocDate1.format}"/>
+                        </af:inputDate>
+                        <af:inputDate value="#{bindings.EndDate.inputValue}"
+                                      label="#{bindings.EndDate.hints.label}"
+                                      required="#{bindings.EndDate.hints.mandatory}"
+                                      shortDesc="#{bindings.EndDate.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_input_data_person_documents.id4}"
+                                      id="id4">
+                          <f:validator binding="#{bindings.EndDate.validator}"/>
+                          <af:convertDateTime pattern="#{bindings.EndDate.format}"/>
+                        </af:inputDate>
+                      </af:panelFormLayout>
+                      <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_documents.pfl7}"
+                                          id="pfl7" labelAlignment="top"
+                                          styleClass="mvd_form">
+                        <af:selectOneChoice value="#{bindings.TypelicIdLicense.inputValue}"
+                                            label="#{bindings.TypelicIdLicense.label}"
+                                            required="#{bindings.TypelicIdLicense.hints.mandatory}"
+                                            shortDesc="#{bindings.TypelicIdLicense.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_input_data_person_documents.soc8}"
+                                            id="soc8"
+                                            partialTriggers="sdiLicense">
+                          <f:selectItems value="#{bindings.TypelicIdLicense.items}"
+                                         binding="#{backingBeanScope.backing_input_data_person_documents.si8}"
+                                         id="si8"/>
+                        </af:selectOneChoice>
+                      </af:panelFormLayout>
+                      <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_documents.pfl8}"
+                                          id="pfl8" rows="3" maxColumns="2"
+                                          styleClass="mvd_form">
+                        <af:selectOneChoice value="#{bindings.LicstatCode1.inputValue}"
+                                            label="#{bindings.LicstatCode1.label}"
+                                            required="#{bindings.LicstatCode1.hints.mandatory}"
+                                            shortDesc="#{bindings.LicstatCode1.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_input_data_person_documents.soc9}"
+                                            id="soc9">
+                          <f:selectItems value="#{bindings.LicstatCode1.items}"
+                                         binding="#{backingBeanScope.backing_input_data_person_documents.si9}"
+                                         id="si9"/>
+                        </af:selectOneChoice>
+                        <af:inputText value="#{bindings.Department2.inputValue}"
+                                      label="#{bindings.Department2.hints.label}"
+                                      required="#{bindings.Department2.hints.mandatory}"
+                                      columns="#{bindings.Department2.hints.displayWidth}"
+                                      maximumLength="#{bindings.Department2.hints.precision}"
+                                      shortDesc="#{bindings.Department2.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_input_data_person_documents.it7}"
+                                      id="it7">
+                          <f:validator binding="#{bindings.Department2.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.PaySum1.inputValue}"
+                                      label="#{bindings.PaySum1.hints.label}"
+                                      required="#{bindings.PaySum1.hints.mandatory}"
+                                      columns="#{bindings.PaySum1.hints.displayWidth}"
+                                      maximumLength="#{bindings.PaySum1.hints.precision}"
+                                      shortDesc="#{bindings.PaySum1.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_input_data_person_documents.it6}"
+                                      id="it6">
+                          <f:validator binding="#{bindings.PaySum1.validator}"/>
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.PaySum1.format}"/>
+                        </af:inputText>
+                        <af:inputDate value="#{bindings.StatusDate1.inputValue}"
+                                      label="#{bindings.StatusDate1.hints.label}"
+                                      required="#{bindings.StatusDate1.hints.mandatory}"
+                                      shortDesc="#{bindings.StatusDate1.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_input_data_person_documents.id5}"
+                                      id="id5">
+                          <f:validator binding="#{bindings.StatusDate1.validator}"/>
+                          <af:convertDateTime pattern="#{bindings.StatusDate1.format}"/>
+                        </af:inputDate>
+                        <af:inputText value="#{bindings.Reason1.inputValue}"
+                                      label="#{bindings.Reason1.hints.label}"
+                                      required="#{bindings.Reason1.hints.mandatory}"
+                                      columns="#{bindings.Reason1.hints.displayWidth}"
+                                      maximumLength="#{bindings.Reason1.hints.precision}"
+                                      shortDesc="#{bindings.Reason1.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_input_data_person_documents.it5}"
+                                      id="it5" rows="3">
+                          <f:validator binding="#{bindings.Reason1.validator}"/>
+                        </af:inputText>
+                      </af:panelFormLayout>
+                      <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_documents.pfl9}"
+                                          id="pfl9" rows="1"
+                                          styleClass="mvd_form">
+                        <f:facet name="footer">
+                          <af:panelGroupLayout binding="#{backingBeanScope.backing_input_data_person_documents.panelGroupLayout2}"
+                                               id="panelGroupLayout2"
+                                               halign="end" layout="horizontal">
+                            <af:commandButton text="Сохранить"
+                                              binding="#{backingBeanScope.backing_input_data_person_documents.commandButton3}"
+                                              id="commandButton3"
+                                              icon="/images/save.png"
+                                              inlineStyle="margin:10.0px;"
+                                              action="#{backingBeanScope.backing_input_data_person_documents.save_action}"/>
+                            <af:commandButton
+                                              text="Отмена" immediate="true"
+                                              binding="#{backingBeanScope.backing_input_data_person_documents.commandButton4}"
+                                              id="commandButton4"
+                                              icon="/images/cancel.png"
+                                              action="#{backingBeanScope.backing_input_data_person_documents.rollback_action}">
+                              <af:resetActionListener/>
+                            </af:commandButton>
+                            <af:commandButton text="Удалить"
+                                              binding="#{backingBeanScope.backing_input_data_person_documents.cb5}"
+                                              id="cb5"
+                                              icon="/images/remove.png"
+                                              actionListener="#{backingBeanScope.backing_input_data_person_documents.deleteLicense}"
+                                              inlineStyle="margin:10.0px;"/>
+                            <af:goButton text="Печать"
+                                         binding="#{backingBeanScope.backing_input_data_person_documents.gb1}"
+                                         id="gb1" icon="/images/word.png"
+                                         destination="/ew"/>
+                          </af:panelGroupLayout>
+                        </f:facet>
+                        <af:selectOneChoice value="#{bindings.EmpSign2.inputValue}"
+                                            label="#{bindings.EmpSign2.label}"
+                                            required="#{bindings.EmpSign2.hints.mandatory}"
+                                            shortDesc="#{bindings.EmpSign2.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_input_data_person_documents.soc10}"
+                                            id="soc10">
+                          <f:selectItems value="#{bindings.EmpSign2.items}"
+                                         binding="#{backingBeanScope.backing_input_data_person_documents.si10}"
+                                         id="si10"/>
+                        </af:selectOneChoice>
+                        <af:selectOneChoice value="#{bindings.HeadSign1.inputValue}"
+                                            label="#{bindings.HeadSign1.label}"
+                                            required="#{bindings.HeadSign1.hints.mandatory}"
+                                            shortDesc="#{bindings.HeadSign1.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_input_data_person_documents.soc11}"
+                                            id="soc11">
+                          <f:selectItems value="#{bindings.HeadSign1.items}"
+                                         binding="#{backingBeanScope.backing_input_data_person_documents.si11}"
+                                         id="si11"/>
+                        </af:selectOneChoice>
+                      </af:panelFormLayout>
+                      <af:panelTabbed binding="#{backingBeanScope.backing_input_data_person_documents.pt2}"
+                                      id="pt2" styleClass="AFStretchWidth">
+                        <af:showDetailItem text="Оружие"
+                                           binding="#{backingBeanScope.backing_input_data_person_documents.sdi1}"
+                                           id="sdi1">
+                          <af:panelCollection binding="#{backingBeanScope.backing_input_data_person_documents.pc2}"
+                                              id="pc2"
+                                              styleClass="AFStretchWidth">
+                            <f:facet name="menus"/>
+                            <f:facet name="toolbar">
+                              <af:toolbar binding="#{backingBeanScope.backing_input_data_person_documents.t7}"
+                                          id="t7">
+                                <af:commandButton text="Регистрация оружия"
+                                                  binding="#{backingBeanScope.backing_input_data_person_documents.cb12}"
+                                                  id="cb12"
+                                                  icon="/images/create.png"
+                                                  action="#{backingBeanScope.backing_input_data_person_documents.goWeaponLicense}"/>
+                              </af:toolbar>
+                            </f:facet>
+                            <f:facet name="statusbar"/>
+                            <af:table value="#{bindings.RGunGunsView2.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.RGunGunsView2.rangeSize}"
+                                      emptyText="#{bindings.RGunGunsView2.viewable ? 'Оружия нет.' : 'Доступ запрещен.'}"
+                                      fetchSize="#{bindings.RGunGunsView2.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.RGunGunsView2Query.queryDescriptor}"
+                                      queryListener="#{bindings.RGunGunsView2Query.processQuery}" varStatus="vs"
+                                      selectedRowKeys="#{bindings.RGunGunsView2.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.RGunGunsView2.collectionModel.makeCurrent}"
+                                      rowSelection="single"
+                                      binding="#{backingBeanScope.backing_input_data_person_documents.t4}"
+                                      id="t4">
+                              <af:column sortProperty="Series" filterable="true"
+                                         sortable="true"
+                                         headerText="#{bindings.RGunGunsView2.hints.Series.label}"
+                                         id="c17">
+                                <af:outputText value="#{row.Series}" id="ot14"/>
+                              </af:column>
+                              <af:column sortProperty="Numb"
+                                         sortable="true"
+                                         headerText="#{bindings.RGunGunsView2.hints.Numb.label}"
+                                         id="c13">
+                                <af:outputText value="#{row.Numb}" id="ot17"/>
+                              </af:column>
+                              <af:column sortProperty="ModelTitle"
+                                         filterable="true" sortable="true"
+                                         headerText="#{bindings.RGunGunsView2.hints.ModelTitle.label}"
+                                         id="c18">
+                                <af:outputText value="#{row.ModelTitle}"
+                                               id="ot15"/>
+                              </af:column>
+                              <af:column sortProperty="MakeYear"
+                                         filterable="true" sortable="true"
+                                         headerText="#{bindings.RGunGunsView2.hints.MakeYear.label}"
+                                         id="c14">
+                                <af:outputText value="#{row.MakeYear}"
+                                               id="ot16">
+                                  <af:convertNumber groupingUsed="false"
+                                                    pattern="#{bindings.RGunGunsView2.hints.MakeYear.format}"/>
+                                </af:outputText>
+                              </af:column>
+                              <af:column sortProperty="BeginDate"
+                                         filterable="true" sortable="true"
+                                         headerText="#{bindings.RGunGunsView2.hints.BeginDate.label}"
+                                         id="c12">
+                                <f:facet name="filter">
+                                  <af:inputDate value="#{vs.filterCriteria.BeginDate}"
+                                                binding="#{backingBeanScope.backing_input_data_person_documents.id6}"
+                                                id="id6"/>
+                                </f:facet>
+                                <af:outputText value="#{row.BeginDate}"
+                                               id="ot12">
+                                  <af:convertDateTime pattern="#{bindings.RGunGunsView2.hints.BeginDate.format}"/>
+                                </af:outputText>
+                              </af:column>
+                              <af:column sortProperty="EndDate"
+                                         filterable="true" sortable="true"
+                                         headerText="#{bindings.RGunGunsView2.hints.EndDate.label}"
+                                         id="c15">
+                                <f:facet name="filter">
+                                  <af:inputDate value="#{vs.filterCriteria.EndDate}"
+                                                binding="#{backingBeanScope.backing_input_data_person_documents.id7}"
+                                                id="id7"/>
+                                </f:facet>
+                                <af:outputText value="#{row.EndDate}" id="ot18">
+                                  <af:convertDateTime pattern="#{bindings.RGunGunsView2.hints.EndDate.format}"/>
+                                </af:outputText>
+                              </af:column>
+                              <af:column sortProperty="StateName"
+                                         filterable="true" sortable="true"
+                                         headerText="#{bindings.RGunGunsView2.hints.StateName.label}"
+                                         id="c16">
+                                <af:outputText value="#{row.StateName}"
+                                               id="ot13"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </af:showDetailItem>
+                      </af:panelTabbed>
+                    </af:panelGroupLayout>
+                    <f:facet name="toolbar">
+                      <af:commandButton rendered="#{bindings.DdcId1.inputValue == null}"
+                                        text="Создать"
+                                        binding="#{backingBeanScope.backing_input_data_person_documents.cb6}"
+                                        id="cb6" 
+                                        icon="/images/create.png"
+                                        actionListener="#{backingBeanScope.backing_input_data_person_documents.createLicense}"/>
+                    </f:facet>
+                  </af:showDetailItem>
+                  <af:showDetailItem text="Разрешение"
+                                     binding="#{backingBeanScope.backing_input_data_person_documents.sdiPermission}"
+                                     id="sdiPermission"
+                                     disclosureListener="#{backingBeanScope.backing_input_data_person_documents.changeTypeBlank}">
+                    <f:facet name="toolbar">
+                      <af:commandButton rendered="#{bindings.DdcId2.inputValue == null}"
+                                        actionListener="#{backingBeanScope.backing_input_data_person_documents.createPermission}"
+                                        text="Создать"
+                                        binding="#{backingBeanScope.backing_input_data_person_documents.cb7}"
+                                        id="cb7" icon="/images/create.png"/>
+                    </f:facet>
+                    <af:panelGroupLayout binding="#{backingBeanScope.backing_input_data_person_documents.pgl2}"
+                                         id="pgl2"
+                                         rendered="#{bindings.DdcId2.inputValue != null}">
+                      <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_documents.panelFormLayout1}"
+                                          id="panelFormLayout1" rows="1"
+                                          labelAlignment="top"
+                                          styleClass="mvd_form">
+                        <af:selectOneChoice value="#{bindings.DdcId2.inputValue}"
+                                            label="#{bindings.DdcId2.label}"
+                                            required="#{bindings.DdcId2.hints.mandatory}"
+                                            shortDesc="#{bindings.DdcId2.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_input_data_person_documents.selectOneChoice1}"
+                                            id="selectOneChoice1"
+                                            disabled="true">
+                          <f:selectItems value="#{bindings.DdcId2.items}"
+                                         binding="#{backingBeanScope.backing_input_data_person_documents.selectItems1}"
+                                         id="selectItems1"/>
+                        </af:selectOneChoice>
+                      </af:panelFormLayout>
+                      <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_documents.panelFormLayout2}"
+                                          id="panelFormLayout2" rows="1"
+                                          maxColumns="10" labelAlignment="top"
+                                          styleClass="mvd_form">
+                        <af:selectOneChoice value="#{bindings.DocType2.inputValue}"
+                                            label="#{bindings.DocType2.label}"
+                                            required="#{bindings.DocType2.hints.mandatory}"
+                                            shortDesc="#{bindings.DocType2.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_input_data_person_documents.selectOneChoice2}"
+                                            id="selectOneChoice2"
+                                            disabled="true">
+                          <f:selectItems value="#{bindings.DocType2.items}"
+                                         binding="#{backingBeanScope.backing_input_data_person_documents.selectItems2}"
+                                         id="selectItems2"/>
+                        </af:selectOneChoice>
+                        <af:inputText value="#{bindings.DocSeries2.inputValue}"
+                                      label="#{bindings.DocSeries2.hints.label}"
+                                      required="#{bindings.DocSeries2.hints.mandatory}"
+                                      columns="#{bindings.DocSeries2.hints.displayWidth}"
+                                      maximumLength="#{bindings.DocSeries2.hints.precision}"
+                                      shortDesc="#{bindings.DocSeries2.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_input_data_person_documents.inputText1}"
+                                      id="inputText1">
+                          <f:validator binding="#{bindings.DocSeries2.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.DocNumb.inputValue}"
+                                      label="#{bindings.DocNumb.hints.label}"
+                                      required="#{bindings.DocNumb.hints.mandatory}"
+                                      columns="#{bindings.DocNumb.hints.displayWidth}"
+                                      maximumLength="#{bindings.DocNumb.hints.precision}"
+                                      shortDesc="#{bindings.DocNumb.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_input_data_person_documents.inputText2}"
+                                      id="inputText2">
+                          <f:validator binding="#{bindings.DocNumb.validator}"/>
+                        </af:inputText>
+                        <af:inputDate value="#{bindings.DocDate2.inputValue}"
+                                      label="#{bindings.DocDate2.hints.label}"
+                                      required="#{bindings.DocDate2.hints.mandatory}"
+                                      shortDesc="#{bindings.DocDate2.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_input_data_person_documents.inputDate1}"
+                                      id="inputDate1">
+                          <f:validator binding="#{bindings.DocDate2.validator}"/>
+                          <af:convertDateTime pattern="#{bindings.DocDate2.format}"/>
+                        </af:inputDate>
+                        <af:inputDate value="#{bindings.EndDate1.inputValue}"
+                                      label="#{bindings.EndDate1.hints.label}"
+                                      required="#{bindings.EndDate1.hints.mandatory}"
+                                      shortDesc="#{bindings.EndDate1.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_input_data_person_documents.inputDate2}"
+                                      id="inputDate2">
+                          <f:validator binding="#{bindings.EndDate1.validator}"/>
+                          <af:convertDateTime pattern="#{bindings.EndDate1.format}"/>
+                        </af:inputDate>
+                      </af:panelFormLayout>
+                      <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_documents.panelFormLayout3}"
+                                          id="panelFormLayout3"
+                                          labelAlignment="top"
+                                          styleClass="mvd_form">
+                        <af:selectOneChoice value="#{bindings.TypelicIdPermission1.inputValue}"
+                                            label="#{bindings.TypelicIdPermission1.label}"
+                                            required="#{bindings.TypelicIdPermission1.hints.mandatory}"
+                                            shortDesc="#{bindings.TypelicIdPermission1.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_input_data_person_documents.selectOneChoice3}"
+                                            id="selectOneChoice3"
+                                            partialTriggers="sdiPermission">
+                          <f:selectItems value="#{bindings.TypelicIdPermission1.items}"
+                                         binding="#{backingBeanScope.backing_input_data_person_documents.selectItems3}"
+                                         id="selectItems3"/>
+                        </af:selectOneChoice>
+                      </af:panelFormLayout>
+                      <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_documents.panelFormLayout4}"
+                                          id="panelFormLayout4" rows="3"
+                                          maxColumns="2" styleClass="mvd_form">
+                        <af:selectOneChoice value="#{bindings.LicstatCode2.inputValue}"
+                                            label="#{bindings.LicstatCode2.label}"
+                                            required="#{bindings.LicstatCode2.hints.mandatory}"
+                                            shortDesc="#{bindings.LicstatCode2.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_input_data_person_documents.selectOneChoice4}"
+                                            id="selectOneChoice4">
+                          <f:selectItems value="#{bindings.LicstatCode2.items}"
+                                         binding="#{backingBeanScope.backing_input_data_person_documents.selectItems4}"
+                                         id="selectItems4"/>
+                        </af:selectOneChoice>
+                        <af:inputText value="#{bindings.Department.inputValue}"
+                                      label="#{bindings.Department.hints.label}"
+                                      required="#{bindings.Department.hints.mandatory}"
+                                      columns="#{bindings.Department.hints.displayWidth}"
+                                      maximumLength="#{bindings.Department.hints.precision}"
+                                      shortDesc="#{bindings.Department.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_input_data_person_documents.inputText3}"
+                                      id="inputText3">
+                          <f:validator binding="#{bindings.Department.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.PaySum2.inputValue}"
+                                      label="#{bindings.PaySum2.hints.label}"
+                                      required="#{bindings.PaySum2.hints.mandatory}"
+                                      columns="#{bindings.PaySum2.hints.displayWidth}"
+                                      maximumLength="#{bindings.PaySum2.hints.precision}"
+                                      shortDesc="#{bindings.PaySum2.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_input_data_person_documents.inputText4}"
+                                      id="inputText4">
+                          <f:validator binding="#{bindings.PaySum2.validator}"/>
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.PaySum2.format}"/>
+                        </af:inputText>
+                        <af:inputDate value="#{bindings.StatusDate2.inputValue}"
+                                      label="#{bindings.StatusDate2.hints.label}"
+                                      required="#{bindings.StatusDate2.hints.mandatory}"
+                                      shortDesc="#{bindings.StatusDate2.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_input_data_person_documents.inputDate3}"
+                                      id="inputDate3">
+                          <f:validator binding="#{bindings.StatusDate2.validator}"/>
+                          <af:convertDateTime pattern="#{bindings.StatusDate2.format}"/>
+                        </af:inputDate>
+                        <af:inputText value="#{bindings.Reason2.inputValue}"
+                                      label="#{bindings.Reason2.hints.label}"
+                                      required="#{bindings.Reason2.hints.mandatory}"
+                                      columns="#{bindings.Reason2.hints.displayWidth}"
+                                      maximumLength="#{bindings.Reason2.hints.precision}"
+                                      shortDesc="#{bindings.Reason2.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_input_data_person_documents.inputText5}"
+                                      id="inputText5" rows="3">
+                          <f:validator binding="#{bindings.Reason2.validator}"/>
+                        </af:inputText>
+                      </af:panelFormLayout>
+                      <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_documents.panelFormLayout5}"
+                                          id="panelFormLayout5" rows="1"
+                                          styleClass="mvd_form">
+                        <f:facet name="footer">
+                          <af:panelGroupLayout binding="#{backingBeanScope.backing_input_data_person_documents.panelGroupLayout1}"
+                                               id="panelGroupLayout1"
+                                               halign="end" layout="horizontal">
+                            <af:commandButton text="Сохранить"
+                                              binding="#{backingBeanScope.backing_input_data_person_documents.commandButton1}"
+                                              id="commandButton1"
+                                              icon="/images/save.png"
+                                              inlineStyle="margin:10.0px;"
+                                              action="#{backingBeanScope.backing_input_data_person_documents.save_action}"/>
+                            <af:commandButton
+                                              text="Отмена" immediate="true"
+                                              binding="#{backingBeanScope.backing_input_data_person_documents.commandButton2}"
+                                              id="commandButton2"
+                                              icon="/images/cancel.png"
+                                              action="#{backingBeanScope.backing_input_data_person_documents.rollback_action}">
+                              <af:resetActionListener/>
+                            </af:commandButton>
+                            <af:commandButton text="Удалить"
+                                              binding="#{backingBeanScope.backing_input_data_person_documents.cb10}"
+                                              id="cb10"
+                                              icon="/images/remove.png"
+                                              actionListener="#{backingBeanScope.backing_input_data_person_documents.deletePermission}"
+                                              inlineStyle="margin:10.0px;"/>
+                          </af:panelGroupLayout>
+                        </f:facet>
+                        <af:selectOneChoice value="#{bindings.EmpSign.inputValue}"
+                                            label="#{bindings.EmpSign.label}"
+                                            required="#{bindings.EmpSign.hints.mandatory}"
+                                            shortDesc="#{bindings.EmpSign.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_input_data_person_documents.selectOneChoice5}"
+                                            id="selectOneChoice5">
+                          <f:selectItems value="#{bindings.EmpSign.items}"
+                                         binding="#{backingBeanScope.backing_input_data_person_documents.selectItems5}"
+                                         id="selectItems5"/>
+                        </af:selectOneChoice>
+                        <af:selectOneChoice value="#{bindings.HeadSign2.inputValue}"
+                                            label="#{bindings.HeadSign2.label}"
+                                            required="#{bindings.HeadSign2.hints.mandatory}"
+                                            shortDesc="#{bindings.HeadSign2.hints.tooltip}"
+                                            binding="#{backingBeanScope.backing_input_data_person_documents.selectOneChoice6}"
+                                            id="selectOneChoice6">
+                          <f:selectItems value="#{bindings.HeadSign2.items}"
+                                         binding="#{backingBeanScope.backing_input_data_person_documents.selectItems6}"
+                                         id="selectItems6"/>
+                        </af:selectOneChoice>
+                      </af:panelFormLayout>
+                      <af:panelTabbed binding="#{backingBeanScope.backing_input_data_person_documents.pt3}"
+                                      id="pt3" styleClass="AFStretchWidth">
+                        <af:showDetailItem text="Оружие"
+                                           binding="#{backingBeanScope.backing_input_data_person_documents.sdi2}"
+                                           id="sdi2"
+                                           styleClass="AFStretchWidth">
+                          <af:panelCollection binding="#{backingBeanScope.backing_input_data_person_documents.pc3}"
+                                              id="pc3"
+                                              styleClass="AFStretchWidth">
+                            <f:facet name="menus"/>
+                            <f:facet name="toolbar">
+                              <af:toolbar binding="#{backingBeanScope.backing_input_data_person_documents.t6}"
+                                          id="t6">
+                                <af:commandButton text="Регистрация оружия"
+                                                  binding="#{backingBeanScope.backing_input_data_person_documents.cb11}"
+                                                  id="cb11"
+                                                  icon="/images/create.png"
+                                                  action="#{backingBeanScope.backing_input_data_person_documents.goWeaponPermission}"/>
+                              </af:toolbar>
+                            </f:facet>
+                            <f:facet name="statusbar"/>
+                            <af:table value="#{bindings.RGunGunsView3.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.RGunGunsView3.rangeSize}"
+                                      emptyText="#{bindings.RGunGunsView3.viewable ? 'Оружия нет.' : 'Доступ запрещен.'}"
+                                      fetchSize="#{bindings.RGunGunsView3.rangeSize}"
+                                      rowBandingInterval="0"
+                                      selectedRowKeys="#{bindings.RGunGunsView3.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.RGunGunsView3.collectionModel.makeCurrent}"
+                                      rowSelection="single"
+                                      binding="#{backingBeanScope.backing_input_data_person_documents.t5}"
+                                      id="t5">
+                              <af:column sortProperty="Series" sortable="true"
+                                         headerText="#{bindings.RGunGunsView3.hints.Series.label}"
+                                         id="c19">
+                                <af:outputText value="#{row.Series}" id="ot20"/>
+                              </af:column>
+                              <af:column sortProperty="Numb" sortable="true"
+                                         headerText="#{bindings.RGunGunsView3.hints.Numb.label}"
+                                         id="c21">
+                                <af:outputText value="#{row.Numb}" id="ot21"/>
+                              </af:column>
+                              <af:column sortProperty="ModelTitle"
+                                         sortable="true"
+                                         headerText="#{bindings.RGunGunsView3.hints.ModelTitle.label}"
+                                         id="c22">
+                                <af:outputText value="#{row.ModelTitle}"
+                                               id="ot24"/>
+                              </af:column>
+                              <af:column sortProperty="MakeYear" sortable="true"
+                                         headerText="#{bindings.RGunGunsView3.hints.MakeYear.label}"
+                                         id="c25">
+                                <af:outputText value="#{row.MakeYear}"
+                                               id="ot25">
+                                  <af:convertNumber groupingUsed="false"
+                                                    pattern="#{bindings.RGunGunsView3.hints.MakeYear.format}"/>
+                                </af:outputText>
+                              </af:column>
+                              <af:column sortProperty="BeginDate"
+                                         sortable="true"
+                                         headerText="#{bindings.RGunGunsView3.hints.BeginDate.label}"
+                                         id="c20">
+                                <af:outputText value="#{row.BeginDate}"
+                                               id="ot22">
+                                  <af:convertDateTime pattern="#{bindings.RGunGunsView3.hints.BeginDate.format}"/>
+                                </af:outputText>
+                              </af:column>
+                              <af:column sortProperty="EndDate" sortable="true"
+                                         headerText="#{bindings.RGunGunsView3.hints.EndDate.label}"
+                                         id="c23">
+                                <af:outputText value="#{row.EndDate}" id="ot19">
+                                  <af:convertDateTime pattern="#{bindings.RGunGunsView3.hints.EndDate.format}"/>
+                                </af:outputText>
+                              </af:column>
+                              <af:column sortProperty="StateName"
+                                         sortable="true"
+                                         headerText="#{bindings.RGunGunsView3.hints.StateName.label}"
+                                         id="c24">
+                                <af:outputText value="#{row.StateName}"
+                                               id="ot23"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </af:showDetailItem>
+                      </af:panelTabbed>
+                    </af:panelGroupLayout>
+                  </af:showDetailItem>
+                </af:panelAccordion>
+              </f:facet>
+              </af:panelSplitter>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_input_data_person_documents-->
+</jsp:root>

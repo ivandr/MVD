@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="adfc-classifiers">
+    <default-activity id="__1">main</default-activity>
+    <managed-bean id="__25">
+      <managed-bean-name id="__28">backing_classifier_countries</managed-bean-name>
+      <managed-bean-class id="__24">ru.rdtex.mvd.weapon.view.backing.administration.classifiers.directory.Regions</managed-bean-class>
+      <managed-bean-scope id="__29">backingBean</managed-bean-scope>
+      <!--oracle-jdev-comment:managed-bean-jsp-link:1administration/classifiers/directiry/regions.jspx-->
+    </managed-bean>
+    <initializer id="__7">#{backingBeanScope.backing_classifiers_main.initialize}</initializer>
+    <view id="main">
+      <page>/administration/classifiers/main.jspx</page>
+    </view>
+    <view id="country">
+      <page>/administration/classifiers/directiry/country.jspx</page>
+    </view>
+    <task-flow-return id="exit">
+      <outcome id="__37">
+        <name>exit</name>
+      </outcome>
+    </task-flow-return>
+    <view id="regions">
+      <page>/administration/classifiers/directiry/regions.jspx</page>
+    </view>
+    <view id="licenses_types">
+      <page>/administration/classifiers/directiry/licenses_types.jspx</page>
+    </view>
+    <view id="reward_organ">
+      <page>/administration/classifiers/directiry/reward_organ.jspx</page>
+    </view>
+    <view id="protected_object_kind">
+      <page>/administration/classifiers/directiry/protected_object_kind.jspx</page>
+    </view>
+    <view id="directory_main">
+      <page>/administration/classifiers/directiry/directory_main.jspx</page>
+    </view>
+    <view id="owners_main">
+      <page>/administration/classifiers/owners/owners_main.jspx</page>
+    </view>
+    <view id="type_person_fis">
+      <page>/administration/classifiers/owners/type_person_fis.jspx</page>
+    </view>
+    <view id="type_person_ur">
+      <page>/administration/classifiers/owners/type_person_ur.jspx</page>
+    </view>
+    <view id="type_doc">
+      <page>/administration/classifiers/owners/type_doc.jspx</page>
+    </view>
+    <view id="gun_main">
+      <page>/administration/classifiers/guns/gun_main.jspx</page>
+    </view>
+    <view id="calibres">
+      <page>/administration/classifiers/guns/calibres.jspx</page>
+    </view>
+    <view id="gun_kinds">
+      <page>/administration/classifiers/guns/gun_kinds.jspx</page>
+    </view>
+    <view id="gun_models">
+      <page>/administration/classifiers/guns/gun_models.jspx</page>
+    </view>
+    <view id="gun_types">
+      <page>/administration/classifiers/guns/gun_types.jspx</page>
+    </view>
+    <view id="gun_codes">
+      <page>/administration/classifiers/guns/gun_codes.jspx</page>
+    </view>
+    <control-flow-rule id="__3">
+      <from-activity-id id="__2">*</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome id="__6">8200</from-outcome>
+        <to-activity-id id="__5">main</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__38">
+        <from-outcome id="__40">1000</from-outcome>
+        <to-activity-id id="__39">exit</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__27">
+        <from-outcome id="__31">8201</from-outcome>
+        <to-activity-id id="__30">directory_main</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__34">
+        <from-outcome id="__36">8202</from-outcome>
+        <to-activity-id id="__35">owners_main</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__54">
+        <from-outcome id="__55">8203</from-outcome>
+        <to-activity-id id="__53">gun_main</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__57">
+        <from-outcome id="__58">8234</from-outcome>
+        <to-activity-id id="__56">calibres</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__59">
+        <from-outcome id="__61">8230</from-outcome>
+        <to-activity-id id="__60">gun_codes</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__62">
+        <from-outcome id="__64">8231</from-outcome>
+        <to-activity-id id="__63">gun_kinds</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__66">
+        <from-outcome id="__67">8232</from-outcome>
+        <to-activity-id id="__65">gun_models</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__68">
+        <from-outcome id="__70">8233</from-outcome>
+        <to-activity-id id="__69">gun_types</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__10">
+        <from-outcome id="__11">8214</from-outcome>
+        <to-activity-id id="__12">protected_object_kind</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__13">
+        <from-outcome id="__14">8213</from-outcome>
+        <to-activity-id id="__15">reward_organ</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__16">
+        <from-outcome id="__17">8212</from-outcome>
+        <to-activity-id id="__18">licenses_types</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__19">
+        <from-outcome id="__20">8211</from-outcome>
+        <to-activity-id id="__21">regions</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__22">
+        <from-outcome id="__23">8210</from-outcome>
+        <to-activity-id id="__26">country</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__42">
+        <from-outcome id="__47">8220</from-outcome>
+        <to-activity-id id="__41">type_person_fis</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__44">
+        <from-outcome id="__48">8221</from-outcome>
+        <to-activity-id id="__43">type_person_ur</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__46">
+        <from-outcome id="__49">8222</from-outcome>
+        <to-activity-id id="__45">type_doc</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-config>

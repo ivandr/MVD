@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RGunGunsView"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="ru.rdtex.mvd.weapon.model.vo.read.RGunGunsViewRowImpl"
+  ComponentClass="ru.rdtex.mvd.weapon.model.vo.read.RGunGunsViewImpl"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="ru.rdtex.mvd.weapon.model.vo.read.RGunGunsView_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="personId"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="isPerson"
+    Kind="where"
+    Type="java.lang.String"/>
+  <SQLQuery>
+    <![CDATA[select distinct 
+       DR.ID||' '||G.ID ID
+     , DECODE(:isPerson, 1, null, DR.EP_ID) EP_ID
+     , DECODE(:isPerson, 1, null, DDL.ID) DL_ID 
+     , DECODE(:isPerson, 1, null, DDP.ID) DP_ID
+     , KG.TITLE KIND_TITLE --вид оружия
+     , CG.MODEL_TITLE --модель
+     , G.ID GUN_ID
+     , CG.CODE CODEGUN_CODE
+     , G.SERIES --серия
+     , G.NUMB --№ ороужия
+     , G.MAKE_YEAR --год изг.
+     , DECODE(:isPerson, 1, null, DDL.DOC_SERIES||' '||DDL.DOC_NUMB||' '||DDL.DOC_DATE) LICENSE --лицензия
+     , DECODE(:isPerson, 1, null, DDP.DOC_SERIES||' '||DDP.DOC_NUMB||' '||DDP.DOC_DATE) PERMISSION --разрешение
+     , DR.BEGIN_DATE --периуд действия с
+     , DR.END_DATE --периуд действия по
+     , DRS.NAME STATE_NAME --состояние
+from DOC_RELATIONS DR
+full join GUN_GUNS G
+  on DR.GUN_ID = G.ID
+join CODE_GUN CG
+  on CG.CODE = G.CODEGUN_CODE
+join DOC_RELATIONS_STATES DRS
+  on DRS.CODE = DR.STATE
+join KIND_GUN KG
+  on KG.CODE = CG.KINDGUN_CODE
+left join (select * 
+           from DOC_DOCUMENTS_DOC_RELATIONS sDDR 
+           join DOC_DOCUMENTS sDDL
+             on sDDR.DDC_ID = sDDL.ID and sDDL.DOC_TYPE = 2) DDL
+  on DDL.DRL_ID = DR.ID
+left join (select * from DOC_DOCUMENTS_DOC_RELATIONS sDDR
+           join DOC_DOCUMENTS sDDP
+             on sDDR.DDC_ID = sDDP.ID and sDDP.DOC_TYPE = 3) DDP
+  on DDP.DRL_ID = DR.ID
+where (:isPerson is null 
+       and (:personId is null or DR.EP_ID = :personId))
+   or  (:isPerson = 0 
+       and DR.EP_ID = :personId
+       and DR.STATE in (6,9))
+   or (:isPerson = 1 
+       and (DR.ID is null 
+            or exists (select ID from 
+                               (select G2.ID, MAX(NVL(DR2.END_DATE, to_date('31.12.2999', 'DD.MM.YYYY'))) END_DATE
+                                from DOC_RELATIONS DR2
+                                join GUN_GUNS G2
+                                  on G2.ID = DR2.GUN_ID
+                                group by G2.ID) 
+                     where G.ID = ID and END_DATE < SYSDATE))
+      )]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="Id"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="22"
+    Scale="0"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="ID"
+    Expression="ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="23"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EpId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="22"
+    Scale="0"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="EP_ID"
+    Expression="EP_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="23"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DlId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="22"
+    Scale="0"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="DL_ID"
+    Expression="DL_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="23"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DpId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="22"
+    Scale="0"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="DP_ID"
+    Expression="DP_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="23"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="KindTitle"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="500"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="KIND_TITLE"
+    Expression="KIND_TITLE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ru.rdtex.mvd.weapon.model.vo.read.RGunGunsView.KindTitle_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ModelTitle"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="200"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="MODEL_TITLE"
+    Expression="MODEL_TITLE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ru.rdtex.mvd.weapon.model.vo.read.RGunGunsView.ModelTitle_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="GunId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="22"
+    Scale="0"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="GUN_ID"
+    Expression="GUN_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="23"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CodegunCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="CODEGUN_CODE"
+    Expression="CODEGUN_CODE"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Series"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="10"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="SERIES"
+    Expression="SERIES"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ru.rdtex.mvd.weapon.model.vo.read.RGunGunsView.Series_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Numb"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="20"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="NUMB"
+    Expression="NUMB"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ru.rdtex.mvd.weapon.model.vo.read.RGunGunsView.Numb_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="MakeYear"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4"
+    Scale="0"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="MAKE_YEAR"
+    Expression="MAKE_YEAR"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ru.rdtex.mvd.weapon.model.vo.read.RGunGunsView.MakeYear_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="License"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="112"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LICENSE"
+    Expression="LICENSE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="112"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ru.rdtex.mvd.weapon.model.vo.read.RGunGunsView.License_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Permission"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="112"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PERMISSION"
+    Expression="PERMISSION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="112"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ru.rdtex.mvd.weapon.model.vo.read.RGunGunsView.Permission_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BeginDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="BEGIN_DATE"
+    Expression="BEGIN_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ru.rdtex.mvd.weapon.model.vo.read.RGunGunsView.BeginDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EndDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="END_DATE"
+    Expression="END_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ru.rdtex.mvd.weapon.model.vo.read.RGunGunsView.EndDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StateName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="1000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STATE_NAME"
+    Expression="STATE_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="ru.rdtex.mvd.weapon.model.vo.read.RGunGunsView.StateName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Id"/>
+  </AttrArray>
+  <ViewLinkAccessor
+    Name="GunGunsView"
+    ViewLink="ru.rdtex.mvd.weapon.model.vl.RGunGuns_GunGuns_Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="ru.rdtex.mvd.weapon.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

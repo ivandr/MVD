@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="reward_organPageDef"
+                Package="classifiers">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="RewardOrganView1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="RewardOrganView1Iterator"/>
+    <searchRegion Binds="RewardOrganView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="RewardOrganView1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="RewardOrganView1Iterator" id="RewardOrganView1">
+      <nodeDefinition DefName="ru.rdtex.mvd.weapon.model.vo.RewardOrganView"
+                      Name="RewardOrganView10">
+        <AttrNames>
+          <Item Value="Code"/>
+          <Item Value="Title"/>
+          <Item Value="DeleteRow"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="createRow" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="createRow"
+                  IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="AppModuleDataControl.dataProvider">
+      <NamedData NDName="ViewObjectName" NDValue="RewardOrganView1"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="deleteSelectedRows" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="deleteSelectedRows"
+                  IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="AppModuleDataControl.dataProvider">
+      <NamedData NDName="ViewObjectName" NDValue="RewardOrganView1"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="protected_object_kindPageDef"
+                Package="classifiers">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ProtectedObjectKindView1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="ProtectedObjectKindView1Iterator"/>
+    <searchRegion Binds="ProtectedObjectKindView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ProtectedObjectKindView1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ProtectedObjectKindView1Iterator"
+          id="ProtectedObjectKindView1">
+      <nodeDefinition DefName="ru.rdtex.mvd.weapon.model.vo.ProtectedObjectKindView"
+                      Name="ProtectedObjectKindView10">
+        <AttrNames>
+          <Item Value="DeleteRow"/>
+          <Item Value="Code"/>
+          <Item Value="Text"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="createRow" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="createRow"
+                  IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="AppModuleDataControl.dataProvider">
+      <NamedData NDName="ViewObjectName" NDValue="ProtectedObjectKindView1"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="deleteSelectedRows" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="deleteSelectedRows"
+                  IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="AppModuleDataControl.dataProvider">
+      <NamedData NDName="ViewObjectName" NDValue="ProtectedObjectKindView1"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+  </bindings>
+</pageDefinition>

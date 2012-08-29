@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Departments"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="DEPARTMENTS"
+  AliasName="Departments"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="Code"
+    IsNotNull="true"
+    Precision="22"
+    Scale="0"
+    ColumnName="CODE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DEPARTMENTS"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="23"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Title"
+    IsUnique="true"
+    IsNotNull="true"
+    Precision="240"
+    ColumnName="TITLE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="DEPARTMENTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="State"
+    ColumnName="STATE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DEPARTMENTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AdmdId"
+    Precision="30"
+    Scale="0"
+    ColumnName="ADMD_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DEPARTMENTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="31"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="Dept1DeptUk1Uk">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="DEPT_1_DEPT_UK1_UK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.Departments.Title"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="Dept1Pk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="DEPT_1_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.Departments.Code"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0042240">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0042240"/>
+      <Attr Name="_checkCondition" Value='"CODE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.Departments.Code"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0042241">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0042241"/>
+      <Attr Name="_checkCondition" Value='"TITLE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.Departments.Title"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="DeptAdmdFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="ADMD_PK_1"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="DEPT_ADMD_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.Departments.AdmdId"/>
+    </AttrArray>
+  </Key>
+</Entity>

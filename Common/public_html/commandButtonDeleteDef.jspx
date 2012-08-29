@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  
+  <af:componentDef var="attrs" componentVar="component">
+    <af:commandButton   text="#{attrs.text}" 
+                        id="dc_cb1"
+                        actionListener="#{component.handleActionListener}"
+                        action="#{component.handleAction}"
+                        shortDesc="#{attrs.shortDesc}"
+                        icon="#{attrs.icon}"
+    />
+    <af:xmlContent>
+      <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+        <display-name>commandButtonDeleteDef</display-name>
+        <attribute>
+          <attribute-name>text</attribute-name>
+          <attribute-class>java.lang.String</attribute-class>
+          <default-value>Удалить</default-value>
+        </attribute>
+        <attribute>
+          <attribute-name>shortDesc</attribute-name>
+          <attribute-class>java.lang.String</attribute-class>
+          <required>false</required>
+        </attribute>
+        <attribute>
+          <attribute-name>icon</attribute-name>
+          <attribute-class>java.lang.String</attribute-class>
+          <default-value>/images/remove.png</default-value>
+        </attribute>
+        <attribute>
+          <attribute-name>disabled</attribute-name>
+          <attribute-class>java.lang.Boolean</attribute-class>
+          <required>false</required>
+        </attribute>
+        
+        <component-extension>
+          <component-tag-namespace>component.view</component-tag-namespace>
+          <component-taglib-uri>/componentLib1</component-taglib-uri>
+          
+          <!-- Методы -->
+          <method-attribute>
+            <attribute-name>action</attribute-name>
+            <method-signature>String method()</method-signature>
+            <requared>false</requared>
+          </method-attribute>
+          
+          <method-attribute>
+            <attribute-name>actionListener</attribute-name>
+            <method-signature>void method(javax.faces.event.ActionEvent)</method-signature>
+            <requared>false</requared>
+          </method-attribute>
+          
+        </component-extension>
+      </component>
+    </af:xmlContent>
+  </af:componentDef>
+  
+  
+  
+</jsp:root>

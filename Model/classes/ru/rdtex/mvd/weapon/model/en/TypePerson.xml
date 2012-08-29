@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="TypePerson"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="TYPE_PERSON"
+  AliasName="TypePerson"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="Code"
+    IsNotNull="true"
+    ColumnName="CODE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="TYPE_PERSON"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Title"
+    IsUnique="true"
+    IsNotNull="true"
+    Precision="150"
+    ColumnName="TITLE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="TYPE_PERSON">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Type"
+    Precision="1"
+    ColumnName="TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="TYPE_PERSON">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UpdatedFlag"
+    ColumnName="UPDATED_FLAG"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="TYPE_PERSON">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DeleteRow"
+    IsQueriable="false"
+    IsPersistent="false"
+    ColumnName="$none$"
+    SQLType="BIT"
+    Type="java.lang.Boolean"
+    ColumnType="$none$"/>
+  <AccessorAttribute
+    Name="EntPersons"
+    Association="ru.rdtex.mvd.weapon.model.asoc.EpPtypeFkAssoc"
+    AssociationEnd="ru.rdtex.mvd.weapon.model.asoc.EpPtypeFkAssoc.EntPersons"
+    AssociationOtherEnd="ru.rdtex.mvd.weapon.model.asoc.EpPtypeFkAssoc.TypePerson"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="PtypePk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PTYPE_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.TypePerson.Code"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PtypePtypeUk1Uk">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PTYPE_PTYPE_UK1_UK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.TypePerson.Title"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011688">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011688"/>
+      <Attr Name="_checkCondition" Value='"CODE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.TypePerson.Code"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011689">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011689"/>
+      <Attr Name="_checkCondition" Value='"TITLE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.TypePerson.Title"/>
+    </AttrArray>
+  </Key>
+</Entity>

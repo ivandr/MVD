@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="person_weaponPageDef"
+                Package="input_data">
+  <parameters/>
+  <executables>
+    <iterator Binds="RGunGunsView1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="RGunGunsView1Iterator"/>
+    <iterator Binds="GunGunsView2" RangeSize="25"
+              DataControl="AppModuleDataControl" id="GunGunsView2Iterator"/>
+    <iterator Binds="CodeGunView9" RangeSize="25"
+              DataControl="AppModuleDataControl" id="CodeGunView9Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="RGunGunsView1Iterator" id="RGunGunsView1">
+      <nodeDefinition DefName="ru.rdtex.mvd.weapon.model.vo.read.RGunGunsView"
+                      Name="RGunGunsView10">
+        <AttrNames>
+          <Item Value="KindTitle"/>
+          <Item Value="ModelTitle"/>
+          <Item Value="Series"/>
+          <Item Value="Numb"/>
+          <Item Value="MakeYear"/>
+          <Item Value="License"/>
+          <Item Value="Permission"/>
+          <Item Value="StateName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="RGunGunsView1Iterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="personId" NDType="java.lang.String"/>
+      <NamedData NDName="isPerson" NDType="java.lang.String"
+                 NDValue="${bindings.ExecuteWithParams_isPerson}"/>
+    </action>
+    <attributeValues IterBinding="GunGunsView2Iterator" id="Series">
+      <AttrNames>
+        <Item Value="Series"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GunGunsView2Iterator" id="MakeYear">
+      <AttrNames>
+        <Item Value="MakeYear"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GunGunsView2Iterator" id="Numb">
+      <AttrNames>
+        <Item Value="Numb"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="GunGunsView2Iterator" StaticList="false"
+          Uses="LOV_Production" id="Production" DTSupportsMRU="true"/>
+    <list IterBinding="CodeGunView9Iterator" StaticList="false"
+          Uses="LOV_KindgunCode" id="KindgunCode" DTSupportsMRU="true"/>
+    <list IterBinding="CodeGunView9Iterator" StaticList="false"
+          Uses="LOV_TypeGunCode" id="TypeGunCode" DTSupportsMRU="true"/>
+    <attributeValues IterBinding="CodeGunView9Iterator" id="NStvolov">
+      <AttrNames>
+        <Item Value="NStvolov"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CodeGunView9Iterator" id="CalibrCode1">
+      <AttrNames>
+        <Item Value="CalibrCode1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CodeGunView9Iterator" id="CalibrCode2">
+      <AttrNames>
+        <Item Value="CalibrCode2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CodeGunView9Iterator" id="CalibrCode3">
+      <AttrNames>
+        <Item Value="CalibrCode3"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CodeGunView9Iterator" id="CalibrCode4">
+      <AttrNames>
+        <Item Value="CalibrCode4"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="GunGunsView2Iterator" StaticList="false"
+          Uses="LOV_ModelGun" id="ModelGun1" DTSupportsMRU="true"/>
+    <list IterBinding="GunGunsView2Iterator" StaticList="false"
+          Uses="LOV_CodegunCode" id="CodegunCode1" DTSupportsMRU="true"/>
+    <attributeValues IterBinding="GunGunsView2Iterator" id="Comments">
+      <AttrNames>
+        <Item Value="Comments"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GunGunsView2Iterator" id="ShootProtocol">
+      <AttrNames>
+        <Item Value="ShootProtocol"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GunGunsView2Iterator" id="ShootDate">
+      <AttrNames>
+        <Item Value="ShootDate"/>
+      </AttrNames>
+    </attributeValues>
+    <button IterBinding="GunGunsView2Iterator" id="ShootOrder"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="ShootOrder"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+  </bindings>
+</pageDefinition>

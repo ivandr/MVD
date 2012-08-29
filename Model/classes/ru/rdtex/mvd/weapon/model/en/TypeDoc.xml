@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="TypeDoc"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="TYPE_DOC"
+  AliasName="TypeDoc"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="Title"
+    IsUnique="true"
+    IsNotNull="true"
+    Precision="100"
+    ColumnName="TITLE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="TYPE_DOC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Code"
+    IsNotNull="true"
+    ColumnName="CODE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="TYPE_DOC"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UpdatedFlag"
+    ColumnName="UPDATED_FLAG"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="TYPE_DOC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="EntPersons"
+    Association="ru.rdtex.mvd.weapon.model.asoc.EpTypedocFkAssoc"
+    AssociationEnd="ru.rdtex.mvd.weapon.model.asoc.EpTypedocFkAssoc.EntPersons"
+    AssociationOtherEnd="ru.rdtex.mvd.weapon.model.asoc.EpTypedocFkAssoc.TypeDoc"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="SysC0011672">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011672"/>
+      <Attr Name="_checkCondition" Value='"TITLE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.TypeDoc.Title"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011673">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011673"/>
+      <Attr Name="_checkCondition" Value='"CODE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.TypeDoc.Code"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="TypedocPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="TYPEDOC_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.TypeDoc.Code"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="TypedocTypedocUk1Uk">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="TYPEDOC_TYPEDOC_UK1_UK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.TypeDoc.Title"/>
+    </AttrArray>
+  </Key>
+</Entity>

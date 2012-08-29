@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:mvd="/componentLib1">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages binding="#{backingBeanScope.backing_person_address.m1}"
+                   id="m1"/>
+      <af:form id="f1">
+        <af:pageTemplate viewId="/templates/mvd_temp.jspx" id="pt1">
+          <f:facet name="body">
+            <af:panelStretchLayout binding="#{backingBeanScope.backing_person_address.psl1}"
+                                   id="psl1">
+              <f:facet name="center">
+                <af:panelCollection binding="#{backingBeanScope.backing_person_address.pc1}"
+                                    id="pc1">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar">
+                    <af:toolbar binding="#{backingBeanScope.backing_person_address.t2}"
+                                id="t2">
+                      <af:commandButton actionListener="#{bindings.deleteSelectedRows.execute}"
+                                        text="Удалить"
+                                        disabled="#{!bindings.deleteSelectedRows.enabled}"
+                                        binding="#{backingBeanScope.backing_person_address.cb1}"
+                                        id="cb1" icon="/images/remove.png"/>
+                      <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                        text="Подтвердить удаление"
+                                        disabled="#{!bindings.Commit.enabled}"
+                                        binding="#{backingBeanScope.backing_person_address.cb2}"
+                                        id="cb2" icon="/images/commit.png"/>
+                      <af:commandButton text="Назад"
+                                        binding="#{backingBeanScope.backing_person_address.cb3}"
+                                        id="cb3" icon="/images/back.png"
+                                        action="back"/>
+                    </af:toolbar>
+                  </f:facet>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.EntAddressesView2.collectionModel}"
+                            var="row"
+                            rows="#{bindings.EntAddressesView2.rangeSize}"
+                            emptyText="#{bindings.EntAddressesView2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.EntAddressesView2.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.EntAddressesView2Query.queryDescriptor}"
+                            queryListener="#{bindings.EntAddressesView2Query.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectedRowKeys="#{bindings.EntAddressesView2.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.EntAddressesView2.collectionModel.makeCurrent}"
+                            rowSelection="single"
+                            binding="#{backingBeanScope.backing_person_address.t1}"
+                            id="t1">
+                    <af:column headerText="#{bindings.EntAddressesView2.hints.DeleteRow.label}"
+                               id="c4" width="20">
+                      <af:selectBooleanCheckbox value="#{row.bindings.DeleteRow.inputValue}"
+                                                label="#{row.bindings.DeleteRow.label}"
+                                                shortDesc="#{bindings.EntAddressesView2.hints.DeleteRow.tooltip}"
+                                                id="sbc1"
+                                                styleClass="SELECT_CHECKBOX"/>
+                      <f:facet name="header">
+                        <af:selectBooleanCheckbox id="HEADER_CHECKBOX"
+                                                  label="#{''}" simple="true"
+                                                  binding="#{backingBeanScope.backing_person_address.HEADER_CHECKBOX}">
+                          <af:clientListener type="valueChange"
+                                             method="toggleDelCheckbox"/>
+                        </af:selectBooleanCheckbox>
+                      </f:facet>
+                    </af:column>
+                    <af:column id="c5" width="20">
+                      <af:commandImageLink id="cil1"
+                                           icon="/images/edit.png"
+                                           action="#{backingBeanScope.backing_person_address.edit}"/>
+                    </af:column>
+                    <af:column sortProperty="TypeAddr" filterable="true"
+                               sortable="true"
+                               headerText="#{bindings.EntAddressesView2.hints.TypeAddr.label}"
+                               id="c1">
+                      <af:selectOneChoice value="#{row.bindings.TypeAddr.inputValue}"
+                                          label="#{row.bindings.TypeAddr.label}"
+                                          required="#{bindings.EntAddressesView2.hints.TypeAddr.mandatory}"
+                                          shortDesc="#{bindings.EntAddressesView2.hints.TypeAddr.tooltip}"
+                                          id="soc1" readOnly="true">
+                        <f:selectItems value="#{row.bindings.TypeAddr.items}"
+                                       id="si1"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="StrAdrs" filterable="true"
+                               sortable="true"
+                               headerText="#{bindings.EntAddressesView2.hints.StrAdrs.label}"
+                               id="c3" width="400">
+                      <af:inputText value="#{row.bindings.StrAdrs.inputValue}"
+                                    label="#{bindings.EntAddressesView2.hints.StrAdrs.label}"
+                                    required="#{bindings.EntAddressesView2.hints.StrAdrs.mandatory}"
+                                    columns="#{bindings.EntAddressesView2.hints.StrAdrs.displayWidth}"
+                                    maximumLength="#{bindings.EntAddressesView2.hints.StrAdrs.precision}"
+                                    shortDesc="#{bindings.EntAddressesView2.hints.StrAdrs.tooltip}"
+                                    id="it1" readOnly="true">
+                        <f:validator binding="#{row.bindings.StrAdrs.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="Propiska" filterable="true"
+                               sortable="true"
+                               headerText="#{bindings.EntAddressesView2.hints.Propiska.label}"
+                               id="c2">
+                      <f:facet name="filter">
+                        <af:inputDate value="#{vs.filterCriteria.Propiska}"
+                                      binding="#{backingBeanScope.backing_person_address.id1}"
+                                      id="id1"/>
+                      </f:facet>
+                      <af:inputDate value="#{row.bindings.Propiska.inputValue}"
+                                    label="#{bindings.EntAddressesView2.hints.Propiska.label}"
+                                    required="#{bindings.EntAddressesView2.hints.Propiska.mandatory}"
+                                    shortDesc="#{bindings.EntAddressesView2.hints.Propiska.tooltip}"
+                                    id="id2" readOnly="true">
+                        <f:validator binding="#{row.bindings.Propiska.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.EntAddressesView2.hints.Propiska.format}"/>
+                      </af:inputDate>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_person_address-->
+</jsp:root>

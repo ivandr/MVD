@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="task-flow-definition">
+    <default-activity id="__42">main</default-activity>
+    <data-control-scope id="__71">
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__58">
+      <managed-bean-name id="__55">backing_person_address</managed-bean-name>
+      <managed-bean-class id="__57">ru.rdtex.mvd.weapon.view.backing.input_data.Person_address</managed-bean-class>
+      <managed-bean-scope id="__56">backingBean</managed-bean-scope>
+      <!--oracle-jdev-comment:managed-bean-jsp-link:1input_data/person_addresses.jspx-->
+    </managed-bean>
+    <view id="fz_persons">
+      <page id="__38">/input_data/fz_persons.jspx</page>
+    </view>
+    <view id="edit_fz_person">
+      <page id="__39">/input_data/edit_fz_person.jspx</page>
+    </view>
+    <view id="ur_persons"></view>
+    <method-call id="CreateInsert">
+      <method id="__40">#{bindings.CreateInsert.execute}</method>
+      <outcome id="__11">
+        <fixed-outcome id="__41">CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="main">
+      <page id="__37">/main.jspx</page>
+    </view>
+    <view id="person_address">
+      <page>/input_data/person_addresses.jspx</page>
+    </view>
+    <view id="person_rovd">
+      <page>/input_data/person_rovd.jspx</page>
+    </view>
+    <view id="person_document">
+      <page>/input_data/person_documents.jspx</page>
+    </view>
+    <view id="person_weapon">
+      <page>/input_data/person_weapon.jspx</page>
+    </view>
+    <view id="person_check"></view>
+    <task-flow-call id="adfc-classifiers">
+      <task-flow-reference>
+        <document>/WEB-INF/adfc-classifiers.xml</document>
+        <id>adfc-classifiers</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <view id="input_data_main">
+      <page>/input_data/input_data_main.jspx</page>
+    </view>
+    <view id="person_addresses_edit">
+      <page>/input_data/person_addresses_edit.jspx</page>
+    </view>
+    <view id="person_rovd_edit">
+      <page>/input_data/person_rovd_edit.jspx</page>
+    </view>
+    <method-call id="CreateInsert1">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__103">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__1">
+      <from-activity-id id="__2">fz_persons</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome id="__5">edit</from-outcome>
+        <to-activity-id id="__3">edit_fz_person</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__13">
+        <from-outcome id="__28">create</from-outcome>
+        <to-activity-id id="__12">CreateInsert</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <control-flow-case id="__8">
+        <from-outcome id="__9">1020</from-outcome>
+        <to-activity-id id="__10">fz_persons</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__26">
+        <from-outcome id="__27">1030</from-outcome>
+        <to-activity-id id="__25">ur_persons</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__35">
+        <from-outcome id="__36">1000</from-outcome>
+        <to-activity-id id="__34">main</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__76">
+        <from-outcome id="__77">8200</from-outcome>
+        <to-activity-id id="__75">adfc-classifiers</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__15">
+        <from-outcome id="__16">1010</from-outcome>
+        <to-activity-id id="__14">input_data_main</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__29">
+      <from-activity-id id="__30">CreateInsert</from-activity-id>
+      <control-flow-case id="__31">
+        <from-outcome id="__33">CreateInsert</from-outcome>
+        <to-activity-id id="__32">edit_fz_person</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id id="__44">edit_fz_person</from-activity-id>
+      <control-flow-case id="__45">
+        <from-outcome id="__47">back</from-outcome>
+        <to-activity-id id="__46">fz_persons</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__53">
+        <from-outcome id="__54">address</from-outcome>
+        <to-activity-id id="__52">person_address</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__59">
+        <from-outcome id="__61">rovd</from-outcome>
+        <to-activity-id id="__60">person_rovd</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__62">
+        <from-outcome id="__64">document</from-outcome>
+        <to-activity-id id="__63">person_document</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__65">
+        <from-outcome id="__67">weapon</from-outcome>
+        <to-activity-id id="__66">person_weapon</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__68">
+        <from-outcome id="__70">check</from-outcome>
+        <to-activity-id id="__69">person_check</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__17">
+      <from-activity-id id="__18">person_address</from-activity-id>
+      <control-flow-case id="__19">
+        <from-outcome id="__21">edit</from-outcome>
+        <to-activity-id id="__20">person_addresses_edit</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__50">
+        <from-outcome id="__51">back</from-outcome>
+        <to-activity-id id="__49">edit_fz_person</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__22">
+      <from-activity-id id="__23">person_addresses_edit</from-activity-id>
+      <control-flow-case id="__24">
+        <from-outcome id="__48">back</from-outcome>
+        <to-activity-id id="__43">person_address</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__72">
+      <from-activity-id id="__73">person_rovd</from-activity-id>
+      <control-flow-case id="__78">
+        <from-outcome id="__79">back</from-outcome>
+        <to-activity-id id="__74">edit_fz_person</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__95">
+        <from-outcome id="__97">edit</from-outcome>
+        <to-activity-id id="__96">person_rovd_edit</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__104">
+        <from-outcome id="__106">create</from-outcome>
+        <to-activity-id id="__105">CreateInsert1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__80">
+      <from-activity-id id="__81">person_document</from-activity-id>
+      <control-flow-case id="__82">
+        <from-outcome id="__84">back</from-outcome>
+        <to-activity-id id="__83">edit_fz_person</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__112">
+        <from-outcome id="__114">add_weapon</from-outcome>
+        <to-activity-id id="__113">person_weapon</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__85">
+      <from-activity-id id="__86">person_weapon</from-activity-id>
+      <control-flow-case id="__88">
+        <from-outcome id="__89">back</from-outcome>
+        <to-activity-id id="__87">edit_fz_person</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__115">
+        <from-outcome id="__117">add_back</from-outcome>
+        <to-activity-id id="__116">person_document</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__90">
+      <from-activity-id id="__91">person_check</from-activity-id>
+      <control-flow-case id="__93">
+        <from-outcome id="__94">back</from-outcome>
+        <to-activity-id id="__92">edit_fz_person</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__98">
+      <from-activity-id id="__99">person_rovd_edit</from-activity-id>
+      <control-flow-case id="__101">
+        <from-outcome id="__102">back</from-outcome>
+        <to-activity-id id="__100">person_rovd</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__107">
+      <from-activity-id id="__108">CreateInsert1</from-activity-id>
+      <control-flow-case id="__109">
+        <from-outcome id="__110">CreateInsert</from-outcome>
+        <to-activity-id id="__111">person_rovd_edit</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-config>

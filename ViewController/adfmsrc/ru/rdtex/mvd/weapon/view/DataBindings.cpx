@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.61.92" id="DataBindings" SeparateXMLFiles="false"
+             Package="ru.rdtex.mvd.weapon.view" ClientType="Generic">
+  <pageMap>
+    <page path="/input_data/fz_persons.jspx"
+          usageId="ru_rdtex_mvd_weapon_view_personsPageDef"/>
+    <page path="/input_data/edit_fz_person.jspx"
+          usageId="ru_rdtex_mvd_weapon_view_edit_personPageDef"/>
+    <page path="/WEB-INF/site-menu.xml#task-flow-definition@CreateInsert"
+          usageId="ru_rdtex_mvd_weapon_view_site_menu_task_flow_definition_CreateInsertPageDef"/>
+    <page path="/administration/classifiers/directiry/country.jspx"
+          usageId="ru_rdtex_mvd_weapon_view_countryPageDef"/>
+    <page path="/administration/classifiers/directiry/regions.jspx"
+          usageId="ru_rdtex_mvd_weapon_view_regionsPageDef"/>
+    <page path="/administration/classifiers/directiry/licenses_types.jspx"
+          usageId="ru_rdtex_mvd_weapon_view_licenses_typesPageDef"/>
+    <page path="/administration/classifiers/directiry/reward_organ.jspx"
+          usageId="ru_rdtex_mvd_weapon_view_reward_organPageDef"/>
+    <page path="/administration/classifiers/directiry/protected_object_kind.jspx"
+          usageId="ru_rdtex_mvd_weapon_view_protected_object_kindPageDef"/>
+    <page path="/administration/classifiers/owners/type_doc.jspx"
+          usageId="ru_rdtex_mvd_weapon_view_type_docPageDef"/>
+    <page path="/administration/classifiers/owners/type_person_fis.jspx"
+          usageId="ru_rdtex_mvd_weapon_view_type_person_fisPageDef"/>
+    <page path="/administration/classifiers/owners/type_person_ur.jspx"
+          usageId="ru_rdtex_mvd_weapon_view_type_person_urPageDef"/>
+    <page path="/input_data/person_addresses.jspx"
+          usageId="ru_rdtex_mvd_weapon_view_person_addressesPageDef"/>
+    <page path="/input_data/person_addresses_edit.jspx"
+          usageId="ru_rdtex_mvd_weapon_view_person_addresses_editPageDef"/>
+    <page path="/classifiers/guns/gun_kinds.jspx"
+          usageId="ru_rdtex_mvd_weapon_view_gun_kindsPageDef"/>
+    <page path="/administration/classifiers/guns/gun_models.jspx"
+          usageId="ru_rdtex_mvd_weapon_view_gun_modelsPageDef"/>
+    <page path="/administration/classifiers/guns/gun_kinds.jspx"
+          usageId="ru_rdtex_mvd_weapon_view_gun_kindsPageDef1"/>
+    <page path="/input_data/person_rovd.jspx"
+          usageId="ru_rdtex_mvd_weapon_view_person_rovdPageDef"/>
+    <page path="/input_data/person_rovd_edit.jspx"
+          usageId="ru_rdtex_mvd_weapon_view_person_rovd_editPageDef"/>
+    <page path="/WEB-INF/site-menu.xml#task-flow-definition@CreateInsert1"
+          usageId="ru_rdtex_mvd_weapon_view_site_menu_task_flow_definition_CreateInsert1PageDef"/>
+    <page path="/input_data/person_documents.jspx"
+          usageId="ru_rdtex_mvd_weapon_view_person_documentsPageDef"/>
+    <page path="/input_data/person_weapon.jspx"
+          usageId="ru_rdtex_mvd_weapon_view_person_weaponPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="ru_rdtex_mvd_weapon_view_personsPageDef"
+          path="ru.rdtex.mvd.weapon.view.pageDefs.personsPageDef"/>
+    <page id="ru_rdtex_mvd_weapon_view_edit_personPageDef"
+          path="ru.rdtex.mvd.weapon.view.pageDefs.edit_personPageDef"/>
+    <page id="ru_rdtex_mvd_weapon_view_site_menu_task_flow_definition_CreateInsertPageDef"
+          path="ru.rdtex.mvd.weapon.view.pageDefs.site_menu_task_flow_definition_CreateInsertPageDef"/>
+    <page id="ru_rdtex_mvd_weapon_view_countryPageDef"
+          path="classifiers.countryPageDef"/>
+    <page id="ru_rdtex_mvd_weapon_view_regionsPageDef"
+          path="classifiers.regionsPageDef"/>
+    <page id="ru_rdtex_mvd_weapon_view_licenses_typesPageDef"
+          path="classifiers.licenses_typesPageDef"/>
+    <page id="ru_rdtex_mvd_weapon_view_reward_organPageDef"
+          path="classifiers.reward_organPageDef"/>
+    <page id="ru_rdtex_mvd_weapon_view_protected_object_kindPageDef"
+          path="classifiers.protected_object_kindPageDef"/>
+    <page id="ru_rdtex_mvd_weapon_view_type_docPageDef"
+          path="classifiers.owners.type_docPageDef"/>
+    <page id="ru_rdtex_mvd_weapon_view_type_person_fisPageDef"
+          path="classifiers.owners.type_person_fisPageDef"/>
+    <page id="ru_rdtex_mvd_weapon_view_type_person_urPageDef"
+          path="classifiers.owners.type_person_urPageDef"/>
+    <page id="ru_rdtex_mvd_weapon_view_person_addressesPageDef"
+          path="ru.rdtex.mvd.weapon.view.pageDefs.person_addressesPageDef"/>
+    <page id="ru_rdtex_mvd_weapon_view_person_addresses_editPageDef"
+          path="ru.rdtex.mvd.weapon.view.pageDefs.person_addresses_editPageDef"/>
+    <page id="ru_rdtex_mvd_weapon_view_gun_kindsPageDef"
+          path="classifiers.guns.gun_kindsPageDef"/>
+    <page id="ru_rdtex_mvd_weapon_view_gun_modelsPageDef"
+          path="administration.classifiers.guns.gun_modelsPageDef"/>
+    <page id="ru_rdtex_mvd_weapon_view_gun_kindsPageDef1"
+          path="administration.classifiers.guns.gun_kindsPageDef"/>
+    <page id="ru_rdtex_mvd_weapon_view_person_rovdPageDef"
+          path="input_data.person_rovdPageDef"/>
+    <page id="ru_rdtex_mvd_weapon_view_person_rovd_editPageDef"
+          path="input_data.person_rovd_editPageDef"/>
+    <page id="ru_rdtex_mvd_weapon_view_site_menu_task_flow_definition_CreateInsert1PageDef"
+          path="ru.rdtex.mvd.weapon.view.pageDefs.site_menu_task_flow_definition_CreateInsert1PageDef"/>
+    <page id="ru_rdtex_mvd_weapon_view_person_documentsPageDef"
+          path="input_data.person_documentsPageDef"/>
+    <page id="ru_rdtex_mvd_weapon_view_person_weaponPageDef"
+          path="input_data.person_weaponPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AppModuleDataControl"
+                     Package="ru.rdtex.mvd.weapon.model.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="AppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <af:pageTemplateDef var="attrs">
+    <af:panelStretchLayout id="pt_psl1" endWidth="51px" topHeight="50px">
+      <f:facet name="bottom"/>
+      <f:facet name="center">
+        <af:decorativeBox id="pt_db1">
+          <f:facet name="center">
+            <af:panelSplitter id="pt_ps1" splitterPosition="167">
+              <f:facet name="first">
+                <af:panelGroupLayout layout="scroll"
+                                     xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                     id="pt_pgl1">
+                  <f:facet name="separator"/>
+                  <af:navigationPane id="navigationPane1" value="#{sitemenu}"
+                                     var="menuInfo" hint="list"
+                                     level="#{attrs.menuLevel+1}">
+                    <f:facet name="nodeStamp">
+                      <af:commandNavigationItem text="#{menuInfo.label}"
+                                                id="commandNavigationItem1"
+                                                action="#{menuInfo.doAction}"
+                                                destination="#{menuInfo.destination}"/>
+                    </f:facet>
+                  </af:navigationPane>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="second">
+                <af:facetRef facetName="body"/>
+              </f:facet>
+            </af:panelSplitter>
+          </f:facet>
+        </af:decorativeBox>
+      </f:facet>
+      <f:facet name="start"/>
+      <f:facet name="end"/>
+      <f:facet name="top">
+        <af:panelHeader text="Оружие МВД" id="pt_ph1">
+          <f:facet name="context">
+            <af:resource type="javascript"
+                         source="/js/jquery-1.7.2.min.js"/>
+            <af:resource type="javascript"
+                         source="/js/main.js"/>
+            <af:resource type="css" source="/css/mvd.css"/>
+          </f:facet>
+          <f:facet name="menuBar">
+            <af:group id="pt_g1">
+              <af:outputText value="#{controllerContext.currentViewPort.viewId}"
+                             id="ot1"/>
+              <af:outputText value="#{pageFlowScope.parm1}" id="pt_ot2"/>
+              <f:verbatim>
+                <br/>
+              </f:verbatim>
+            </af:group>
+          </f:facet>
+          <f:facet name="toolbar"/>
+          <f:facet name="legend"/>
+          <f:facet name="info"/>
+          <af:navigationPane id="pt_np1" var="menuInfo" value="#{sitemenu}"
+                             level="#{attrs.menuLevel}">
+            <f:facet name="nodeStamp">
+              <af:commandNavigationItem text="#{menuInfo.label}" id="pt_cni1"
+                                        destination="#{menuInfo.destination}"
+                                        action="#{menuInfo.doAction}"/>
+            </f:facet>
+          </af:navigationPane>
+        </af:panelHeader>
+      </f:facet>
+    </af:panelStretchLayout>
+    <af:xmlContent>
+      <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+        <display-name>mvd_temp</display-name>
+        <facet>
+          <facet-name>body</facet-name>
+        </facet>
+        <attribute>
+          <attribute-name>menuLevel</attribute-name>
+          <attribute-class>int</attribute-class>
+          <default-value>0</default-value>
+        </attribute>
+      </component>
+    </af:xmlContent>
+  </af:pageTemplateDef>
+</jsp:root>

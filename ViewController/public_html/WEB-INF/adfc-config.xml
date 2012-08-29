@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <managed-bean id="__16">
+    <managed-bean-name id="__17">backing_persons</managed-bean-name>
+    <managed-bean-class id="__18">ru.rdtex.mvd.weapon.view.backing.input_data.Persons</managed-bean-class>
+    <managed-bean-scope id="__19">backingBean</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__32">
+    <managed-bean-name id="__31">backing_edit_person</managed-bean-name>
+    <managed-bean-class id="__30">ru.rdtex.mvd.weapon.view.backing.input_data.Edit_person</managed-bean-class>
+    <managed-bean-scope id="__29">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1input_data/edit_fz_person.jspx-->
+  </managed-bean>
+  <managed-bean id="__38">
+    <managed-bean-name id="__37">Myses</managed-bean-name>
+    <managed-bean-class id="__40">ru.rdtex.mvd.weapon.view.session.MySesBean</managed-bean-class>
+    <managed-bean-scope id="__39">session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__7">
+    <managed-bean-name id="__8">mysession</managed-bean-name>
+    <managed-bean-class id="__14">ru.rdtex.mvd.weapon.view.session.mysession</managed-bean-class>
+    <managed-bean-scope id="__6">session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__43">
+    <description id="__45">Menu Model Managed Bean</description>
+    <managed-bean-name id="__44">root_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope id="__46">request</managed-bean-scope>
+    <managed-property id="__48">
+      <property-name id="__49">createHiddenNodes</property-name>
+      <value id="__47">false</value>
+    </managed-property>
+    <managed-property id="__52">
+      <property-name id="__51">source</property-name>
+      <property-class id="__50">java.lang.String</property-class>
+      <value id="__53">/WEB-INF/root_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+  <managed-bean id="__58">
+    <managed-bean-name id="__61">backing_main</managed-bean-name>
+    <managed-bean-class id="__60">ru.rdtex.mvd.weapon.view.backing.Main</managed-bean-class>
+    <managed-bean-scope id="__59">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1main.jspx-->
+  </managed-bean>
+  <managed-bean id="__63">
+    <managed-bean-name id="__62">backing_home</managed-bean-name>
+    <managed-bean-class id="__65">ru.rdtex.mvd.weapon.view.backing.Home</managed-bean-class>
+    <managed-bean-scope id="__64">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1home.jspx-->
+  </managed-bean>
+  <managed-bean id="__72">
+    <description id="__74">Menu Model Managed Bean</description>
+    <managed-bean-name id="__73">main_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope id="__75">request</managed-bean-scope>
+    <managed-property id="__78">
+      <property-name id="__76">createHiddenNodes</property-name>
+      <value id="__77">false</value>
+    </managed-property>
+    <managed-property id="__79">
+      <property-name id="__82">source</property-name>
+      <property-class id="__80">java.lang.String</property-class>
+      <value id="__81">/WEB-INF/main_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+  <managed-bean id="__9">
+    <managed-bean-name id="__5">backing_main2</managed-bean-name>
+    <managed-bean-class id="__11">ru.rdtex.mvd.weapon.view.backing.Main</managed-bean-class>
+    <managed-bean-scope id="__10">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1main.jspx-->
+  </managed-bean>
+  <managed-bean id="__13">
+    <managed-bean-name id="__21">backing_classifiers_main</managed-bean-name>
+    <managed-bean-class id="__20">ru.rdtex.mvd.weapon.view.backing.administration.classifiers.Main</managed-bean-class>
+    <managed-bean-scope id="__12">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1administration/classifiers/main.jspx-->
+  </managed-bean>
+  <managed-bean id="__28">
+    <managed-bean-name id="__27">backing_classifiers_main2</managed-bean-name>
+    <managed-bean-class id="__26">ru.rdtex.mvd.weapon.view.backing.administration.classifiers.Main</managed-bean-class>
+    <managed-bean-scope id="__36">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1administration/classifiers/main.jspx-->
+  </managed-bean>
+  <managed-bean id="__71">
+    <managed-bean-name id="__69">backing_classifiers_country</managed-bean-name>
+    <managed-bean-class id="__70">ru.rdtex.mvd.weapon.view.backing.administration.classifiers.directory.Country</managed-bean-class>
+    <managed-bean-scope id="__68">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1administration/classifiers/directiry/country.jspx-->
+  </managed-bean>
+  <managed-bean id="__89">
+    <managed-bean-name id="__90">backing_classifiers_regions</managed-bean-name>
+    <managed-bean-class id="__88">ru.rdtex.mvd.weapon.view.backing.administration.classifiers.directory.Regions</managed-bean-class>
+    <managed-bean-scope id="__87">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1administration/classifiers/directiry/regions.jspx-->
+  </managed-bean>
+  <managed-bean id="__94">
+    <managed-bean-name id="__91">backing_classifiers_licenses_types</managed-bean-name>
+    <managed-bean-class id="__92">ru.rdtex.mvd.weapon.view.backing.administration.classifiers.directory.Licenses_types</managed-bean-class>
+    <managed-bean-scope id="__93">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1administration/classifiers/directiry/licenses_types.jspx-->
+  </managed-bean>
+  <managed-bean id="__98">
+    <managed-bean-name id="__97">QueryFilterBean</managed-bean-name>
+    <managed-bean-class id="__96">ru.rdtex.mvd.weapon.view.session.QueryFilterBean</managed-bean-class>
+    <managed-bean-scope id="__95">session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__3">
+    <managed-bean-name id="__2">backing_classifiers_reward_organ</managed-bean-name>
+    <managed-bean-class id="__1">ru.rdtex.mvd.weapon.view.backing.administration.classifiers.directory.Reward_organ</managed-bean-class>
+    <managed-bean-scope id="__4">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1administration/classifiers/directiry/reward_organ.jspx-->
+  </managed-bean>
+  <managed-bean id="__15">
+    <managed-bean-name id="__22">sitemenu</managed-bean-name>
+    <managed-bean-class id="__24">oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope id="__23">request</managed-bean-scope>
+    <managed-property id="__25">
+      <property-name id="__34">createHiddenNodes</property-name>
+      <value id="__33">false</value>
+    </managed-property>
+    <managed-property id="__35">
+      <property-name id="__41">source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value id="__42">/WEB-INF/sitemenu.xml</value>
+    </managed-property>
+  </managed-bean>
+  <managed-bean id="__55">
+    <managed-bean-name id="__57">backing_classifiers_protected_object_kind</managed-bean-name>
+    <managed-bean-class id="__54">ru.rdtex.mvd.weapon.view.backing.administration.classifiers.directory.Protected_object_kind</managed-bean-class>
+    <managed-bean-scope id="__56">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1administration/classifiers/directiry/protected_object_kind.jspx-->
+  </managed-bean>
+  <managed-bean id="__66">
+    <managed-bean-name id="__67">backing_classifiers_directory_directory_main</managed-bean-name>
+    <managed-bean-class id="__84">ru.rdtex.mvd.weapon.view.backing.administration.classifiers.directory.Directory_main</managed-bean-class>
+    <managed-bean-scope id="__83">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1administration/classifiers/directiry/directory_main.jspx-->
+  </managed-bean>
+  <managed-bean id="__100">
+    <managed-bean-name id="__99">backing_classifiers_owners_owners_main</managed-bean-name>
+    <managed-bean-class id="__86">ru.rdtex.mvd.weapon.view.backing.administration.classifiers.owners.Owners_main</managed-bean-class>
+    <managed-bean-scope id="__85">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1administration/classifiers/owners/owners_main.jspx-->
+  </managed-bean>
+  <managed-bean id="__103">
+    <managed-bean-name id="__101">backing_classifiers_owners_type_person_fis</managed-bean-name>
+    <managed-bean-class id="__102">ru.rdtex.mvd.weapon.view.backing.administration.classifiers.owners.Type_person_fis</managed-bean-class>
+    <managed-bean-scope id="__104">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1administration/classifiers/owners/type_person_fis.jspx-->
+  </managed-bean>
+  <managed-bean id="__106">
+    <managed-bean-name id="__105">backing_classifiers_owners_type_person_ur</managed-bean-name>
+    <managed-bean-class id="__108">ru.rdtex.mvd.weapon.view.backing.administration.classifiers.owners.Type_person_ur</managed-bean-class>
+    <managed-bean-scope id="__107">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1administration/classifiers/owners/type_person_ur.jspx-->
+  </managed-bean>
+  <managed-bean id="__110">
+    <managed-bean-name id="__112">backing_classifiers_owners_type_doc</managed-bean-name>
+    <managed-bean-class id="__109">ru.rdtex.mvd.weapon.view.backing.administration.classifiers.owners.Type_doc</managed-bean-class>
+    <managed-bean-scope id="__111">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1administration/classifiers/owners/type_doc.jspx-->
+  </managed-bean>
+  <managed-bean id="__113">
+    <managed-bean-name id="__115">backing_input_data_main</managed-bean-name>
+    <managed-bean-class id="__114">ru.rdtex.mvd.weapon.view.backing.input_data.Input_data_main</managed-bean-class>
+    <managed-bean-scope id="__116">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1input_data/input_data_main.jspx-->
+  </managed-bean>
+  <managed-bean id="__120">
+    <managed-bean-name id="__119">backing_person_addresses_edit</managed-bean-name>
+    <managed-bean-class id="__118">ru.rdtex.mvd.weapon.view.backing.input_data.Person_addresses_edit</managed-bean-class>
+    <managed-bean-scope id="__117">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1input_data/person_addresses_edit.jspx-->
+  </managed-bean>
+  <managed-bean id="__122">
+    <managed-bean-name id="__123">backing_person_rovd</managed-bean-name>
+    <managed-bean-class id="__124">ru.rdtex.mvd.weapon.view.backing.input_data.Person_rovd</managed-bean-class>
+    <managed-bean-scope id="__121">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1input_data/person_rovd.jspx-->
+  </managed-bean>
+  <managed-bean id="__127">
+    <managed-bean-name id="__128">backing_classifiers_guns_guns_main</managed-bean-name>
+    <managed-bean-class id="__125">ru.rdtex.mvd.weapon.view.backing.classifiers.guns.Guns_main</managed-bean-class>
+    <managed-bean-scope id="__126">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1classifiers/guns/guns_main.jspx-->
+  </managed-bean>
+  <managed-bean id="__132">
+    <managed-bean-name id="__129">backing_classifiers_guns_gun_codes</managed-bean-name>
+    <managed-bean-class id="__130">ru.rdtex.mvd.weapon.view.backing.classifiers.guns.Gun_codes</managed-bean-class>
+    <managed-bean-scope id="__131">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1classifiers/guns/gun_codes.jspx-->
+  </managed-bean>
+  <managed-bean id="__134">
+    <managed-bean-name id="__133">backing_classifiers_guns_gun_main</managed-bean-name>
+    <managed-bean-class id="__135">ru.rdtex.mvd.weapon.view.backing.classifiers.guns.Gun_main</managed-bean-class>
+    <managed-bean-scope id="__136">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1classifiers/guns/gun_main.jspx-->
+  </managed-bean>
+  <managed-bean id="__138">
+    <managed-bean-name id="__137">backing_classifiers_guns_gun_kinds</managed-bean-name>
+    <managed-bean-class id="__140">ru.rdtex.mvd.weapon.view.backing.classifiers.guns.Gun_kinds</managed-bean-class>
+    <managed-bean-scope id="__139">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1classifiers/guns/gun_kinds.jspx-->
+  </managed-bean>
+  <managed-bean id="__144">
+    <managed-bean-name id="__142">backing_classifiers_guns_gun_models</managed-bean-name>
+    <managed-bean-class id="__141">ru.rdtex.mvd.weapon.view.backing.classifiers.guns.Gun_models</managed-bean-class>
+    <managed-bean-scope id="__143">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1classifiers/guns/gun_models.jspx-->
+  </managed-bean>
+  <managed-bean id="__146">
+    <managed-bean-name id="__148">backing_classifiers_guns_gun_types</managed-bean-name>
+    <managed-bean-class id="__147">ru.rdtex.mvd.weapon.view.backing.classifiers.guns.Gun_types</managed-bean-class>
+    <managed-bean-scope id="__145">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1classifiers/guns/gun_types.jspx-->
+  </managed-bean>
+  <managed-bean id="__150">
+    <managed-bean-name id="__152">backing_classifiers_guns_calibres</managed-bean-name>
+    <managed-bean-class id="__151">ru.rdtex.mvd.weapon.view.backing.classifiers.guns.Calibres</managed-bean-class>
+    <managed-bean-scope id="__149">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1classifiers/guns/calibres.jspx-->
+  </managed-bean>
+  <managed-bean id="__155">
+    <managed-bean-name id="__154">backing_administration_classifiers_guns_calibres</managed-bean-name>
+    <managed-bean-class id="__153">ru.rdtex.mvd.weapon.view.backing.administration.classifiers.guns.Calibres</managed-bean-class>
+    <managed-bean-scope id="__156">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1administration/classifiers/guns/calibres.jspx-->
+  </managed-bean>
+  <managed-bean id="__160">
+    <managed-bean-name id="__158">backing_administration_classifiers_guns_gun_main</managed-bean-name>
+    <managed-bean-class id="__157">ru.rdtex.mvd.weapon.view.backing.administration.classifiers.guns.Gun_main</managed-bean-class>
+    <managed-bean-scope id="__159">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1administration/classifiers/guns/gun_main.jspx-->
+  </managed-bean>
+  <managed-bean id="__163">
+    <managed-bean-name id="__164">backing_administration_classifiers_guns_gun_codes</managed-bean-name>
+    <managed-bean-class id="__162">ru.rdtex.mvd.weapon.view.backing.administration.classifiers.guns.Gun_codes</managed-bean-class>
+    <managed-bean-scope id="__161">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1administration/classifiers/guns/gun_codes.jspx-->
+  </managed-bean>
+  <managed-bean id="__165">
+    <managed-bean-name id="__166">backing_administration_classifiers_guns_gun_kinds</managed-bean-name>
+    <managed-bean-class id="__168">ru.rdtex.mvd.weapon.view.backing.administration.classifiers.guns.Gun_kinds</managed-bean-class>
+    <managed-bean-scope id="__167">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1administration/classifiers/guns/gun_kinds.jspx-->
+  </managed-bean>
+  <managed-bean id="__170">
+    <managed-bean-name id="__172">backing_administration_classifiers_guns_gun_midels</managed-bean-name>
+    <managed-bean-class id="__171">ru.rdtex.mvd.weapon.view.backing.administration.classifiers.guns.Gun_midels</managed-bean-class>
+    <managed-bean-scope id="__169">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1administration/classifiers/guns/gun_midels.jspx-->
+  </managed-bean>
+  <managed-bean id="__175">
+    <managed-bean-name id="__173">backing_administration_classifiers_guns_gun_types</managed-bean-name>
+    <managed-bean-class id="__176">ru.rdtex.mvd.weapon.view.backing.administration.classifiers.guns.Gun_types</managed-bean-class>
+    <managed-bean-scope id="__174">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1administration/classifiers/guns/gun_types.jspx-->
+  </managed-bean>
+  <managed-bean id="__177">
+    <managed-bean-name id="__180">backing_administration_classifiers_guns_gun_models</managed-bean-name>
+    <managed-bean-class id="__178">ru.rdtex.mvd.weapon.view.backing.administration.classifiers.guns.Gun_models</managed-bean-class>
+    <managed-bean-scope id="__179">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1administration/classifiers/guns/gun_models.jspx-->
+  </managed-bean>
+  <managed-bean id="__181">
+    <managed-bean-name id="__184">backing_input_data_person_rovd_edit</managed-bean-name>
+    <managed-bean-class id="__183">ru.rdtex.mvd.weapon.view.backing.input_data.Person_rovd_edit</managed-bean-class>
+    <managed-bean-scope id="__182">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1input_data/person_rovd_edit.jspx-->
+  </managed-bean>
+  <managed-bean id="__188">
+    <managed-bean-name id="__187">uploadimageclass</managed-bean-name>
+    <managed-bean-class id="__186">ru.rdtex.mvd.weapon.view.image.UploadImag</managed-bean-class>
+    <managed-bean-scope id="__185">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__192">
+    <managed-bean-name id="__191">backing_input_data_person_documents</managed-bean-name>
+    <managed-bean-class id="__190">ru.rdtex.mvd.weapon.view.backing.input_data.Person_documents</managed-bean-class>
+    <managed-bean-scope id="__189">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1input_data/person_documents.jspx-->
+  </managed-bean>
+  <managed-bean id="__193">
+    <managed-bean-name id="__194">backing_input_data_person_weapon</managed-bean-name>
+    <managed-bean-class id="__195">ru.rdtex.mvd.weapon.view.backing.input_data.Person_weapon</managed-bean-class>
+    <managed-bean-scope id="__196">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1input_data/person_weapon.jspx-->
+  </managed-bean>
+  <managed-bean id="__199">
+    <managed-bean-name id="__198">backing_input_data_person_weapon_edit</managed-bean-name>
+    <managed-bean-class id="__200">ru.rdtex.mvd.weapon.view.backing.input_data.Person_weapon_edit</managed-bean-class>
+    <managed-bean-scope id="__197">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1input_data/person_weapon_edit.jspx-->
+  </managed-bean>
+</adfc-config>

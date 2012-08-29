@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="person_documentsPageDef"
+                Package="input_data">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variableUsage DataControl="AppModuleDataControl"
+                     Binds="VSuperDocView2.variablesMap.fdoc"
+                     Name="ExecuteWithParams_fdoc" IsQueriable="false"/>
+    </variableIterator>
+    <iterator Binds="VSuperDocView2" RangeSize="25"
+              DataControl="AppModuleDataControl" id="VSuperDocView2Iterator"/>
+    <iterator Binds="DocRequestsView1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="DocRequestsView1Iterator"/>
+    <iterator Binds="DocDocumentsView6" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="DocDocumentsView6Iterator"/>
+    <iterator Binds="DocPermissionsView4" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="DocPermissionsView4Iterator"/>
+    <iterator Binds="DocDocumentsView8" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="DocDocumentsView8Iterator"/>
+    <iterator Binds="DocPermissionsView6" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="DocPermissionsView6Iterator"/>
+    <iterator Binds="DocRequestsView3" RangeSize="25"
+              DataControl="AppModuleDataControl" id="DocRequestsView3Iterator"/>
+    <iterator Binds="DocDocumentsView4" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="DocDocumentsView4Iterator"/>
+    <iterator Binds="YesNo10_1" RangeSize="-1"
+              DataControl="AppModuleDataControl" id="YesNo10_1Iterator"/>
+    <iterator Binds="RGunGunsView2" RangeSize="25"
+              DataControl="AppModuleDataControl" id="RGunGunsView2Iterator"/>
+    <searchRegion Binds="RGunGunsView2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="RGunGunsView2Query"/>
+    <iterator Binds="RGunGunsView3" RangeSize="25"
+              DataControl="AppModuleDataControl" id="RGunGunsView3Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="VSuperDocView2Iterator" id="VSuperDocView2">
+      <nodeDefinition DefName="ru.rdtex.mvd.weapon.model.vo.read.VSuperDocView"
+                      Name="VSuperDocView20">
+        <AttrNames>
+          <Item Value="DrDocNumb"/>
+          <Item Value="DrDocDate"/>
+          <Item Value="LSeries"/>
+          <Item Value="DlDocNumb"/>
+          <Item Value="DlDocDate"/>
+          <Item Value="LEndDate"/>
+          <Item Value="PSeries"/>
+          <Item Value="DpDocNumb"/>
+          <Item Value="DpDocDate"/>
+          <Item Value="PEndDate"/>
+          <Item Value="DeleteRow"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="DocRequestsView1Iterator" StaticList="false"
+            Uses="LOV_Coupon" id="Coupon" DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Coupon"/>
+      </AttrNames>
+    </button>
+    <action id="Commit" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <attributeValues IterBinding="DocDocumentsView6Iterator" id="DocDate1">
+      <AttrNames>
+        <Item Value="DocDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DocPermissionsView4Iterator" id="EndDate">
+      <AttrNames>
+        <Item Value="EndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DocDocumentsView8Iterator" id="DocDate2">
+      <AttrNames>
+        <Item Value="DocDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DocPermissionsView6Iterator" id="EndDate1">
+      <AttrNames>
+        <Item Value="EndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="DocDocumentsView6Iterator" StaticList="false"
+          Uses="LOV_DdcId" id="DdcId1" DTSupportsMRU="true"/>
+    <list IterBinding="DocDocumentsView6Iterator" StaticList="false"
+          Uses="LOV_DocType" id="DocType1" DTSupportsMRU="true"/>
+    <attributeValues IterBinding="DocDocumentsView6Iterator" id="DocSeries1">
+      <AttrNames>
+        <Item Value="DocSeries"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DocDocumentsView6Iterator" id="DocNumb2">
+      <AttrNames>
+        <Item Value="DocNumb"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DocDocumentsView6Iterator" id="Department2">
+      <AttrNames>
+        <Item Value="Department"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="DocPermissionsView4Iterator" StaticList="false"
+          Uses="LOV_TypelicIdLicense" id="TypelicIdLicense"
+          DTSupportsMRU="true"/>
+    <list IterBinding="DocPermissionsView4Iterator" StaticList="false"
+          Uses="LOV_LicstatCode" id="LicstatCode1" DTSupportsMRU="true"/>
+    <attributeValues IterBinding="DocPermissionsView4Iterator" id="StatusDate1">
+      <AttrNames>
+        <Item Value="StatusDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DocPermissionsView4Iterator" id="Reason1">
+      <AttrNames>
+        <Item Value="Reason"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DocPermissionsView4Iterator" id="PaySum1">
+      <AttrNames>
+        <Item Value="PaySum"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="DocPermissionsView4Iterator" StaticList="false"
+          Uses="LOV_EmpSign" id="EmpSign2" DTSupportsMRU="true"/>
+    <list IterBinding="DocPermissionsView4Iterator" StaticList="false"
+          Uses="LOV_HeadSign" id="HeadSign1" DTSupportsMRU="true"/>
+    <list IterBinding="DocDocumentsView8Iterator" StaticList="false"
+          Uses="LOV_DdcId" id="DdcId2" DTSupportsMRU="true"/>
+    <list IterBinding="DocDocumentsView8Iterator" StaticList="false"
+          Uses="LOV_DocType" id="DocType2" DTSupportsMRU="true"/>
+    <attributeValues IterBinding="DocDocumentsView8Iterator" id="DocSeries2">
+      <AttrNames>
+        <Item Value="DocSeries"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DocDocumentsView8Iterator" id="DocNumb">
+      <AttrNames>
+        <Item Value="DocNumb"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DocDocumentsView8Iterator" id="Department">
+      <AttrNames>
+        <Item Value="Department"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="DocPermissionsView6Iterator" StaticList="false"
+          Uses="LOV_TypelicId" id="TypelicIdPermission1" DTSupportsMRU="true"/>
+    <list IterBinding="DocPermissionsView6Iterator" StaticList="false"
+          Uses="LOV_LicstatCode" id="LicstatCode2" DTSupportsMRU="true"/>
+    <attributeValues IterBinding="DocPermissionsView6Iterator" id="StatusDate2">
+      <AttrNames>
+        <Item Value="StatusDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DocPermissionsView6Iterator" id="Reason2">
+      <AttrNames>
+        <Item Value="Reason"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DocPermissionsView6Iterator" id="PaySum2">
+      <AttrNames>
+        <Item Value="PaySum"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="DocPermissionsView6Iterator" StaticList="false"
+          Uses="LOV_EmpSign" id="EmpSign" DTSupportsMRU="true"/>
+    <list IterBinding="DocPermissionsView6Iterator" StaticList="false"
+          Uses="LOV_HeadSign" id="HeadSign2" DTSupportsMRU="true"/>
+    <list IterBinding="DocRequestsView3Iterator" StaticList="false"
+          Uses="LOV_TypePermission" id="TypePermission" DTSupportsMRU="true"/>
+    <attributeValues IterBinding="DocDocumentsView4Iterator" id="DocNumb1">
+      <AttrNames>
+        <Item Value="DocNumb"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DocDocumentsView4Iterator" id="DocDate">
+      <AttrNames>
+        <Item Value="DocDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="DocRequestsView3Iterator" StaticList="false"
+          Uses="LOV_Action" id="Action" DTSupportsMRU="true"/>
+    <list IterBinding="DocRequestsView3Iterator" StaticList="false"
+          Uses="LOV_TypelicId" id="TypelicId" DTSupportsMRU="true"/>
+    <list IterBinding="DocRequestsView3Iterator" StaticList="false"
+          Uses="LOV_Result" id="Result" DTSupportsMRU="true"/>
+    <attributeValues IterBinding="DocRequestsView3Iterator" id="ResultDate">
+      <AttrNames>
+        <Item Value="ResultDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DocDocumentsView4Iterator" id="Department1">
+      <AttrNames>
+        <Item Value="Department"/>
+      </AttrNames>
+    </attributeValues>
+    <button IterBinding="DocRequestsView3Iterator" StaticList="false"
+            Uses="LOV_Coupon" id="Coupon2" DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Coupon"/>
+      </AttrNames>
+    </button>
+    <list IterBinding="DocRequestsView3Iterator" StaticList="false"
+          Uses="LOV_EmpSign" id="EmpSign1" DTSupportsMRU="true"/>
+    <action id="Rollback" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <attributeValues IterBinding="DocDocumentsView4Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="VSuperDocView2Iterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="fdoc" NDType="java.lang.String"
+                 NDValue="${bindings.ExecuteWithParams_fdoc}"/>
+    </action>
+    <list IterBinding="variables" id="fdoc" DTSupportsMRU="false"
+          StaticList="false" ListIter="YesNo10_1Iterator">
+      <AttrNames>
+        <Item Value="ExecuteWithParams_fdoc"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+      </ValueList>
+      <ListAttrNames>
+        <Item Value="Id"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Value"/>
+      </ListDisplayAttrNames>
+    </list>
+    <tree IterBinding="RGunGunsView2Iterator" id="RGunGunsView2">
+      <nodeDefinition DefName="ru.rdtex.mvd.weapon.model.vo.read.RGunGunsView"
+                      Name="RGunGunsView20">
+        <AttrNames>
+          <Item Value="Series"/>
+          <Item Value="Numb"/>
+          <Item Value="ModelTitle"/>
+          <Item Value="MakeYear"/>
+          <Item Value="BeginDate"/>
+          <Item Value="EndDate"/>
+          <Item Value="StateName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="RGunGunsView3Iterator" id="RGunGunsView3">
+      <nodeDefinition DefName="ru.rdtex.mvd.weapon.model.vo.read.RGunGunsView"
+                      Name="RGunGunsView30">
+        <AttrNames>
+          <Item Value="Series"/>
+          <Item Value="Numb"/>
+          <Item Value="ModelTitle"/>
+          <Item Value="MakeYear"/>
+          <Item Value="BeginDate"/>
+          <Item Value="EndDate"/>
+          <Item Value="StateName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

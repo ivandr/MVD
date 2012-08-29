@@ -1,0 +1,25 @@
+.mvd_form {
+  margin:10px;    
+}
+
+.mainMenu {
+      
+}
+
+.mainContent {
+    color: Blue;
+    font-size: 3em;
+    padding-left: 50px;
+    font-weight: bold;
+    text-align: left;
+    text-decoration: underline;
+}
+
+.headerFilter {
+    padding: 0 10px 0 10px;
+}
+
+.leftMenuButton {
+    margin-bottom: 3px !important;
+    width: 100px;
+}

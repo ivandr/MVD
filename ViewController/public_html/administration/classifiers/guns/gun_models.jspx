@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1"
+                 binding="#{backingBeanScope.backing_administration_classifiers_guns_gun_models.d1}">
+      <af:messages binding="#{backingBeanScope.backing_administration_classifiers_guns_gun_models.m1}"
+                   id="m1"/>
+      <af:form id="f1"
+               binding="#{backingBeanScope.backing_administration_classifiers_guns_gun_models.f1}">
+        <af:pageTemplate viewId="/templates/mvd_temp.jspx" id="pt1">
+        <f:attribute name="menuLevel" value="2" />
+          <f:facet name="body">
+            <af:panelStretchLayout binding="#{backingBeanScope.backing_administration_classifiers_guns_gun_models.psl1}"
+                                   id="psl1">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelCollection binding="#{backingBeanScope.backing_administration_classifiers_guns_gun_models.pc1}"
+                                    id="pc1">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar">
+                    <af:toolbar binding="#{backingBeanScope.backing_administration_classifiers_guns_gun_models.t2}"
+                                id="t2">
+                      <af:commandButton actionListener="#{bindings.deleteSelectedRows.execute}"
+                                        text="Удалить"
+                                        disabled="#{!bindings.deleteSelectedRows.enabled}"
+                                        binding="#{backingBeanScope.backing_administration_classifiers_guns_gun_models.cb1}"
+                                        id="cb1" icon="/images/remove.png"/>
+                      <af:commandButton actionListener="#{bindings.createRow.execute}"
+                                        text="Создать"
+                                        disabled="#{!bindings.createRow.enabled}"
+                                        binding="#{backingBeanScope.backing_administration_classifiers_guns_gun_models.cb2}"
+                                        id="cb2" icon="/images/create.png"/>
+                      <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                        text="Сохранить"
+                                        disabled="#{!bindings.Commit.enabled}"
+                                        binding="#{backingBeanScope.backing_administration_classifiers_guns_gun_models.cb5}"
+                                        id="cb5" partialTriggers="t1"
+                                        icon="/images/save.png"/>
+                      <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                                        text="Отмена"
+                                        disabled="#{!bindings.Rollback.enabled}"
+                                        immediate="true"
+                                        binding="#{backingBeanScope.backing_administration_classifiers_guns_gun_models.cb4}"
+                                        id="cb4" icon="/images/cancel.png"
+                                        partialTriggers="t1">
+                        <af:resetActionListener/>
+                      </af:commandButton>
+                    </af:toolbar>
+                  </f:facet>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.ModelGunView11.collectionModel}"
+                            var="row"
+                            rows="#{bindings.ModelGunView11.rangeSize}"
+                            emptyText="#{bindings.ModelGunView11.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.ModelGunView11.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.ModelGunView1Query.queryDescriptor}"
+                            queryListener="#{bindings.ModelGunView1Query.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectedRowKeys="#{bindings.ModelGunView11.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.ModelGunView11.collectionModel.makeCurrent}"
+                            rowSelection="single"
+                            binding="#{backingBeanScope.backing_administration_classifiers_guns_gun_models.t1}"
+                            id="t1">
+                    <af:column sortProperty="DeleteRow"
+                               headerText="#{bindings.ModelGunView11.hints.DeleteRow.label}"
+                               id="c4" width="20" align="center">
+                      <af:selectBooleanCheckbox value="#{row.bindings.DeleteRow.inputValue}"
+                                                label="#{row.bindings.DeleteRow.label}"
+                                                shortDesc="#{bindings.ModelGunView11.hints.DeleteRow.tooltip}"
+                                                id="sbc1"
+                                                styleClass="SELECT_CHECKBOX"/>
+                      <f:facet name="header">
+                        <af:selectBooleanCheckbox id="HEADER_CHECKBOX"
+                                                  label="#{''}" simple="true"
+                                                  binding="#{backingBeanScope.backing_administration_classifiers_guns_gun_models.HEADER_CHECKBOX}">
+                          <af:clientListener type="valueChange"
+                                             method="toggleDelCheckbox"/>
+                        </af:selectBooleanCheckbox>
+                      </f:facet>
+                    </af:column>
+                    <af:column sortProperty="Code" filterable="true"
+                               sortable="true"
+                               headerText="#{bindings.ModelGunView11.hints.Code.label}"
+                               id="c1" width="200">
+                      <af:inputText value="#{row.bindings.Code.inputValue}"
+                                    label="#{bindings.ModelGunView11.hints.Code.label}"
+                                    required="#{bindings.ModelGunView11.hints.Code.mandatory}"
+                                    columns="#{bindings.ModelGunView11.hints.Code.displayWidth}"
+                                    maximumLength="#{bindings.ModelGunView11.hints.Code.precision}"
+                                    shortDesc="#{bindings.ModelGunView11.hints.Code.tooltip}"
+                                    id="it1">
+                        <f:validator binding="#{row.bindings.Code.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="Transcript" filterable="true"
+                               sortable="true"
+                               headerText="#{bindings.ModelGunView11.hints.Transcript.label}"
+                               id="c2" width="200">
+                      <af:inputText value="#{row.bindings.Transcript.inputValue}"
+                                    label="#{bindings.ModelGunView11.hints.Transcript.label}"
+                                    required="#{bindings.ModelGunView11.hints.Transcript.mandatory}"
+                                    columns="#{bindings.ModelGunView11.hints.Transcript.displayWidth}"
+                                    maximumLength="#{bindings.ModelGunView11.hints.Transcript.precision}"
+                                    shortDesc="#{bindings.ModelGunView11.hints.Transcript.tooltip}"
+                                    id="it3">
+                        <f:validator binding="#{row.bindings.Transcript.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="Writing" filterable="true"
+                               sortable="true"
+                               headerText="#{bindings.ModelGunView11.hints.Writing.label}"
+                               id="c3" width="50">
+                      <af:inputText value="#{row.bindings.Writing.inputValue}"
+                                    label="#{bindings.ModelGunView11.hints.Writing.label}"
+                                    required="#{bindings.ModelGunView11.hints.Writing.mandatory}"
+                                    columns="#{bindings.ModelGunView11.hints.Writing.displayWidth}"
+                                    maximumLength="#{bindings.ModelGunView11.hints.Writing.precision}"
+                                    shortDesc="#{bindings.ModelGunView11.hints.Writing.tooltip}"
+                                    id="it2">
+                        <f:validator binding="#{row.bindings.Writing.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top"/>
+            </af:panelStretchLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_administration_classifiers_guns_gun_models-->
+</jsp:root>

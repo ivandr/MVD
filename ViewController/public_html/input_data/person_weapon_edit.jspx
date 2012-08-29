@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1"
+                 binding="#{backingBeanScope.backing_input_data_person_weapon_edit.d1}">
+      <af:form id="f1"
+               binding="#{backingBeanScope.backing_input_data_person_weapon_edit.f1}">
+        <af:pageTemplate viewId="/templates/mvd_temp.jspx" id="pt1">
+          <f:facet name="body">
+            <af:panelBox text="Информация"
+                         binding="#{backingBeanScope.backing_input_data_person_weapon_edit.pb1}"
+                         id="pb1">
+              <f:facet name="toolbar">
+                <af:toolbox binding="#{backingBeanScope.backing_input_data_person_weapon_edit.t1}"
+                            id="t1">
+                  <af:commandButton text="Назад"
+                                    binding="#{backingBeanScope.backing_input_data_person_weapon_edit.cb1}"
+                                    id="cb1" icon="/images/back.png"
+                                    action="back"/>
+                </af:toolbox>
+              </f:facet>
+              <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_weapon_edit.pfl1}"
+                                  id="pfl1">
+                <f:facet name="footer"/>
+              </af:panelFormLayout>
+            </af:panelBox>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_input_data_person_weapon_edit-->
+</jsp:root>

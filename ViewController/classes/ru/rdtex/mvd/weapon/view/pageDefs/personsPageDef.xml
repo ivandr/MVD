@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="personsPageDef"
+                Package="ru.rdtex.mvd.weapon.view.pageDefs">
+  <parameters/>
+  <executables>
+    <iterator Binds="EntPersonsView1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="EntPersonsView1Iterator"/>
+    <searchRegion Binds="EntPersonsView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="EntPersonsView1Query"/>
+    <variableIterator id="variables">
+      <variableUsage DataControl="AppModuleDataControl"
+                     Binds="EntPersonsView1.variablesMap.fowner"
+                     Name="ExecuteWithParams_fowner" IsQueriable="false"/>
+      <variableUsage DataControl="AppModuleDataControl"
+                     Binds="EntPersonsView1.variablesMap.fid"
+                     Name="ExecuteWithParams_fid" IsQueriable="false"/>
+      <variableUsage DataControl="AppModuleDataControl"
+                     Binds="EntPersonsView1.variablesMap.fname"
+                     Name="ExecuteWithParams_fname" IsQueriable="false"/>
+      <variableUsage DataControl="AppModuleDataControl"
+                     Binds="EntPersonsView1.variablesMap.fio"
+                     Name="ExecuteWithParams_fio" IsQueriable="false"/>
+      <variableUsage DataControl="AppModuleDataControl"
+                     Binds="EntPersonsView1.variablesMap.fotchestvo"
+                     Name="ExecuteWithParams_fotchestvo" IsQueriable="false"/>
+      <variableUsage DataControl="AppModuleDataControl"
+                     Binds="EntPersonsView1.variablesMap.fbirthday_s"
+                     Name="ExecuteWithParams_fbirthday_s" IsQueriable="false"/>
+      <variableUsage DataControl="AppModuleDataControl"
+                     Binds="EntPersonsView1.variablesMap.fbirthday_e"
+                     Name="ExecuteWithParams_fbirthday_e" IsQueriable="false"/>
+      <variableUsage DataControl="AppModuleDataControl"
+                     Binds="EntPersonsView1.variablesMap.fvip"
+                     Name="ExecuteWithParams_fvip" IsQueriable="false"/>
+      <variableUsage DataControl="AppModuleDataControl"
+                     Binds="EntPersonsView1.variablesMap.finn"
+                     Name="ExecuteWithParams_finn" IsQueriable="false"/>
+      <variableUsage DataControl="AppModuleDataControl"
+                     Binds="EntPersonsView1.variablesMap.fguard"
+                     Name="ExecuteWithParams_fguard" IsQueriable="false"/>
+      <variableUsage DataControl="AppModuleDataControl"
+                     Binds="EntPersonsView1.variablesMap.femployee"
+                     Name="ExecuteWithParams_femployee" IsQueriable="false"/>
+      <variableUsage DataControl="AppModuleDataControl"
+                     Binds="EntPersonsView1.variablesMap.fstate"
+                     Name="ExecuteWithParams_fstate" IsQueriable="false"/>
+    </variableIterator>
+  </executables>
+  <bindings>
+    <tree IterBinding="EntPersonsView1Iterator" id="EntPersonsView1">
+      <nodeDefinition DefName="ru.rdtex.mvd.weapon.model.vo.EntPersonsView"
+                      Name="EntPersonsView10">
+        <AttrNames>
+          <Item Value="CountryCode"/>
+          <Item Value="TypedocCode"/>
+          <Item Value="PtypeCode"/>
+          <Item Value="ArcFio"/>
+          <Item Value="Name"/>
+          <Item Value="Otchestvo"/>
+          <Item Value="JobTittle"/>
+          <Item Value="BirthAdr"/>
+          <Item Value="JobPost"/>
+          <Item Value="JobPhone"/>
+          <Item Value="EpId"/>
+          <Item Value="Id"/>
+          <Item Value="Inn"/>
+          <Item Value="DocSer"/>
+          <Item Value="DocNum"/>
+          <Item Value="DocDate"/>
+          <Item Value="DocOrg"/>
+          <Item Value="UpdatedFlag"/>
+          <Item Value="Sex"/>
+          <Item Value="Nationality"/>
+          <Item Value="Birthday"/>
+          <Item Value="State"/>
+          <Item Value="Inserted"/>
+          <Item Value="InsertedBy"/>
+          <Item Value="TitleSurname"/>
+          <Item Value="Updated"/>
+          <Item Value="UpdatedBy"/>
+          <Item Value="RegionCode"/>
+          <Item Value="OkrugCode"/>
+          <Item Value="DepTypeCode"/>
+          <Item Value="RegSertDate"/>
+          <Item Value="CharterDate"/>
+          <Item Value="TaxDate"/>
+          <Item Value="OtherDate"/>
+          <Item Value="EpType"/>
+          <Item Value="ObjId"/>
+          <Item Value="ArcReason"/>
+          <Item Value="ArcDate"/>
+          <Item Value="Wh"/>
+          <Item Value="ArcIdDate"/>
+          <Item Value="SupervisCase"/>
+          <Item Value="Founders"/>
+          <Item Value="MainNumber"/>
+          <Item Value="RegDocName"/>
+          <Item Value="EndRegDocDate"/>
+          <Item Value="RegDocState"/>
+          <Item Value="Comments"/>
+          <Item Value="ArcId"/>
+          <Item Value="Vip" Binds="Vip"/>
+          <Item Value="HashValue"/>
+          <Item Value="OldStatus"/>
+          <Item Value="CompareStatus"/>
+          <Item Value="CompareDate"/>
+          <Item Value="EMail"/>
+          <Item Value="Nationality2"/>
+          <Item Value="PsgCase"/>
+          <Item Value="ArcComments"/>
+          <Item Value="PsgType"/>
+          <Item Value="IsOwner"/>
+          <Item Value="IsGuard"/>
+          <Item Value="IsEmployee"/>
+          <Item Value="LrrState"/>
+          <Item Value="Phone"/>
+          <Item Value="DeleteRow"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="EntPersonsView1Iterator" id="setCurrentRowWithKeyValue"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKeyValue">
+      <NamedData NDName="rowKey" NDValue="#{row.Id}" NDType="java.lang.String"/>
+    </action>
+    <button IterBinding="EntPersonsView1Iterator" id="Vip"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Vip"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <action IterBinding="EntPersonsView1Iterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="fid" NDValue="${bindings.ExecuteWithParams_fid}"
+                 NDType="java.lang.Integer"/>
+      <NamedData NDName="fio" NDValue="${bindings.ExecuteWithParams_fio}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="fname" NDValue="${bindings.ExecuteWithParams_fname}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="fotchestvo"
+                 NDValue="${bindings.ExecuteWithParams_fotchestvo}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="fbirthday_s"
+                 NDValue="${bindings.ExecuteWithParams_fbirthday_s}"
+                 NDType="oracle.jbo.domain.Date"/>
+      <NamedData NDName="fbirthday_e"
+                 NDValue="${bindings.ExecuteWithParams_fbirthday_e}"
+                 NDType="oracle.jbo.domain.Date"/>
+      <NamedData NDName="fvip" NDValue="${bindings.ExecuteWithParams_fvip}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="finn" NDValue="${bindings.ExecuteWithParams_finn}"
+                 NDType="java.lang.String"/>
+    </action>
+    <attributeValues IterBinding="variables" id="fid">
+      <AttrNames>
+        <Item Value="ExecuteWithParams_fid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="fname">
+      <AttrNames>
+        <Item Value="ExecuteWithParams_fname"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="fio">
+      <AttrNames>
+        <Item Value="ExecuteWithParams_fio"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="fotchestvo">
+      <AttrNames>
+        <Item Value="ExecuteWithParams_fotchestvo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="fbirthday_s">
+      <AttrNames>
+        <Item Value="ExecuteWithParams_fbirthday_s"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="fbirthday_e">
+      <AttrNames>
+        <Item Value="ExecuteWithParams_fbirthday_e"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="finn">
+      <AttrNames>
+        <Item Value="ExecuteWithParams_finn"/>
+      </AttrNames>
+    </attributeValues>
+    <button IterBinding="EntPersonsView1Iterator" id="fowner"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="IsOwner"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <button IterBinding="EntPersonsView1Iterator" id="fguard" DTSupportsMRU="false"
+            StaticList="true">
+      <AttrNames>
+        <Item Value="IsGuard"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <button IterBinding="EntPersonsView1Iterator" id="femployee" DTSupportsMRU="false"
+            StaticList="true">
+      <AttrNames>
+        <Item Value="IsEmployee"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <attributeValues IterBinding="variables" id="fvip">
+      <AttrNames>
+        <Item Value="ExecuteWithParams_fvip"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="EntPersonsView1Iterator" id="fstate" DTSupportsMRU="false"
+          StaticList="true">
+      <AttrNames>
+        <Item Value="LrrState"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="0"/>
+      </ValueList>
+    </list>
+    <methodAction id="deleteSelectedRows" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="deleteSelectedRows"
+                  IsViewObjectMethod="true" DataControl="AppModuleDataControl"
+                  InstanceName="AppModuleDataControl.EntPersonsView1"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="AppModuleDataControl"/>
+  </bindings>
+</pageDefinition>

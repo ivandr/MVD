@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="EntPhotoView"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  SelectList="EntPhoto.PHOTO, 
+       EntPhoto.EP_ID, 
+       EntPhoto.OBJ_ID"
+  FromList="ENT_PHOTO EntPhoto"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="EntPhoto"
+    Entity="ru.rdtex.mvd.weapon.model.en.EntPhoto"/>
+  <ViewAttribute
+    Name="Photo"
+    IsQueriable="false"
+    PrecisionRule="true"
+    EntityAttrName="Photo"
+    EntityUsage="EntPhoto"
+    AliasName="PHOTO"/>
+  <ViewAttribute
+    Name="EpId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="EpId"
+    EntityUsage="EntPhoto"
+    AliasName="EP_ID"/>
+  <ViewAttribute
+    Name="ObjId"
+    PrecisionRule="true"
+    EntityAttrName="ObjId"
+    EntityUsage="EntPhoto"
+    AliasName="OBJ_ID"/>
+</ViewObject>

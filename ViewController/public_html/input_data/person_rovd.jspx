@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" binding="#{backingBeanScope.backing_person_rovd.d1}">
+      <af:messages binding="#{backingBeanScope.backing_person_rovd.m1}"
+                   id="m1"/>
+      <af:form id="f1" binding="#{backingBeanScope.backing_person_rovd.f1}">
+        <af:pageTemplate viewId="/templates/mvd_temp.jspx" id="pt1">
+          <f:facet name="body">
+            <af:panelStretchLayout binding="#{backingBeanScope.backing_person_rovd.psl1}"
+                                   id="psl1">
+              <f:facet name="bottom"/>
+              <f:facet name="center">
+                <af:panelCollection binding="#{backingBeanScope.backing_person_rovd.pc1}"
+                                    id="pc1">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar">
+                    <af:toolbar binding="#{backingBeanScope.backing_person_rovd.t2}"
+                                id="t2">
+                      <af:commandButton actionListener="#{bindings.deleteSelectedRows.execute}"
+                                        text="Удалить"
+                                        disabled="#{!bindings.deleteSelectedRows.enabled}"
+                                        binding="#{backingBeanScope.backing_person_rovd.cb1}"
+                                        id="cb1" icon="/images/remove.png"/>
+                      <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                        text="Подтвердить удаление"
+                                        disabled="#{!bindings.Commit.enabled}"
+                                        binding="#{backingBeanScope.backing_person_rovd.cb2}"
+                                        id="cb2" icon="/images/commit.png"/>
+                      <af:commandButton text="Создать"
+                                        binding="#{backingBeanScope.backing_person_rovd.cb3}"
+                                        id="cb3" icon="/images/create.png"
+                                        action="create"/>
+                      <af:commandButton text="Назад"
+                                        binding="#{backingBeanScope.backing_person_rovd.cb4}"
+                                        id="cb4" icon="/images/back.png"
+                                        action="back"/>
+                    </af:toolbar>
+                  </f:facet>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.EntPersonsRovdView2.collectionModel}"
+                            var="row"
+                            rows="#{bindings.EntPersonsRovdView2.rangeSize}"
+                            emptyText="#{bindings.EntPersonsRovdView2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.EntPersonsRovdView2.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.EntPersonsRovdView2Query.queryDescriptor}"
+                            queryListener="#{bindings.EntPersonsRovdView2Query.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectedRowKeys="#{bindings.EntPersonsRovdView2.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.EntPersonsRovdView2.collectionModel.makeCurrent}"
+                            rowSelection="single"
+                            binding="#{backingBeanScope.backing_person_rovd.t1}"
+                            id="t1" partialTriggers="soc3">
+                    <af:column headerText="#{bindings.EntPersonsRovdView2.hints.DeleteRow.label}"
+                               id="c4" width="20" align="center">
+                      <af:selectBooleanCheckbox value="#{row.bindings.DeleteRow.inputValue}"
+                                                label="#{row.bindings.DeleteRow.label}"
+                                                shortDesc="#{bindings.EntPersonsRovdView2.hints.DeleteRow.tooltip}"
+                                                id="sbc1"
+                                                styleClass="SELECT_CHECKBOX"/>
+                      <f:facet name="header">
+                        <af:selectBooleanCheckbox id="HEADER_CHECKBOX"
+                                                  label="#{''}" simple="true"
+                                                  binding="#{backingBeanScope.backing_person_rovd.HEADER_CHECKBOX}">
+                          <af:clientListener type="valueChange"
+                                             method="toggleDelCheckbox"/>
+                        </af:selectBooleanCheckbox>
+                      </f:facet>
+                    </af:column>
+                    <af:column id="c5" width="20">
+                      <af:commandImageLink id="cil1" icon="/images/edit.png"
+                                           action="#{backingBeanScope.backing_person_rovd.edit}"/>
+                    </af:column>
+                    <af:column sortProperty="DeptCode"
+                               sortable="true"
+                               headerText="#{bindings.EntPersonsRovdView2.hints.DeptCode.label}"
+                               id="c3" width="400">
+                      <af:selectOneChoice value="#{row.bindings.DeptCode.inputValue}"
+                                          label="#{row.bindings.DeptCode.label}"
+                                          required="#{bindings.EntPersonsRovdView2.hints.DeptCode.mandatory}"
+                                          shortDesc="#{bindings.EntPersonsRovdView2.hints.DeptCode.tooltip}"
+                                          id="soc1" readOnly="true">
+                        <f:selectItems value="#{row.bindings.DeptCode.items}"
+                                       id="si1"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="RovdStatus" filterable="true"
+                               sortable="true"
+                               headerText="#{bindings.EntPersonsRovdView2.hints.RovdStatus.label}"
+                               id="c1">
+                      <af:selectOneChoice value="#{row.bindings.RovdStatus.inputValue}"
+                                          label="#{row.bindings.RovdStatus.label}"
+                                          required="#{bindings.EntPersonsRovdView2.hints.RovdStatus.mandatory}"
+                                          shortDesc="#{bindings.EntPersonsRovdView2.hints.RovdStatus.tooltip}"
+                                          id="soc2" readOnly="true">
+                        <f:selectItems value="#{row.bindings.RovdStatus.items}"
+                                       id="si2"/>
+                      </af:selectOneChoice>
+                      <f:facet name="filter">
+                        <af:selectOneChoice id="soc3" label="#{''}"
+                                            autoSubmit="true" immediate="true"
+                                            value="#{vs.filterCriteria.RovdStatus}"
+                                            styleClass="AFStretchWidth"
+                                            binding="#{backingBeanScope.backing_person_rovd.soc3}">
+                          <!--f:selectItems id="pt_si1"
+                                         value="#{backingBeanScope.backing_person_rovd.FRovdStatusSelectList}"
+                                         binding="#{backingBeanScope.backing_person_rovd.pt_si1}"/-->
+                          <f:selectItem                                       
+                                  itemValue=""                                      
+                                  itemLabel="" id="si4"/>
+                          <af:forEach var="listrow"                                  
+                                items="#{bindings.RovdStatusView1.rangeSet}">
+                              <f:selectItem  id="si3"                                     
+                                  itemValue="#{listrow.ID}"                                      
+                                  itemLabel="#{listrow.NAME}" />
+                           </af:forEach>
+                        </af:selectOneChoice>
+                      </f:facet>
+                    </af:column>
+                    <af:column sortProperty="RovdPersonalCase" filterable="true"
+                               sortable="true"
+                               headerText="#{bindings.EntPersonsRovdView2.hints.RovdPersonalCase.label}"
+                               id="c2">
+                      <af:inputText value="#{row.bindings.RovdPersonalCase.inputValue}"
+                                    label="#{bindings.EntPersonsRovdView2.hints.RovdPersonalCase.label}"
+                                    required="#{bindings.EntPersonsRovdView2.hints.RovdPersonalCase.mandatory}"
+                                    columns="#{bindings.EntPersonsRovdView2.hints.RovdPersonalCase.displayWidth}"
+                                    maximumLength="#{bindings.EntPersonsRovdView2.hints.RovdPersonalCase.precision}"
+                                    shortDesc="#{bindings.EntPersonsRovdView2.hints.RovdPersonalCase.tooltip}"
+                                    id="it1" readOnly="true">
+                        <f:validator binding="#{row.bindings.RovdPersonalCase.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </f:facet>
+              <f:facet name="start"/>
+              <f:facet name="end"/>
+              <f:facet name="top"/>
+            </af:panelStretchLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_person_rovd-->
+</jsp:root>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="gun_modelsPageDef"
+                Package="administration.classifiers.guns">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ModelGunView1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="ModelGunView1Iterator"/>
+    <searchRegion Binds="ModelGunView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ModelGunView1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ModelGunView1Iterator" id="ModelGunView1">
+      <nodeDefinition DefName="ru.rdtex.mvd.weapon.model.vo.ModelGunView"
+                      Name="ModelGunView10">
+        <AttrNames>
+          <Item Value="DeleteRow"/>
+          <Item Value="Code"/>
+          <Item Value="Transcript"/>
+          <Item Value="Writing"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="deleteSelectedRows" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="deleteSelectedRows"
+                  IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="AppModuleDataControl.dataProvider">
+      <NamedData NDName="ViewObjectName" NDValue="ModelGunView1"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="createRow" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="createRow"
+                  IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="AppModuleDataControl.dataProvider">
+      <NamedData NDName="ViewObjectName" NDValue="ModelGunView1"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Commit" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <tree IterBinding="ModelGunView1Iterator" id="ModelGunView11">
+      <nodeDefinition DefName="ru.rdtex.mvd.weapon.model.vo.ModelGunView"
+                      Name="ModelGunView110">
+        <AttrNames>
+          <Item Value="DeleteRow"/>
+          <Item Value="Code"/>
+          <Item Value="Transcript"/>
+          <Item Value="Writing"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

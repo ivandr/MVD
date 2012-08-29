@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="HeadsView"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  SelectList="Heads.CODE, 
+       Heads.FIO, 
+       Heads.ZVAN, 
+       Heads.DOLZ, 
+       Heads.TNUMBER, 
+       Heads.OBJ_ID"
+  FromList="HEADS Heads"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="Heads"
+    Entity="ru.rdtex.mvd.weapon.model.en.Heads"/>
+  <ViewAttribute
+    Name="Code"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Code"
+    EntityUsage="Heads"
+    AliasName="CODE"/>
+  <ViewAttribute
+    Name="Fio"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Fio"
+    EntityUsage="Heads"
+    AliasName="FIO"/>
+  <ViewAttribute
+    Name="Zvan"
+    PrecisionRule="true"
+    EntityAttrName="Zvan"
+    EntityUsage="Heads"
+    AliasName="ZVAN"/>
+  <ViewAttribute
+    Name="Dolz"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Dolz"
+    EntityUsage="Heads"
+    AliasName="DOLZ"/>
+  <ViewAttribute
+    Name="Tnumber"
+    PrecisionRule="true"
+    EntityAttrName="Tnumber"
+    EntityUsage="Heads"
+    AliasName="TNUMBER"/>
+  <ViewAttribute
+    Name="ObjId"
+    PrecisionRule="true"
+    EntityAttrName="ObjId"
+    EntityUsage="Heads"
+    AliasName="OBJ_ID"/>
+</ViewObject>

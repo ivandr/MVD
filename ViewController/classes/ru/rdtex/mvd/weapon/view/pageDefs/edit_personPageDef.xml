@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="edit_personPageDef"
+                Package="ru.rdtex.mvd.weapon.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="EntPersonsView1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="EntPersonsView1Iterator"/>
+    <iterator Binds="EntPhotoView2" RangeSize="25"
+              DataControl="AppModuleDataControl" id="EntPhotoView2Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="EntPersonsView1Iterator" id="Comments">
+      <AttrNames>
+        <Item Value="Comments"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EntPersonsView1Iterator" id="Name">
+      <AttrNames>
+        <Item Value="Name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EntPersonsView1Iterator" id="Otchestvo">
+      <AttrNames>
+        <Item Value="Otchestvo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EntPersonsView1Iterator" id="TitleSurname">
+      <AttrNames>
+        <Item Value="TitleSurname"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EntPersonsView1Iterator" id="Inn">
+      <AttrNames>
+        <Item Value="Inn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EntPersonsView1Iterator" id="Sex">
+      <AttrNames>
+        <Item Value="Sex"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EntPersonsView1Iterator" id="Nationality">
+      <AttrNames>
+        <Item Value="Nationality"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EntPersonsView1Iterator" id="Birthday">
+      <AttrNames>
+        <Item Value="Birthday"/>
+      </AttrNames>
+    </attributeValues>
+    <button IterBinding="EntPersonsView1Iterator" id="Vip"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Vip"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <attributeValues IterBinding="EntPersonsView1Iterator" id="DocDate">
+      <AttrNames>
+        <Item Value="DocDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EntPersonsView1Iterator" id="DocNum">
+      <AttrNames>
+        <Item Value="DocNum"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EntPersonsView1Iterator" id="DocOrg">
+      <AttrNames>
+        <Item Value="DocOrg"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EntPersonsView1Iterator" id="DocSer">
+      <AttrNames>
+        <Item Value="DocSer"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="EntPersonsView1Iterator" StaticList="false"
+          Uses="LOV_TypedocCode" id="TypedocCode" DTSupportsMRU="true"/>
+    <attributeValues IterBinding="EntPersonsView1Iterator" id="BirthAdr">
+      <AttrNames>
+        <Item Value="BirthAdr"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EntPersonsView1Iterator" id="JobPost">
+      <AttrNames>
+        <Item Value="JobPost"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EntPersonsView1Iterator" id="JobTittle">
+      <AttrNames>
+        <Item Value="JobTittle"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EntPersonsView1Iterator" id="JobPhone">
+      <AttrNames>
+        <Item Value="JobPhone"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EntPersonsView1Iterator" id="EMail">
+      <AttrNames>
+        <Item Value="EMail"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="EntPersonsView1Iterator" StaticList="false"
+          Uses="LOV_PtypeCode" id="PtypeCode" DTSupportsMRU="true"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <attributeValues IterBinding="EntPersonsView1Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EntPhotoView2Iterator" id="Photo">
+      <AttrNames>
+        <Item Value="Photo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EntPersonsView1Iterator" id="State">
+      <AttrNames>
+        <Item Value="State"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

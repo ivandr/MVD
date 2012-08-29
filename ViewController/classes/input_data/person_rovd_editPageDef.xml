@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="person_rovd_editPageDef"
+                Package="input_data">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="EntPersonsRovdView2" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="EntPersonsRovdView2Iterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="EntPersonsRovdView2Iterator" StaticList="false"
+          Uses="LOV_DeptCode" id="DeptCode" DTSupportsMRU="true"/>
+    <list IterBinding="EntPersonsRovdView2Iterator" StaticList="false"
+          Uses="LOV_RovdStatus" id="RovdStatus" DTSupportsMRU="true"/>
+    <attributeValues IterBinding="EntPersonsRovdView2Iterator" id="StatusDate">
+      <AttrNames>
+        <Item Value="StatusDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EntPersonsRovdView2Iterator"
+                     id="RovdPersonalCase">
+      <AttrNames>
+        <Item Value="RovdPersonalCase"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EntPersonsRovdView2Iterator"
+                     id="RovdEmployee">
+      <AttrNames>
+        <Item Value="RovdEmployee"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EntPersonsRovdView2Iterator"
+                     id="StatusReason">
+      <AttrNames>
+        <Item Value="StatusReason"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+  </bindings>
+</pageDefinition>

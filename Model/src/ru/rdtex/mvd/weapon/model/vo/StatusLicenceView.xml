@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="StatusLicenceView"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  SelectList="StatusLicence.CODE, 
+       StatusLicence.TITLE, 
+       StatusLicence.UPDATED_FLAG"
+  FromList="STATUS_LICENCE StatusLicence"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="StatusLicence"
+    Entity="ru.rdtex.mvd.weapon.model.en.StatusLicence"/>
+  <ViewAttribute
+    Name="Code"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Code"
+    EntityUsage="StatusLicence"
+    AliasName="CODE"/>
+  <ViewAttribute
+    Name="Title"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Title"
+    EntityUsage="StatusLicence"
+    AliasName="TITLE"/>
+  <ViewAttribute
+    Name="UpdatedFlag"
+    PrecisionRule="true"
+    EntityAttrName="UpdatedFlag"
+    EntityUsage="StatusLicence"
+    AliasName="UPDATED_FLAG"/>
+</ViewObject>

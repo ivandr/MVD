@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="licenses_typesPageDef"
+                Package="classifiers">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="TypeLicenceView1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="TypeLicenceView1Iterator"/>
+    <searchRegion Binds="TypeLicenceView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="TypeLicenceView1Query"/>
+    <iterator Binds="TypeBlank1" RangeSize="10"
+              DataControl="AppModuleDataControl" id="TypeBlank1Iterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="deleteSelectedRows" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="deleteSelectedRows"
+                  IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="AppModuleDataControl.dataProvider">
+      <NamedData NDName="ViewObjectName" NDValue="TypeLicenceView1"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="createRow" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="createRow"
+                  IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="AppModuleDataControl.dataProvider">
+      <NamedData NDName="ViewObjectName" NDValue="TypeLicenceView1"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <tree IterBinding="TypeLicenceView1Iterator" id="TypeLicenceView1">
+      <nodeDefinition DefName="ru.rdtex.mvd.weapon.model.vo.TypeLicenceView"
+                      Name="TypeLicenceView10">
+        <AttrNames>
+          <Item Value="DeleteRow"/>
+          <Item Value="Id"/>
+          <Item Value="Series"/>
+          <Item Value="Title"/>
+          <Item Value="IsExpimp"/>
+          <Item Value="IsTransit"/>
+          <Item Value="TypeBlank"/>
+          <Item Value="TypePerson"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="TypeLicenceView1Iterator" id="IsExpimp"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="IsExpimp"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <button IterBinding="TypeLicenceView1Iterator" id="IsTransit"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="IsTransit"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>
+    <tree IterBinding="TypeBlank1Iterator" id="TypeBlank1">
+      <nodeDefinition DefName="ru.rdtex.mvd.weapon.model.vo.TypeBlank"
+                      Name="TypeBlank10">
+        <AttrNames>
+          <Item Value="NAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

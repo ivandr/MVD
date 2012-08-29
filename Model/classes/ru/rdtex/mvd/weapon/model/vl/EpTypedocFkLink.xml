@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="EpTypedocFkLink"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  EntityAssociation="ru.rdtex.mvd.weapon.model.asoc.EpTypedocFkAssoc">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewLinkDefEnd
+    Name="TypeDocView"
+    Cardinality="1"
+    Owner="ru.rdtex.mvd.weapon.model.vo.TypeDocView"
+    Source="true">
+    <DesignTime>
+      <Attr Name="_finderName" Value="TypeDocView"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.vo.TypeDocView.Code"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="EntPersonsView"
+    Cardinality="-1"
+    Owner="ru.rdtex.mvd.weapon.model.vo.EntPersonsView">
+    <DesignTime>
+      <Attr Name="_finderName" Value="EntPersonsView"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.vo.EntPersonsView.TypedocCode"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

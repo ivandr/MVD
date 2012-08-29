@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="type_person_urPageDef"
+                Package="classifiers.owners">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="TypePersonView1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="TypePersonView1Iterator"/>
+    <searchRegion Binds="TypePersonView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="TypePersonView1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="TypePersonView1Iterator" id="TypePersonView1">
+      <nodeDefinition DefName="ru.rdtex.mvd.weapon.model.vo.TypePersonView"
+                      Name="TypePersonView10">
+        <AttrNames>
+          <Item Value="Code"/>
+          <Item Value="Title"/>
+          <Item Value="DeleteRow"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="deleteSelectedRows" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="deleteSelectedRows"
+                  IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="AppModuleDataControl.dataProvider">
+      <NamedData NDName="ViewObjectName" NDValue="TypePersonView1"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <methodAction id="createRow" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="createRow"
+                  IsViewObjectMethod="true" DataControl="AppModuleDataControl"
+                  InstanceName="AppModuleDataControl.TypePersonView1"
+                  IterBinding="TypePersonView1Iterator">
+      <NamedData NDName="Type" NDValue="Ю" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="deleteSelectedRows1" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="deleteSelectedRows"
+                  IsViewObjectMethod="true" DataControl="AppModuleDataControl"
+                  InstanceName="AppModuleDataControl.TypePersonView1"
+                  IterBinding="TypePersonView1Iterator">
+      <NamedData NDName="Type" NDValue="Ю" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

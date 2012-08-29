@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CodeGun"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="CODE_GUN"
+  AliasName="CodeGun"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="Code"
+    IsNotNull="true"
+    ColumnName="CODE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="CODE_GUN"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Parent"
+    Precision="255"
+    ColumnName="PARENT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CODE_GUN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="255"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="NStvolov"
+    IsNotNull="true"
+    ColumnName="N_STVOLOV"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="CODE_GUN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModelTitle"
+    IsUnique="true"
+    IsNotNull="true"
+    Precision="200"
+    ColumnName="MODEL_TITLE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CODE_GUN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CalibrCode1"
+    IsUnique="true"
+    IsNotNull="true"
+    ColumnName="CALIBR_CODE_1"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="CODE_GUN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CalibrCode2"
+    IsUnique="true"
+    ColumnName="CALIBR_CODE_2"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="CODE_GUN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CalibrCode3"
+    IsUnique="true"
+    ColumnName="CALIBR_CODE_3"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="CODE_GUN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CalibrCode4"
+    IsUnique="true"
+    ColumnName="CALIBR_CODE_4"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="CODE_GUN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModelGunCode"
+    IsNotNull="true"
+    Precision="200"
+    ColumnName="MODEL_GUN_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CODE_GUN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="KindgunCode"
+    IsNotNull="true"
+    ColumnName="KINDGUN_CODE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="CODE_GUN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TypeGunCode"
+    IsNotNull="true"
+    ColumnName="TYPE_GUN_CODE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="CODE_GUN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UpdatedFlag"
+    ColumnName="UPDATED_FLAG"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="CODE_GUN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Actual"
+    Precision="1"
+    Scale="0"
+    ColumnName="ACTUAL"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="CODE_GUN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DeleteRow"
+    IsQueriable="false"
+    IsPersistent="false"
+    ColumnName="$none$"
+    SQLType="BIT"
+    Type="java.lang.Boolean"
+    ColumnType="$none$"/>
+  <AccessorAttribute
+    Name="KindGun"
+    Association="ru.rdtex.mvd.weapon.model.asoc.Codegun1Kindgun1FkAssoc"
+    AssociationEnd="ru.rdtex.mvd.weapon.model.asoc.Codegun1Kindgun1FkAssoc.KindGun"
+    AssociationOtherEnd="ru.rdtex.mvd.weapon.model.asoc.Codegun1Kindgun1FkAssoc.CodeGun"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="TypeGun"
+    Association="ru.rdtex.mvd.weapon.model.asoc.Codegun1TypeGun1FkAssoc"
+    AssociationEnd="ru.rdtex.mvd.weapon.model.asoc.Codegun1TypeGun1FkAssoc.TypeGun"
+    AssociationOtherEnd="ru.rdtex.mvd.weapon.model.asoc.Codegun1TypeGun1FkAssoc.CodeGun"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="Calibr"
+    Association="ru.rdtex.mvd.weapon.model.asoc.Codegun1Calibr1FkAssoc"
+    AssociationEnd="ru.rdtex.mvd.weapon.model.asoc.Codegun1Calibr1FkAssoc.Calibr"
+    AssociationOtherEnd="ru.rdtex.mvd.weapon.model.asoc.Codegun1Calibr1FkAssoc.CodeGun"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="Calibr1"
+    Association="ru.rdtex.mvd.weapon.model.asoc.Codegun1Calibr14FkAssoc"
+    AssociationEnd="ru.rdtex.mvd.weapon.model.asoc.Codegun1Calibr14FkAssoc.Calibr1"
+    AssociationOtherEnd="ru.rdtex.mvd.weapon.model.asoc.Codegun1Calibr14FkAssoc.CodeGun1"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="Calibr2"
+    Association="ru.rdtex.mvd.weapon.model.asoc.Codegun1Calibr13FkAssoc"
+    AssociationEnd="ru.rdtex.mvd.weapon.model.asoc.Codegun1Calibr13FkAssoc.Calibr2"
+    AssociationOtherEnd="ru.rdtex.mvd.weapon.model.asoc.Codegun1Calibr13FkAssoc.CodeGun2"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="Calibr3"
+    Association="ru.rdtex.mvd.weapon.model.asoc.Codegun1Calibr12FkAssoc"
+    AssociationEnd="ru.rdtex.mvd.weapon.model.asoc.Codegun1Calibr12FkAssoc.Calibr3"
+    AssociationOtherEnd="ru.rdtex.mvd.weapon.model.asoc.Codegun1Calibr12FkAssoc.CodeGun3"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="CodegunPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CODEGUN_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.CodeGun.Code"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="CodegunUk">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CODEGUN____UK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.CodeGun.ModelTitle"/>
+      <Item Value="ru.rdtex.mvd.weapon.model.en.CodeGun.CalibrCode3"/>
+      <Item Value="ru.rdtex.mvd.weapon.model.en.CodeGun.CalibrCode1"/>
+      <Item Value="ru.rdtex.mvd.weapon.model.en.CodeGun.CalibrCode4"/>
+      <Item Value="ru.rdtex.mvd.weapon.model.en.CodeGun.CalibrCode2"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011002">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011002"/>
+      <Attr Name="_checkCondition" Value='"CODE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.CodeGun.Code"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011003">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011003"/>
+      <Attr Name="_checkCondition" Value='"N_STVOLOV" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.CodeGun.NStvolov"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011004">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011004"/>
+      <Attr Name="_checkCondition" Value='"MODEL_TITLE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.CodeGun.ModelTitle"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011005">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011005"/>
+      <Attr Name="_checkCondition" Value='"CALIBR_CODE_1" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.CodeGun.CalibrCode1"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011006">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011006"/>
+      <Attr Name="_checkCondition" Value='"MODEL_GUN_CODE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.CodeGun.ModelGunCode"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011007">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011007"/>
+      <Attr Name="_checkCondition" Value='"KINDGUN_CODE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.CodeGun.KindgunCode"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0011008">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011008"/>
+      <Attr Name="_checkCondition" Value='"TYPE_GUN_CODE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.CodeGun.TypeGunCode"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="Codegun1Calibr12Fk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CALIBR_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CODEGUN_1_CALIBR_1_2_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.CodeGun.CalibrCode2"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="Codegun1Calibr13Fk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CALIBR_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CODEGUN_1_CALIBR_1_3_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.CodeGun.CalibrCode3"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="Codegun1Calibr14Fk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CALIBR_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CODEGUN_1_CALIBR_1_4_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.CodeGun.CalibrCode4"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="Codegun1Calibr1Fk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CALIBR_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CODEGUN_1_CALIBR_1_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.CodeGun.CalibrCode1"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="Codegun1Kindgun1Fk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="KINDGUN_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CODEGUN_1_KINDGUN_1_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.CodeGun.KindgunCode"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="Codegun1ModelGu1Fk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="MODEL_GUN_UK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CODEGUN_1_MODEL_GU_1_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.CodeGun.ModelGunCode"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="Codegun1TypeGun1Fk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="TYPE_GUN_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CODEGUN_1_TYPE_GUN_1_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.en.CodeGun.TypeGunCode"/>
+    </AttrArray>
+  </Key>
+</Entity>

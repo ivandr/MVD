@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92"
+                id="site_menu_task_flow_definition_CreateInsertPageDef"
+                Package="ru.rdtex.mvd.weapon.view.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="EntPersonsView1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="EntPersonsView1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="EntPersonsView1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

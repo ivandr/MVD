@@ -1,0 +1,328 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1"
+                 binding="#{backingBeanScope.backing_input_data_person_weapon.d1}">
+      <af:messages binding="#{backingBeanScope.backing_input_data_person_weapon.m1}"
+                   id="m1"/>
+      <af:form id="f1"
+               binding="#{backingBeanScope.backing_input_data_person_weapon.f1}">
+        <af:pageTemplate viewId="/templates/mvd_temp.jspx" id="pt1">
+          <f:facet name="body">
+              <af:panelSplitter binding="#{backingBeanScope.backing_input_data_person_weapon.ps1}"
+                                id="ps1" orientation="vertical"
+                                positionedFromEnd="true" splitterPosition="400">
+                <f:facet name="first">
+                  <af:panelCollection binding="#{backingBeanScope.backing_input_data_person_weapon.pc1}"
+                                      id="pc1">
+                    <f:facet name="menus"/>
+                    <f:facet name="toolbar">
+                      <af:toolbar binding="#{backingBeanScope.backing_input_data_person_weapon.t4}"
+                                  id="t4">
+                        <af:commandButton text="Назад"
+                                          binding="#{backingBeanScope.backing_input_data_person_weapon.cb2}"
+                                          id="cb2" icon="/images/back.png"
+                                          action="#{backingBeanScope.backing_input_data_person_weapon.back}"/>
+                      </af:toolbar>
+                    </f:facet>
+                    <f:facet name="statusbar">
+                      <af:toolbar binding="#{backingBeanScope.backing_input_data_person_weapon.t5}"
+                                  id="t5">
+                        <af:selectOneRadio value="#{backingBeanScope.backing_input_data_person_weapon.isPerson}"
+                                           clientComponent="true"
+                                           styleClass="headerFilter"
+                                           binding="#{backingBeanScope.backing_input_data_person_weapon.sor1}"
+                                           id="sor1" layout="horizontal"
+                                           rendered="#{backingBeanScope.backing_input_data_person_weapon.docId != null}">
+                          <af:selectItem label="'Свое' оружие"
+                                         binding="#{backingBeanScope.backing_input_data_person_weapon.si1}"
+                                         id="si1" value="0"/>
+                          <af:selectItem label="Свободное оружие"
+                                         binding="#{backingBeanScope.backing_input_data_person_weapon.si2}"
+                                         id="si2" value="1"/>
+                          <af:clientListener method="changeRadiogroup"
+                                             type="valueChange"/>
+                        </af:selectOneRadio>
+                        <af:inputText clientComponent="true" id="radioText"
+                                      label="radio" inlineStyle="display: none;"
+                                      binding="#{backingBeanScope.backing_input_data_person_weapon.radioText}">
+                          <af:serverListener type="myCustomEventRadio"
+                                             method="#{backingBeanScope.backing_input_data_person_weapon.myCustomChangeRadioListener}"/>
+                        </af:inputText>
+                      </af:toolbar>
+                    </f:facet>
+                    <af:table value="#{bindings.RGunGunsView1.collectionModel}"
+                              var="row"
+                              rows="#{bindings.RGunGunsView1.rangeSize}"
+                              emptyText="#{bindings.RGunGunsView1.viewable ? 'Данных не найдено.' : 'Доступ запрещен.'}"
+                              fetchSize="#{bindings.RGunGunsView1.rangeSize}"
+                              rowBandingInterval="0"
+                              selectedRowKeys="#{bindings.RGunGunsView1.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.RGunGunsView1.collectionModel.makeCurrent}"
+                              rowSelection="single"
+                              binding="#{backingBeanScope.backing_input_data_person_weapon.t6}"
+                              id="t6"
+                              partialTriggers="::sor1 ::radioText">
+                      <af:column sortProperty="KindTitle" sortable="true"
+                                 headerText="#{bindings.RGunGunsView1.hints.KindTitle.label}"
+                                 id="c3" width="103">
+                        <af:outputText value="#{row.KindTitle}" id="ot3"/>
+                      </af:column>
+                      <af:column sortProperty="ModelTitle" sortable="true"
+                                 headerText="#{bindings.RGunGunsView1.hints.ModelTitle.label}"
+                                 id="c1" width="107">
+                        <af:outputText value="#{row.ModelTitle}" id="ot8"/>
+                      </af:column>
+                      <af:column sortProperty="Series" sortable="true"
+                                 headerText="#{bindings.RGunGunsView1.hints.Series.label}"
+                                 id="c4" width="72">
+                        <af:outputText value="#{row.Series}" id="ot4"/>
+                      </af:column>
+                      <af:column sortProperty="Numb" sortable="true"
+                                 headerText="#{bindings.RGunGunsView1.hints.Numb.label}"
+                                 id="c5">
+                        <af:outputText value="#{row.Numb}" id="ot2"/>
+                      </af:column>
+                      <af:column sortProperty="MakeYear" sortable="true"
+                                 headerText="#{bindings.RGunGunsView1.hints.MakeYear.label}"
+                                 id="c6">
+                        <af:outputText value="#{row.MakeYear}" id="ot5">
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.RGunGunsView1.hints.MakeYear.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column headerText="#{bindings.RGunGunsView1.hints.StateName.label}"
+                                 id="c8">
+                        <af:outputText value="#{row.StateName}" id="ot9"/>
+                      </af:column>
+                      <af:column sortProperty="License" sortable="true"
+                                 headerText="#{bindings.RGunGunsView1.hints.License.label}"
+                                 id="c7">
+                        <af:outputText value="#{row.License}" id="ot6"/>
+                      </af:column>
+                      <af:column sortProperty="Permission" sortable="true"
+                                 headerText="#{bindings.RGunGunsView1.hints.Permission.label}"
+                                 id="c2">
+                        <af:outputText value="#{row.Permission}" id="ot7"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                </f:facet>
+                <f:facet name="second">
+                <af:panelGroupLayout binding="#{backingBeanScope.backing_input_data_person_weapon.pgl1}"
+                                     id="pgl1"
+                                     partialTriggers="pc1:t6 pc1:t5 pc1:t4">
+                  <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_weapon.pfl2}"
+                                      id="pfl2" styleClass="mvd_form">
+                    <af:selectOneChoice value="#{bindings.ModelGun1.inputValue}"
+                                        label="#{bindings.ModelGun1.label}"
+                                        required="#{bindings.ModelGun1.hints.mandatory}"
+                                        shortDesc="#{bindings.ModelGun1.hints.tooltip}"
+                                        binding="#{backingBeanScope.backing_input_data_person_weapon.soc4}"
+                                        id="soc4" autoSubmit="true">
+                      <f:selectItems value="#{bindings.ModelGun1.items}"
+                                     binding="#{backingBeanScope.backing_input_data_person_weapon.si6}"
+                                     id="si6"/>
+                    </af:selectOneChoice>
+                    <af:selectOneChoice value="#{bindings.CodegunCode1.inputValue}"
+                                        label="#{bindings.CodegunCode1.label}"
+                                        required="#{bindings.CodegunCode1.hints.mandatory}"
+                                        shortDesc="#{bindings.CodegunCode1.hints.tooltip}"
+                                        binding="#{backingBeanScope.backing_input_data_person_weapon.soc5}"
+                                        id="soc5" partialTriggers="soc4"
+                                        autoSubmit="true">
+                      <f:selectItems value="#{bindings.CodegunCode1.items}"
+                                     binding="#{backingBeanScope.backing_input_data_person_weapon.si7}"
+                                     id="si7"/>
+                    </af:selectOneChoice>
+                  </af:panelFormLayout>
+                  <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_weapon.pfl3}"
+                                      id="pfl3" rows="1"
+                                      partialTriggers="soc5"
+                                      styleClass="mvd_form">
+                    <af:selectOneChoice value="#{bindings.KindgunCode.inputValue}"
+                                        label="#{bindings.KindgunCode.label}"
+                                        required="#{bindings.KindgunCode.hints.mandatory}"
+                                        shortDesc="#{bindings.KindgunCode.hints.tooltip}"
+                                        binding="#{backingBeanScope.backing_input_data_person_weapon.soc2}"
+                                        id="soc2" disabled="true">
+                      <f:selectItems value="#{bindings.KindgunCode.items}"
+                                     binding="#{backingBeanScope.backing_input_data_person_weapon.si4}"
+                                     id="si4"/>
+                    </af:selectOneChoice>
+                    <af:selectOneChoice value="#{bindings.TypeGunCode.inputValue}"
+                                        label="#{bindings.TypeGunCode.label}"
+                                        required="#{bindings.TypeGunCode.hints.mandatory}"
+                                        shortDesc="#{bindings.TypeGunCode.hints.tooltip}"
+                                        binding="#{backingBeanScope.backing_input_data_person_weapon.soc3}"
+                                        id="soc3" disabled="true">
+                      <f:selectItems value="#{bindings.TypeGunCode.items}"
+                                     binding="#{backingBeanScope.backing_input_data_person_weapon.si5}"
+                                     id="si5"/>
+                    </af:selectOneChoice>
+                  </af:panelFormLayout>
+                  <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_weapon.pfl4}"
+                                      id="pfl4" maxColumns="10" rows="1"
+                                      partialTriggers="soc5"
+                                      styleClass="mvd_form">
+                    <af:inputText value="#{bindings.NStvolov.inputValue}"
+                                  label="#{bindings.NStvolov.hints.label}"
+                                  required="#{bindings.NStvolov.hints.mandatory}"
+                                  columns="#{bindings.NStvolov.hints.displayWidth}"
+                                  maximumLength="#{bindings.NStvolov.hints.precision}"
+                                  shortDesc="#{bindings.NStvolov.hints.tooltip}"
+                                  binding="#{backingBeanScope.backing_input_data_person_weapon.it5}"
+                                  id="it5" disabled="true">
+                      <f:validator binding="#{bindings.NStvolov.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.NStvolov.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.CalibrCode1.inputValue}"
+                                  label="#{bindings.CalibrCode1.hints.label}"
+                                  required="#{bindings.CalibrCode1.hints.mandatory}"
+                                  columns="#{bindings.CalibrCode1.hints.displayWidth}"
+                                  maximumLength="#{bindings.CalibrCode1.hints.precision}"
+                                  shortDesc="#{bindings.CalibrCode1.hints.tooltip}"
+                                  binding="#{backingBeanScope.backing_input_data_person_weapon.it6}"
+                                  id="it6" disabled="true">
+                      <f:validator binding="#{bindings.CalibrCode1.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.CalibrCode1.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.CalibrCode2.inputValue}"
+                                  required="#{bindings.CalibrCode2.hints.mandatory}"
+                                  columns="#{bindings.CalibrCode2.hints.displayWidth}"
+                                  maximumLength="#{bindings.CalibrCode2.hints.precision}"
+                                  shortDesc="#{bindings.CalibrCode2.hints.tooltip}"
+                                  binding="#{backingBeanScope.backing_input_data_person_weapon.it7}"
+                                  id="it7" disabled="true"
+                                  rendered="#{bindings.CalibrCode2.inputValue != '70'}">
+                      <f:validator binding="#{bindings.CalibrCode2.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.CalibrCode2.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.CalibrCode3.inputValue}"
+                                  required="#{bindings.CalibrCode3.hints.mandatory}"
+                                  columns="#{bindings.CalibrCode3.hints.displayWidth}"
+                                  maximumLength="#{bindings.CalibrCode3.hints.precision}"
+                                  shortDesc="#{bindings.CalibrCode3.hints.tooltip}"
+                                  binding="#{backingBeanScope.backing_input_data_person_weapon.it8}"
+                                  id="it8" disabled="true"
+                                  rendered="#{bindings.CalibrCode3.inputValue != '70'}">
+                      <f:validator binding="#{bindings.CalibrCode3.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.CalibrCode3.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.CalibrCode4.inputValue}"
+                                  required="#{bindings.CalibrCode4.hints.mandatory}"
+                                  columns="#{bindings.CalibrCode4.hints.displayWidth}"
+                                  maximumLength="#{bindings.CalibrCode4.hints.precision}"
+                                  shortDesc="#{bindings.CalibrCode4.hints.tooltip}"
+                                  binding="#{backingBeanScope.backing_input_data_person_weapon.it9}"
+                                  id="it9" disabled="true"
+                                  rendered="#{bindings.CalibrCode4.inputValue != '70'}">
+                      <f:validator binding="#{bindings.CalibrCode4.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.CalibrCode4.format}"/>
+                    </af:inputText>
+                  </af:panelFormLayout>
+                  <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_weapon.pfl1}"
+                                      id="pfl1" rows="2" styleClass="mvd_form">
+                    <af:inputText value="#{bindings.Series.inputValue}"
+                                  label="#{bindings.Series.hints.label}"
+                                  required="#{bindings.Series.hints.mandatory}"
+                                  columns="#{bindings.Series.hints.displayWidth}"
+                                  maximumLength="#{bindings.Series.hints.precision}"
+                                  shortDesc="#{bindings.Series.hints.tooltip}"
+                                  binding="#{backingBeanScope.backing_input_data_person_weapon.it2}"
+                                  id="it2">
+                      <f:validator binding="#{bindings.Series.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.MakeYear.inputValue}"
+                                  label="#{bindings.MakeYear.hints.label}"
+                                  required="#{bindings.MakeYear.hints.mandatory}"
+                                  columns="#{bindings.MakeYear.hints.displayWidth}"
+                                  maximumLength="#{bindings.MakeYear.hints.precision}"
+                                  shortDesc="#{bindings.MakeYear.hints.tooltip}"
+                                  binding="#{backingBeanScope.backing_input_data_person_weapon.it3}"
+                                  id="it3">
+                      <f:validator binding="#{bindings.MakeYear.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.MakeYear.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.Numb.inputValue}"
+                                  label="#{bindings.Numb.hints.label}"
+                                  required="#{bindings.Numb.hints.mandatory}"
+                                  columns="#{bindings.Numb.hints.displayWidth}"
+                                  maximumLength="#{bindings.Numb.hints.precision}"
+                                  shortDesc="#{bindings.Numb.hints.tooltip}"
+                                  binding="#{backingBeanScope.backing_input_data_person_weapon.it4}"
+                                  id="it4">
+                      <f:validator binding="#{bindings.Numb.validator}"/>
+                    </af:inputText>
+                    <af:selectOneChoice value="#{bindings.Production.inputValue}"
+                                        label="#{bindings.Production.label}"
+                                        required="#{bindings.Production.hints.mandatory}"
+                                        shortDesc="#{bindings.Production.hints.tooltip}"
+                                        binding="#{backingBeanScope.backing_input_data_person_weapon.soc1}"
+                                        id="soc1">
+                      <f:selectItems value="#{bindings.Production.items}"
+                                     binding="#{backingBeanScope.backing_input_data_person_weapon.si3}"
+                                     id="si3"/>
+                    </af:selectOneChoice>
+                  </af:panelFormLayout>
+                  <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_weapon.pfl5}"
+                                      id="pfl5" styleClass="mvd_form">
+                    <af:inputText value="#{bindings.Comments.inputValue}"
+                                  label="#{bindings.Comments.hints.label}"
+                                  required="#{bindings.Comments.hints.mandatory}"
+                                  columns="#{bindings.Comments.hints.displayWidth}"
+                                  maximumLength="#{bindings.Comments.hints.precision}"
+                                  shortDesc="#{bindings.Comments.hints.tooltip}"
+                                  binding="#{backingBeanScope.backing_input_data_person_weapon.it10}"
+                                  id="it10" rows="5">
+                      <f:validator binding="#{bindings.Comments.validator}"/>
+                    </af:inputText>
+                  </af:panelFormLayout>
+                  <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_weapon.pfl6}"
+                                      id="pfl6" rows="2" styleClass="mvd_form">
+                    <f:facet name="footer"/>
+                    <af:inputText value="#{bindings.ShootProtocol.inputValue}"
+                                  label="#{bindings.ShootProtocol.hints.label}"
+                                  required="#{bindings.ShootProtocol.hints.mandatory}"
+                                  columns="#{bindings.ShootProtocol.hints.displayWidth}"
+                                  maximumLength="#{bindings.ShootProtocol.hints.precision}"
+                                  shortDesc="#{bindings.ShootProtocol.hints.tooltip}"
+                                  binding="#{backingBeanScope.backing_input_data_person_weapon.it11}"
+                                  id="it11">
+                      <f:validator binding="#{bindings.ShootProtocol.validator}"/>
+                    </af:inputText>
+                    <af:inputDate value="#{bindings.ShootDate.inputValue}"
+                                  label="#{bindings.ShootDate.hints.label}"
+                                  required="#{bindings.ShootDate.hints.mandatory}"
+                                  shortDesc="#{bindings.ShootDate.hints.tooltip}"
+                                  binding="#{backingBeanScope.backing_input_data_person_weapon.id1}"
+                                  id="id1">
+                      <f:validator binding="#{bindings.ShootDate.validator}"/>
+                      <af:convertDateTime pattern="#{bindings.ShootDate.format}"/>
+                    </af:inputDate>
+                    <af:selectBooleanCheckbox value="#{bindings.ShootOrder.inputValue}"
+                                              label="#{bindings.ShootOrder.label}"
+                                              shortDesc="#{bindings.ShootOrder.hints.tooltip}"
+                                              binding="#{backingBeanScope.backing_input_data_person_weapon.sbc1}"
+                                              id="sbc1"/>
+                  </af:panelFormLayout>
+                </af:panelGroupLayout>
+              </f:facet>
+              </af:panelSplitter>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_input_data_person_weapon-->
+</jsp:root>

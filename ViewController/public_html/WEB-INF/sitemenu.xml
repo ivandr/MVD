@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu">
+  <itemNode id="itemNode_main" focusViewId="/task-flow-definition/main"
+            label="Главная" action="1000"/>
+  <groupNode id="itemNode_input_data" label="Ввод данных"
+             idref="itemNode_input_data_main">
+    <itemNode id="itemNode_input_data_main" label="Ввод данных"
+                action="1010"
+                focusViewId="/task-flow-definition/input_data_main"/>
+    <groupNode id="itemNode_fz_persons_main" label="Физические лица"
+               idref="itemNode_fz_persons">
+      <itemNode id="itemNode_fz_persons" label="Физические лица"
+                action="1020"
+                focusViewId="/task-flow-definition/fz_persons"/>
+       <groupNode id="itemNode_edit_fz_person_main" label="Редактирование"
+               idref="itemNode_edit_fz_person">
+          <itemNode id="itemNode_edit_fz_person" label="Редактирование"
+                    action="edit"
+                    focusViewId="/task-flow-definition/edit_fz_person"/>
+          <itemNode id="itemNode_person_address" label="Адреса"
+                    action="addresses"
+                    focusViewId="/task-flow-definition/person_address"/>
+          <itemNode id="itemNode_person_address_edit" label="Редактирование адреса"
+                    action="edit"
+                    focusViewId="/task-flow-definition/person_addresses_edit"/>
+          <itemNode id="itemNode_person_rovd" label="РОВД"
+                    action="rovd"
+                    focusViewId="/task-flow-definition/person_rovd"/>
+          <itemNode id="itemNode_person_rovd_edit" label="Редактирование РОВД"
+                    action="edit"
+                    focusViewId="/task-flow-definition/person_rovd_edit"/>
+          <itemNode id="itemNode_person_document" label="Документы"
+                    action="document"
+                    focusViewId="/task-flow-definition/person_document"/>
+          <itemNode id="itemNode_person_document_edit" label="Редактирование документа"
+                    action="edit"
+                    focusViewId="/task-flow-definition/person_document_edit"/>
+          <itemNode id="itemNode_person_weapon" label="Оружие"
+                    action="weapon"
+                    focusViewId="/task-flow-definition/person_weapon"/>
+          <itemNode id="itemNode_person_weapon_edit" label="Редактирование оружия"
+                    action="edit"
+                    focusViewId="/task-flow-definition/person_weapon_edit"/>
+        </groupNode>
+    </groupNode>
+    <itemNode id="itemNode_ur_persons" label="Юридические лица"
+              action="1030"
+              focusViewId="/task-flow-definition/ur_persons"/>
+  </groupNode>
+  <groupNode id="itemNode_administration" label="Администрирование"
+             idref="itemNode_classifiers">
+    <groupNode id="itemNode_classifiers" label="Классификаторы"
+               idref="itemNode_classifier_main">
+      <!--КЛАССИФИКАТОРЫ НАЧАЛО-->
+      <itemNode id="itemNode_classifier_exit" 
+                focusViewId="/adfc-classifiers/exit"
+                label="Выход" 
+                action="1000"/>
+      <itemNode id="itemNode_classifier_main" 
+                focusViewId="/adfc-classifiers/main"
+                label="Главная" 
+                action="8200"/>
+      <groupNode id="itemNode_classifier_directory" label="Справочники"
+                 idref="itemNode_classifier_directory_main">
+        <itemNode id="itemNode_classifier_directory_main" label="Справочники" action="8201"
+                  focusViewId="/adfc-classifiers/directory_main"/>
+        <itemNode id="itemNode_classifier_country" label="Страны" action="8210"
+                  focusViewId="/adfc-classifiers/country"/>
+        <itemNode id="itemNode_classifier_regions" label="Регионы" action="8211"
+                  focusViewId="/adfc-classifiers/regions"/>
+        <itemNode id="itemNode_classifier_licenses_types" label="Типы лицензий/разрешений" action="8212"
+                  focusViewId="/adfc-classifiers/licenses_types"/>      
+        <itemNode id="itemNode_classifier_reward_organ" label="Субъект награждения" action="8213"
+                  focusViewId="/adfc-classifiers/reward_organ"/> 
+        <itemNode id="itemNode_classifier_protected_object_kind" label="Виды охраняемых объектов" action="8214"
+                  focusViewId="/adfc-classifiers/protected_object_kind"/>           
+      </groupNode>
+      <groupNode id="itemNode_classifier_owners" label="Владельцы"
+                 idref="itemNode_classifier_owners_main">
+        <itemNode id="itemNode_classifier_owners_main" label="Владельцы" action="8202"
+                  focusViewId="/adfc-classifiers/owners_main"/>
+        <itemNode id="itemNode_classifier_type_person_fis" label="Типа физических лиц" action="8220"
+                  focusViewId="/adfc-classifiers/type_person_fis"/>
+        <itemNode id="itemNode_classifier_type_person_ur" label="Типы юридических лиц" action="8221"
+                  focusViewId="/adfc-classifiers/type_person_ur"/>
+        <itemNode id="itemNode_classifier_type_doc" label="Типы документов, удостоверяющих личность" action="8222"
+                  focusViewId="/adfc-classifiers/type_doc"/>            
+      </groupNode>
+      <groupNode id="itemNode_classifier_gun" label="Оружие"
+                 idref="itemNode_classifier_gun_main">
+        <itemNode id="itemNode_classifier_gun_main" label="Оружие" action="8203"
+                  focusViewId="/adfc-classifiers/gun_main"/>
+        <itemNode id="itemNode_classifier_gun_codes" label="Код оружия" action="8230"
+                  focusViewId="/adfc-classifiers/gun_codes"/>
+        <itemNode id="itemNode_classifier_gun_kinds" label="Вид оружия" action="8231"
+                  focusViewId="/adfc-classifiers/gun_kinds"/>
+        <itemNode id="itemNode_classifier_gun_models" label="Модель оружия" action="8232"
+                  focusViewId="/adfc-classifiers/gun_models"/>
+        <itemNode id="itemNode_classifier_gun_types" label="Тип оружия" action="8233"
+                  focusViewId="/adfc-classifiers/gun_types"/>       
+        <itemNode id="itemNode_classifier_calibres" label="Классификатор калибров" action="8234"
+                  focusViewId="/adfc-classifiers/calibres"/> 
+      </groupNode>
+      <!--КЛАССИФИКАТОРЫ КОНЕЦ-->
+    </groupNode>
+  </groupNode>
+</menu>

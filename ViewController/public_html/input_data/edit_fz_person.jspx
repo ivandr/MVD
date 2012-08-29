@@ -1,0 +1,393 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" binding="#{backingBeanScope.backing_edit_person.d1}"
+                 title="Физ лицо">
+      <af:messages binding="#{backingBeanScope.backing_edit_person.m1}"
+                   id="m1"/>
+      <af:form id="f1" binding="#{backingBeanScope.backing_edit_person.f1}"
+               usesUpload="true">
+        <af:pageTemplate viewId="/templates/mvd_temp.jspx" id="pt1">
+          <f:facet name="body">
+            <af:panelStretchLayout id="psl1"
+                                   binding="#{backingBeanScope.backing_edit_person.psl1}"
+                                   startWidth="130px">
+              <f:facet name="center">
+                <af:panelGroupLayout layout="scroll"
+                                     xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                     binding="#{backingBeanScope.backing_edit_person.pgl1}"
+                                     id="pgl1">
+                  <af:panelBox text="Информация"
+                               binding="#{backingBeanScope.backing_edit_person.pb1}"
+                               id="pb1">
+                    <f:facet name="toolbar">
+                      <af:group binding="#{backingBeanScope.backing_edit_person.g2}"
+                                id="g2">
+                        <af:toolbar binding="#{backingBeanScope.backing_edit_person.t2}"
+                                    id="t2">
+                          <af:commandButton text="Сохранить"
+                                            binding="#{backingBeanScope.backing_edit_person.cb1}"
+                                            id="cb1" icon="/images/save.png"
+                                            action="#{backingBeanScope.backing_edit_person.save_action}"/>
+                          <af:commandButton text="Отмена"
+                                            binding="#{backingBeanScope.backing_edit_person.cb2}"
+                                            id="cb2" icon="/images/cancel.png"
+                                            immediate="true"
+                                            action="#{backingBeanScope.backing_edit_person.cancel_action}">
+                            <af:resetActionListener/>
+                          </af:commandButton>
+                        </af:toolbar>
+                      </af:group>
+                    </f:facet>
+                    <af:panelFormLayout binding="#{backingBeanScope.backing_edit_person.pfl5}"
+                                        id="pfl5" labelAlignment="start"
+                                        maxColumns="3" rows="3">
+                      <f:facet name="footer"/>
+                      <af:inputText value="#{bindings.TitleSurname.inputValue}"
+                                    label="Фамилия"
+                                    required="#{bindings.TitleSurname.hints.mandatory}"
+                                    maximumLength="#{bindings.TitleSurname.hints.precision}"
+                                    shortDesc="#{bindings.TitleSurname.hints.tooltip}"
+                                    binding="#{backingBeanScope.backing_edit_person.it15}"
+                                    id="it15">
+                        <f:validator binding="#{bindings.TitleSurname.validator}"/>
+                      </af:inputText>
+                      <af:inputText value="#{bindings.Name.inputValue}"
+                                    label="Имя"
+                                    required="#{bindings.Name.hints.mandatory}"
+                                    columns="#{bindings.Name.hints.displayWidth}"
+                                    maximumLength="#{bindings.Name.hints.precision}"
+                                    shortDesc="#{bindings.Name.hints.tooltip}"
+                                    binding="#{backingBeanScope.backing_edit_person.it16}"
+                                    id="it16">
+                        <f:validator binding="#{bindings.Name.validator}"/>
+                      </af:inputText>
+                      <af:inputText value="#{bindings.Otchestvo.inputValue}"
+                                    label="Отчество"
+                                    required="#{bindings.Otchestvo.hints.mandatory}"
+                                    columns="#{bindings.Otchestvo.hints.displayWidth}"
+                                    maximumLength="#{bindings.Otchestvo.hints.precision}"
+                                    shortDesc="#{bindings.Otchestvo.hints.tooltip}"
+                                    binding="#{backingBeanScope.backing_edit_person.it17}"
+                                    id="it17">
+                        <f:validator binding="#{bindings.Otchestvo.validator}"/>
+                      </af:inputText>
+                      <af:inputText value="#{bindings.Inn.inputValue}"
+                                    simple="false"
+                                    required="#{bindings.Inn.hints.mandatory}"
+                                    columns="#{bindings.Inn.hints.displayWidth}"
+                                    maximumLength="#{bindings.Inn.hints.precision}"
+                                    shortDesc="#{bindings.Inn.hints.tooltip}"
+                                    binding="#{backingBeanScope.backing_edit_person.it18}"
+                                    id="it18" label="ИНН">
+                        <f:validator binding="#{bindings.Inn.validator}"/>
+                      </af:inputText>
+                      <af:selectOneChoice label="Пол"
+                                          binding="#{backingBeanScope.backing_edit_person.soc4}"
+                                          id="soc4"
+                                          value="#{bindings.Sex.inputValue}">
+                        <af:selectItem label="Жен"
+                                       binding="#{backingBeanScope.backing_edit_person.si5}"
+                                       id="si5" value="Ж"/>
+                        <af:selectItem label="Муж"
+                                       binding="#{backingBeanScope.backing_edit_person.si6}"
+                                       id="si6" value="М"/>
+                      </af:selectOneChoice>
+                      <af:inputText value="#{bindings.Nationality.inputValue}"
+                                    label="Личное дело"
+                                    required="#{bindings.Nationality.hints.mandatory}"
+                                    columns="#{bindings.Nationality.hints.displayWidth}"
+                                    maximumLength="#{bindings.Nationality.hints.precision}"
+                                    shortDesc="#{bindings.Nationality.hints.tooltip}"
+                                    binding="#{backingBeanScope.backing_edit_person.it19}"
+                                    id="it19">
+                        <f:validator binding="#{bindings.Nationality.validator}"/>
+                      </af:inputText>
+                      <af:inputDate value="#{bindings.Birthday.inputValue}"
+                                    label="Дата рождения" required="true"
+                                    shortDesc="#{bindings.Birthday.hints.tooltip}"
+                                    binding="#{backingBeanScope.backing_edit_person.id3}"
+                                    id="id3">
+                        <f:validator binding="#{bindings.Birthday.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.Birthday.format}"/>
+                      </af:inputDate>
+                      <af:selectBooleanCheckbox value="#{bindings.Vip.inputValue}"
+                                                label="VIP"
+                                                shortDesc="#{bindings.Vip.hints.tooltip}"
+                                                binding="#{backingBeanScope.backing_edit_person.sbc2}"
+                                                id="sbc2"/>
+                    </af:panelFormLayout>
+                    <af:panelTabbed binding="#{backingBeanScope.backing_edit_person.pt2}"
+                                    id="pt2" styleClass="AFStretchWidth">
+                      <af:showDetailItem text="Документы"
+                                         binding="#{backingBeanScope.backing_edit_person.sdi5}"
+                                         id="sdi5">
+                        <af:panelFormLayout binding="#{backingBeanScope.backing_edit_person.pfl6}"
+                                            id="pfl6" labelWidth="5"
+                                            labelAlignment="start">
+                          <f:facet name="footer"/>
+                          <af:selectOneChoice value="#{bindings.TypedocCode.inputValue}"
+                                              label="Документ"
+                                              required="#{bindings.TypedocCode.hints.mandatory}"
+                                              shortDesc="#{bindings.TypedocCode.hints.tooltip}"
+                                              binding="#{backingBeanScope.backing_edit_person.soc5}"
+                                              id="soc5">
+                            <f:selectItems value="#{bindings.TypedocCode.items}"
+                                           binding="#{backingBeanScope.backing_edit_person.si7}"
+                                           id="si7"/>
+                          </af:selectOneChoice>
+                          <af:inputText value="#{bindings.DocSer.inputValue}"
+                                        label="Серия"
+                                        required="#{bindings.DocSer.hints.mandatory}"
+                                        columns="#{bindings.DocSer.hints.displayWidth}"
+                                        maximumLength="#{bindings.DocSer.hints.precision}"
+                                        shortDesc="#{bindings.DocSer.hints.tooltip}"
+                                        binding="#{backingBeanScope.backing_edit_person.it20}"
+                                        id="it20">
+                            <f:validator binding="#{bindings.DocSer.validator}"/>
+                          </af:inputText>
+                          <af:inputText value="#{bindings.DocNum.inputValue}"
+                                        label="Номер"
+                                        required="#{bindings.DocNum.hints.mandatory}"
+                                        columns="#{bindings.DocNum.hints.displayWidth}"
+                                        maximumLength="#{bindings.DocNum.hints.precision}"
+                                        shortDesc="#{bindings.DocNum.hints.tooltip}"
+                                        binding="#{backingBeanScope.backing_edit_person.it21}"
+                                        id="it21">
+                            <f:validator binding="#{bindings.DocNum.validator}"/>
+                          </af:inputText>
+                          <af:inputDate value="#{bindings.DocDate.inputValue}"
+                                        label="Дата"
+                                        required="#{bindings.DocDate.hints.mandatory}"
+                                        shortDesc="#{bindings.DocDate.hints.tooltip}"
+                                        binding="#{backingBeanScope.backing_edit_person.id4}"
+                                        id="id4">
+                            <f:validator binding="#{bindings.DocDate.validator}"/>
+                            <af:convertDateTime pattern="#{bindings.DocDate.format}"/>
+                          </af:inputDate>
+                          <af:inputText value="#{bindings.DocOrg.inputValue}"
+                                        label="Организация,выдавшая документ "
+                                        required="#{bindings.DocOrg.hints.mandatory}"
+                                        columns="60"
+                                        maximumLength="#{bindings.DocOrg.hints.precision}"
+                                        shortDesc="#{bindings.DocOrg.hints.tooltip}"
+                                        binding="#{backingBeanScope.backing_edit_person.it22}"
+                                        id="it22" wrap="soft">
+                            <f:validator binding="#{bindings.DocOrg.validator}"/>
+                          </af:inputText>
+                        </af:panelFormLayout>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Адрес рождения"
+                                         binding="#{backingBeanScope.backing_edit_person.sdi6}"
+                                         id="sdi6">
+                        <af:panelFormLayout binding="#{backingBeanScope.backing_edit_person.pfl7}"
+                                            id="pfl7">
+                          <f:facet name="footer"/>
+                          <af:inputText value="#{bindings.BirthAdr.inputValue}"
+                                        label="Адрес рождения"
+                                        required="#{bindings.BirthAdr.hints.mandatory}"
+                                        columns="60"
+                                        maximumLength="#{bindings.BirthAdr.hints.precision}"
+                                        shortDesc="#{bindings.BirthAdr.hints.tooltip}"
+                                        binding="#{backingBeanScope.backing_edit_person.it23}"
+                                        id="it23">
+                            <f:validator binding="#{bindings.BirthAdr.validator}"/>
+                          </af:inputText>
+                        </af:panelFormLayout>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Сведения  о работе"
+                                         binding="#{backingBeanScope.backing_edit_person.sdi7}"
+                                         id="sdi7">
+                        <af:panelFormLayout binding="#{backingBeanScope.backing_edit_person.pfl8}"
+                                            id="pfl8">
+                          <f:facet name="footer"/>
+                          <af:inputText value="#{bindings.JobTittle.inputValue}"
+                                        label="Место работы"
+                                        required="#{bindings.JobTittle.hints.mandatory}"
+                                        columns="80"
+                                        maximumLength="#{bindings.JobTittle.hints.precision}"
+                                        shortDesc="#{bindings.JobTittle.hints.tooltip}"
+                                        binding="#{backingBeanScope.backing_edit_person.it24}"
+                                        id="it24">
+                            <f:validator binding="#{bindings.JobTittle.validator}"/>
+                          </af:inputText>
+                          <af:inputText value="#{bindings.JobPost.inputValue}"
+                                        label="Должность"
+                                        required="#{bindings.JobPost.hints.mandatory}"
+                                        columns="#{bindings.JobPost.hints.displayWidth}"
+                                        maximumLength="#{bindings.JobPost.hints.precision}"
+                                        shortDesc="#{bindings.JobPost.hints.tooltip}"
+                                        binding="#{backingBeanScope.backing_edit_person.it25}"
+                                        id="it25">
+                            <f:validator binding="#{bindings.JobPost.validator}"/>
+                          </af:inputText>
+                          <af:inputText value="#{bindings.JobPhone.inputValue}"
+                                        label="Рабочий телефон"
+                                        required="#{bindings.JobPhone.hints.mandatory}"
+                                        columns="#{bindings.JobPhone.hints.displayWidth}"
+                                        maximumLength="#{bindings.JobPhone.hints.precision}"
+                                        shortDesc="#{bindings.JobPhone.hints.tooltip}"
+                                        binding="#{backingBeanScope.backing_edit_person.it26}"
+                                        id="it26">
+                            <f:validator binding="#{bindings.JobPhone.validator}"/>
+                          </af:inputText>
+                          <af:selectOneChoice value="#{bindings.PtypeCode.inputValue}"
+                                              label="Категория лица"
+                                              required="#{bindings.PtypeCode.hints.mandatory}"
+                                              shortDesc="#{bindings.PtypeCode.hints.tooltip}"
+                                              binding="#{backingBeanScope.backing_edit_person.soc6}"
+                                              id="soc6">
+                            <f:selectItems value="#{bindings.PtypeCode.items}"
+                                           binding="#{backingBeanScope.backing_edit_person.si8}"
+                                           id="si8"/>
+                          </af:selectOneChoice>
+                          <af:inputText value="#{bindings.EMail.inputValue}"
+                                        label="Электронный адрес"
+                                        required="#{bindings.EMail.hints.mandatory}"
+                                        columns="#{bindings.EMail.hints.displayWidth}"
+                                        maximumLength="#{bindings.EMail.hints.precision}"
+                                        shortDesc="#{bindings.EMail.hints.tooltip}"
+                                        binding="#{backingBeanScope.backing_edit_person.it27}"
+                                        id="it27">
+                            <f:validator binding="#{bindings.EMail.validator}"/>
+                          </af:inputText>
+                        </af:panelFormLayout>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Примечания"
+                                         binding="#{backingBeanScope.backing_edit_person.sdi8}"
+                                         id="sdi8">
+                        <af:inputText value="#{bindings.Comments.inputValue}"
+                                      simple="true"
+                                      required="#{bindings.Comments.hints.mandatory}"
+                                      columns="50"
+                                      maximumLength="#{bindings.Comments.hints.precision}"
+                                      shortDesc="#{bindings.Comments.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_edit_person.it28}"
+                                      id="it28" rows="6">
+                          <f:validator binding="#{bindings.Comments.validator}"/>
+                        </af:inputText>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Фото"
+                                         binding="#{backingBeanScope.backing_edit_person.sdi1}"
+                                         id="sdi1"
+                                         rendered="#{bindings.Id.inputValue != null}">
+                        <af:panelFormLayout binding="#{backingBeanScope.backing_edit_person.pfl1}"
+                                            id="pfl1">
+                          <f:facet name="footer">
+                              <af:panelGroupLayout binding="#{backingBeanScope.backing_edit_person.pgl2}"
+                                                   id="pgl2"
+                                                   layout="horizontal">
+                                <af:commandButton text="Загрузить"
+                                                  action="#{uploadimageclass.uploadImage}"
+                                                  binding="#{backingBeanScope.backing_edit_person.cb6}"
+                                                  id="cb6"
+                                                  icon="/images/upload.png"/>
+                                <af:commandButton text="Удалить"
+                                                  binding="#{backingBeanScope.backing_edit_person.cb10}"
+                                                  id="cb10"
+                                                  icon="/images/remove.png"
+                                                  action="#{uploadimageclass.deleteImage}"/>
+                              </af:panelGroupLayout>
+                          </f:facet>
+                          <af:inputFile binding="#{backingBeanScope.backing_edit_person.if1}"
+                                        id="if1"
+                                        value="#{uploadimageclass.file}"/>
+                        </af:panelFormLayout>
+                      </af:showDetailItem>
+                    </af:panelTabbed>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+                <!-- id="af_one_column_stretched"   -->
+              </f:facet>
+              <f:facet name="start">
+                  <af:decorativeBox binding="#{backingBeanScope.backing_edit_person.db1}"
+                                    id="db1" topLandmark="banner"
+                                    centerLandmark="navigation"
+                                    topHeight="115px"
+                                    rendered="#{bindings.Id.inputValue != null}">
+                    <f:facet name="center">
+                      <af:panelGroupLayout layout="vertical"
+                                           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                           binding="#{backingBeanScope.backing_edit_person.pgl3}"
+                                           id="pgl3" halign="center">
+                        <af:commandButton text="Адреса"
+                                          binding="#{backingBeanScope.backing_edit_person.cb3}"
+                                          id="cb3" styleClass="leftMenuButton"
+                                          action="address"/>
+                        <af:commandButton text="РОВД"
+                                          binding="#{backingBeanScope.backing_edit_person.cb4}"
+                                          id="cb4" styleClass="leftMenuButton"
+                                          action="rovd"/>
+                        <af:commandButton text="Документы"
+                                          binding="#{backingBeanScope.backing_edit_person.cb9}"
+                                          id="cb9" styleClass="leftMenuButton"
+                                          action="document"/>
+                        <af:commandButton text="Оружие"
+                                          binding="#{backingBeanScope.backing_edit_person.cb8}"
+                                          id="cb8" styleClass="leftMenuButton"
+                                          action="#{backingBeanScope.backing_edit_person.goWeapon}"/>
+                        <af:commandButton text="Проверки"
+                                          binding="#{backingBeanScope.backing_edit_person.cb5}"
+                                          id="cb5" styleClass="leftMenuButton"
+                                          action="check" disabled="true"/>
+                        <af:commandButton text="#{bindings.State.inputValue == '2' ? 'Из архива' : 'В архив'}" 
+                                          binding="#{backingBeanScope.backing_edit_person.cb7}"
+                                          id="cb7" 
+                                          styleClass="leftMenuButton"
+                                          action="#{backingBeanScope.backing_edit_person.toggle_state}"
+                                          partialTriggers="::f1"/>
+                        <af:goButton binding="#{backingBeanScope.backing_edit_person.gb1}"
+                                     id="gb1" destination="/ew"
+                                     icon="/images/word.png" text="Печать"
+                                     styleClass="leftMenuButton"/>
+                        <af:inputText value="#{bindings.Id.inputValue}"
+                                      label="#{bindings.Id.hints.label}"
+                                      required="#{bindings.Id.hints.mandatory}"
+                                      columns="#{bindings.Id.hints.displayWidth}"
+                                      maximumLength="#{bindings.Id.hints.precision}"
+                                      shortDesc="#{bindings.Id.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_edit_person.it1}"
+                                      id="it1" contentStyle="width: 30px;"
+                                      readOnly="true">
+                          <f:validator binding="#{bindings.Id.validator}"/>
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.Id.format}"/>
+                        </af:inputText>
+                        <af:inputDate value="#{bindings.DocDate.inputValue}"
+                                      required="#{bindings.DocDate.hints.mandatory}"
+                                      shortDesc="#{bindings.DocDate.hints.tooltip}"
+                                      binding="#{backingBeanScope.backing_edit_person.id1}"
+                                      id="id1" readOnly="true">
+                          <f:validator binding="#{bindings.DocDate.validator}"/>
+                          <af:convertDateTime pattern="#{bindings.DocDate.format}"/>
+                        </af:inputDate>
+                      </af:panelGroupLayout>
+                    </f:facet>
+                    <f:facet name="top">
+                    <af:panelGroupLayout
+                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         binding="#{backingBeanScope.backing_edit_person.pgl4}"
+                                         id="pgl4" halign="center"
+                                         valign="middle">
+                      <af:image shortDesc="#{bindings.Photo.hints.tooltip}"
+                                binding="#{backingBeanScope.backing_edit_person.i1}"
+                                id="i1"
+                                inlineStyle="width:120px; height:100px; margin:5.0px;"
+                                source="/showimage?id=#{bindings.Id.inputValue}"
+                                rendered="#{bindings.Photo.inputValue != null}"/>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  </af:decorativeBox>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_edit_person-->
+</jsp:root>

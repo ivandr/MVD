@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="ru.rdtex.mvd.weapon.model.am.AppModule"
+                       default="AppModuleLocal">
+      <AppModuleConfig DeployPlatform="LOCAL" JDBCName="LRR11" jbo.project="ru.rdtex.mvd.weapon.model.Model" name="AppModuleLocal" ApplicationName="ru.rdtex.mvd.weapon.model.am.AppModule">
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="ru.rdtex.mvd.weapon.model.am.AppModule"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="AppModuleShared" ApplicationName="ru.rdtex.mvd.weapon.model.am.AppModule" DeployPlatform="LOCAL" JDBCName="LRR11" jbo.project="ru.rdtex.mvd.weapon.model.Model">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Security AppModuleJndiName="ru.rdtex.mvd.weapon.model.am.AppModule"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="AppModuleJUnit" DeployPlatform="LOCAL" JDBCName="LRR11" jbo.project="ru.rdtex.mvd.weapon.model.Model" ApplicationName="ru.rdtex.mvd.weapon.model.am.AppModule">
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="ru.rdtex.mvd.weapon.model.am.AppModule"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

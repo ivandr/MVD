@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1"
+                 binding="#{backingBeanScope.backing_input_data_person_rovd_edit.d1}">
+      <af:messages binding="#{backingBeanScope.backing_input_data_person_rovd_edit.m1}"
+                   id="m1"/>
+      <af:form id="f1"
+               binding="#{backingBeanScope.backing_input_data_person_rovd_edit.f1}">
+        <af:pageTemplate viewId="/templates/mvd_temp.jspx" id="pt1">
+          <f:facet name="body">
+            <af:panelBox text="Информация"
+                         binding="#{backingBeanScope.backing_input_data_person_rovd_edit.pb1}"
+                         id="pb1">
+              <f:facet name="toolbar">
+                <af:toolbar binding="#{backingBeanScope.backing_input_data_person_rovd_edit.t1}"
+                            id="t1">
+                  <af:commandButton
+                                    text="Сохранить"
+                                    binding="#{backingBeanScope.backing_input_data_person_rovd_edit.cb1}"
+                                    id="cb1" icon="/images/save.png"
+                                    action="#{backingBeanScope.backing_input_data_person_rovd_edit.save_action}"/>
+                  <af:commandButton
+                                    text="Отмена"
+                                    immediate="true"
+                                    binding="#{backingBeanScope.backing_input_data_person_rovd_edit.cb2}"
+                                    id="cb2" icon="/images/cancel.png"
+                                    action="#{backingBeanScope.backing_input_data_person_rovd_edit.cancel_action}">
+                    <af:resetActionListener/>
+                  </af:commandButton>
+                </af:toolbar>
+              </f:facet>
+              <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_rovd_edit.pfl1}"
+                                  id="pfl1">
+                <f:facet name="footer"/>
+                <af:selectOneChoice value="#{bindings.DeptCode.inputValue}"
+                                    label="#{bindings.DeptCode.label}"
+                                    required="#{bindings.DeptCode.hints.mandatory}"
+                                    shortDesc="#{bindings.DeptCode.hints.tooltip}"
+                                    binding="#{backingBeanScope.backing_input_data_person_rovd_edit.soc1}"
+                                    id="soc1">
+                  <f:selectItems value="#{bindings.DeptCode.items}"
+                                 binding="#{backingBeanScope.backing_input_data_person_rovd_edit.si1}"
+                                 id="si1"/>
+                </af:selectOneChoice>
+                <af:selectOneChoice value="#{bindings.RovdStatus.inputValue}"
+                                    label="#{bindings.RovdStatus.label}"
+                                    required="#{bindings.RovdStatus.hints.mandatory}"
+                                    shortDesc="#{bindings.RovdStatus.hints.tooltip}"
+                                    binding="#{backingBeanScope.backing_input_data_person_rovd_edit.soc2}"
+                                    id="soc2">
+                  <f:selectItems value="#{bindings.RovdStatus.items}"
+                                 binding="#{backingBeanScope.backing_input_data_person_rovd_edit.si2}"
+                                 id="si2"/>
+                </af:selectOneChoice>
+                <af:inputDate value="#{bindings.StatusDate.inputValue}"
+                              label="#{bindings.StatusDate.hints.label}"
+                              required="#{bindings.StatusDate.hints.mandatory}"
+                              shortDesc="#{bindings.StatusDate.hints.tooltip}"
+                              binding="#{backingBeanScope.backing_input_data_person_rovd_edit.id1}"
+                              id="id1">
+                  <f:validator binding="#{bindings.StatusDate.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.StatusDate.format}"/>
+                </af:inputDate>
+                <af:inputText value="#{bindings.RovdPersonalCase.inputValue}"
+                              label="#{bindings.RovdPersonalCase.hints.label}"
+                              required="#{bindings.RovdPersonalCase.hints.mandatory}"
+                              columns="#{bindings.RovdPersonalCase.hints.displayWidth}"
+                              maximumLength="#{bindings.RovdPersonalCase.hints.precision}"
+                              shortDesc="#{bindings.RovdPersonalCase.hints.tooltip}"
+                              binding="#{backingBeanScope.backing_input_data_person_rovd_edit.it1}"
+                              id="it1">
+                  <f:validator binding="#{bindings.RovdPersonalCase.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.RovdEmployee.inputValue}"
+                              label="#{bindings.RovdEmployee.hints.label}"
+                              required="#{bindings.RovdEmployee.hints.mandatory}"
+                              columns="#{bindings.RovdEmployee.hints.displayWidth}"
+                              maximumLength="#{bindings.RovdEmployee.hints.precision}"
+                              shortDesc="#{bindings.RovdEmployee.hints.tooltip}"
+                              binding="#{backingBeanScope.backing_input_data_person_rovd_edit.it2}"
+                              id="it2">
+                  <f:validator binding="#{bindings.RovdEmployee.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.StatusReason.inputValue}"
+                              label="#{bindings.StatusReason.hints.label}"
+                              required="#{bindings.StatusReason.hints.mandatory}"
+                              columns="#{bindings.StatusReason.hints.displayWidth}"
+                              maximumLength="#{bindings.StatusReason.hints.precision}"
+                              shortDesc="#{bindings.StatusReason.hints.tooltip}"
+                              binding="#{backingBeanScope.backing_input_data_person_rovd_edit.it3}"
+                              id="it3" rows="5">
+                  <f:validator binding="#{bindings.StatusReason.validator}"/>
+                </af:inputText>
+              </af:panelFormLayout>
+            </af:panelBox>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_input_data_person_rovd_edit-->
+</jsp:root>

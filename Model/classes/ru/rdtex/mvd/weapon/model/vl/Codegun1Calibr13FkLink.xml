@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Codegun1Calibr13FkLink"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  EntityAssociation="ru.rdtex.mvd.weapon.model.asoc.Codegun1Calibr13FkAssoc">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewLinkDefEnd
+    Name="CalibrView"
+    Cardinality="1"
+    Owner="ru.rdtex.mvd.weapon.model.vo.CalibrView"
+    Source="true">
+    <DesignTime>
+      <Attr Name="_finderName" Value="CalibrView"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.vo.CalibrView.Code"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="CodeGunView2"
+    Cardinality="-1"
+    Owner="ru.rdtex.mvd.weapon.model.vo.CodeGunView">
+    <DesignTime>
+      <Attr Name="_finderName" Value="CodeGunView2"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="ru.rdtex.mvd.weapon.model.vo.CodeGunView.CalibrCode3"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>
