@@ -91,8 +91,6 @@ public class Person_weapon {
     private RichInputText it7;
     private RichInputText it8;
     private RichInputText it9;
-    private RichSelectOneChoice soc4;
-    private UISelectItems si6;
     private RichSelectOneChoice soc5;
     private UISelectItems si7;
     private RichPanelFormLayout pfl5;
@@ -101,7 +99,9 @@ public class Person_weapon {
     private RichInputText it11;
     private RichInputDate id1;
     private RichSelectBooleanCheckbox sbc1;
-
+    private RichInputText it1;
+    private RichSelectOneChoice soc4;
+    private UISelectItems si6;
 
     public String back() {
          Number id = getDocId();  
@@ -111,25 +111,36 @@ public class Person_weapon {
     
     @PostConstruct
     public void initBean() {
+        System.out.println("!!!initBean");
         Number id = getDocId(); 
-        String isPers = getIsPerson();
+        String isPers = getIsPerson2();
+        
         if (id == null && isPers.equals("1")) {
             setIsPerson("0");
             reloadVO();
-        } else {
-            setIsPerson(isPers);
+        } else if (isPers == null) {
+            setIsPerson("0", false);
+            reloadVO();
         }
-
+        
         System.out.println("isPerson = " + vo.getisPerson());
         System.out.println("personId = " + vo.getpersonId());
     }
     
     private void reloadVO() {
+        System.out.println("!!!reloadVO");
         vo.executeQuery();
-        //vo.first();
+        vo.first();
+//        ViewObjectImpl vo = mod.getGunGunsView2();
+//        vo.executeQuery();
+//        vo.first();
+//        vo = mod.getCodeGunView9();
+//        vo.executeQuery();
+//        vo.first();
     }
  
     public void myCustomChangeRadioListener(ClientEvent event) {
+        System.out.println("!!!myCustomChangeRadioListener");
         String value;// = event.getParameters().get("value").toString();
         Double vNum;
         Number vInt;
@@ -143,25 +154,48 @@ public class Person_weapon {
         String id = (String)event.getParameters().get("id");
         System.out.println("@id = "+id);
         System.out.println("@value = "+value);
-        vo.setisPerson("0");
         
         if (value != null) {
-            vo.setisPerson(value);
-        } 
+            setIsPerson(value);
+        } else {
+            setIsPerson("0");
+        }
         
         reloadVO();
     }
     
     public void setIsPerson(String isPerson) {
+        setIsPerson(isPerson, true);
+    }
+    
+    private void setIsPerson(String isPerson, boolean reset) {
+        System.out.println("!!!setIsPerson: " + reset);
+        if (reset) vo.reset();
         vo.setpersonId(JSFUtils.resolveExpression("#{Myses.personId}").toString());
         vo.setisPerson(isPerson);
-        System.out.println("setIsPerson = " + isPerson);
     }
 
     public String getIsPerson() {
-        String isPerson = vo.getisPerson();
-        System.out.println("getIsPerson = " + isPerson);
+        String isPerson = getIsPerson2();
         return (isPerson == null ? "0" : isPerson);
+    }
+    
+    private String getIsPerson2() {
+        //System.out.println("!!!getIsPerson");
+        String isPerson = vo.getisPerson();
+        return isPerson;
+    }
+    
+    public void setDocId(Number id) {  
+        //this.docId = id;
+    }
+
+    public Number getDocId() {
+        HttpSession session = JSFUtils.getSession();
+        //HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        Number id = (Number)session.getAttribute("docId");
+        System.out.println("DocId = " + id);
+        return id;
     }
     
     public void setF1(RichForm f1) {
@@ -259,18 +293,6 @@ public class Person_weapon {
 
     public RichCommandButton getCb1() {
         return cb1;
-    }
-
-    public void setDocId(Number id) {  
-        //this.docId = id;
-    }
-
-    public Number getDocId() {
-        HttpSession session = JSFUtils.getSession();
-        //HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
-        Number id = (Number)session.getAttribute("docId");
-        System.out.println("DocId = " + id);
-        return id;
     }
 
     public void setG1(UIXGroup g1) {
@@ -506,21 +528,6 @@ public class Person_weapon {
         return it9;
     }
 
-    public void setSoc4(RichSelectOneChoice soc4) {
-        this.soc4 = soc4;
-    }
-
-    public RichSelectOneChoice getSoc4() {
-        return soc4;
-    }
-
-    public void setSi6(UISelectItems si6) {
-        this.si6 = si6;
-    }
-
-    public UISelectItems getSi6() {
-        return si6;
-    }
 
     public void setSoc5(RichSelectOneChoice soc5) {
         this.soc5 = soc5;
@@ -584,5 +591,30 @@ public class Person_weapon {
 
     public RichSelectBooleanCheckbox getSbc1() {
         return sbc1;
+    }
+
+    public void setIt1(RichInputText it1) {
+        this.it1 = it1;
+    }
+
+    public RichInputText getIt1() {
+        return it1;
+    }
+
+
+    public void setSoc4(RichSelectOneChoice soc4) {
+        this.soc4 = soc4;
+    }
+
+    public RichSelectOneChoice getSoc4() {
+        return soc4;
+    }
+
+    public void setSi6(UISelectItems si6) {
+        this.si6 = si6;
+    }
+
+    public UISelectItems getSi6() {
+        return si6;
     }
 }

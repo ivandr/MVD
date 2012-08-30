@@ -135,7 +135,7 @@
       <property
          name="fromOutcome">1000</property>
       <property
-         name="sdm:polyPoints">T43,141.5,20.292969,74.5,-40.914062,B50</property>
+         name="sdm:polyPoints">T43,141.5,20.292969,74.5,-41.615234,B50</property>
    </ControlFlowCase>
    <WildcardControlFlowRule
       id="WildcardControlFlowRule15">

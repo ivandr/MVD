@@ -67,7 +67,14 @@
                               binding="#{backingBeanScope.backing_input_data_person_weapon.t6}"
                               id="t6"
                               partialTriggers="::sor1 ::radioText">
-                      <af:column sortProperty="KindTitle" sortable="true"
+                    <af:column headerText="#{bindings.RGunGunsView1.hints.GunId.label}"
+                               id="c9">
+                      <af:outputText value="#{row.GunId}" id="ot10">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.RGunGunsView1.hints.GunId.format}"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="KindTitle" sortable="true"
                                  headerText="#{bindings.RGunGunsView1.hints.KindTitle.label}"
                                  id="c3" width="103">
                         <af:outputText value="#{row.KindTitle}" id="ot3"/>
@@ -115,16 +122,28 @@
                 <f:facet name="second">
                 <af:panelGroupLayout binding="#{backingBeanScope.backing_input_data_person_weapon.pgl1}"
                                      id="pgl1"
-                                     partialTriggers="pc1:t6 pc1:t5 pc1:t4">
+                                     partialTriggers="pc1:t4 pc1:t5 pc1:t6 pc1:sor1 pc1:radioText">
                   <af:panelFormLayout binding="#{backingBeanScope.backing_input_data_person_weapon.pfl2}"
                                       id="pfl2" styleClass="mvd_form">
-                    <af:selectOneChoice value="#{bindings.ModelGun1.inputValue}"
-                                        label="#{bindings.ModelGun1.label}"
-                                        required="#{bindings.ModelGun1.hints.mandatory}"
-                                        shortDesc="#{bindings.ModelGun1.hints.tooltip}"
+                    <af:inputText value="#{bindings.Id.inputValue}"
+                                  label="#{bindings.Id.hints.label}"
+                                  required="#{bindings.Id.hints.mandatory}"
+                                  columns="#{bindings.Id.hints.displayWidth}"
+                                  maximumLength="#{bindings.Id.hints.precision}"
+                                  shortDesc="#{bindings.Id.hints.tooltip}"
+                                  binding="#{backingBeanScope.backing_input_data_person_weapon.it1}"
+                                  id="it1" readOnly="true" disabled="true">
+                      <f:validator binding="#{bindings.Id.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.Id.format}"/>
+                    </af:inputText>
+                    <af:selectOneChoice value="#{bindings.ModelGun.inputValue}"
+                                        label="#{bindings.ModelGun.label}"
+                                        required="#{bindings.ModelGun.hints.mandatory}"
+                                        shortDesc="#{bindings.ModelGun.hints.tooltip}"
                                         binding="#{backingBeanScope.backing_input_data_person_weapon.soc4}"
                                         id="soc4" autoSubmit="true">
-                      <f:selectItems value="#{bindings.ModelGun1.items}"
+                      <f:selectItems value="#{bindings.ModelGun.items}"
                                      binding="#{backingBeanScope.backing_input_data_person_weapon.si6}"
                                      id="si6"/>
                     </af:selectOneChoice>
@@ -133,8 +152,9 @@
                                         required="#{bindings.CodegunCode1.hints.mandatory}"
                                         shortDesc="#{bindings.CodegunCode1.hints.tooltip}"
                                         binding="#{backingBeanScope.backing_input_data_person_weapon.soc5}"
-                                        id="soc5" partialTriggers="soc4"
-                                        autoSubmit="true">
+                                        id="soc5"
+                                        autoSubmit="true"
+                                        partialTriggers="soc4">
                       <f:selectItems value="#{bindings.CodegunCode1.items}"
                                      binding="#{backingBeanScope.backing_input_data_person_weapon.si7}"
                                      id="si7"/>

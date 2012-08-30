@@ -61,7 +61,11 @@
   <ViewAccessor
     Name="ModelGunView1"
     ViewObjectName="ru.rdtex.mvd.weapon.model.vo.ModelGunView"
-    RowLevelBinds="true"/>
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="ModelGunViewCriteria"
+      FullName="ru.rdtex.mvd.weapon.model.vo.ModelGunView.ModelGunViewCriteria"/>
+  </ViewAccessor>
   <ViewAccessor
     Name="YesNo10_1"
     ViewObjectName="ru.rdtex.mvd.weapon.model.vo.lov.YesNo10"

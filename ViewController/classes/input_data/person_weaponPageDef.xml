@@ -24,6 +24,7 @@
           <Item Value="License"/>
           <Item Value="Permission"/>
           <Item Value="StateName"/>
+          <Item Value="GunId"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
@@ -80,8 +81,6 @@
       </AttrNames>
     </attributeValues>
     <list IterBinding="GunGunsView2Iterator" StaticList="false"
-          Uses="LOV_ModelGun" id="ModelGun1" DTSupportsMRU="true"/>
-    <list IterBinding="GunGunsView2Iterator" StaticList="false"
           Uses="LOV_CodegunCode" id="CodegunCode1" DTSupportsMRU="true"/>
     <attributeValues IterBinding="GunGunsView2Iterator" id="Comments">
       <AttrNames>
@@ -108,5 +107,12 @@
         <Item Value="0"/>
       </ValueList>
     </button>
+    <attributeValues IterBinding="GunGunsView2Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="GunGunsView2Iterator" StaticList="false"
+          Uses="LOV_ModelGun" id="ModelGun" DTSupportsMRU="true"/>
   </bindings>
 </pageDefinition>
